@@ -426,7 +426,6 @@ html {
 .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 {
   width: 100%;
   max-width: 400px;
-  height: 430px;
   perspective: 1200px;
   position: relative;
 }
@@ -442,16 +441,16 @@ html {
 .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 .carousel-stage-xa3 .carousel-slide-op8 {
   position: absolute;
   width: 60%;
-  height: 80%;
+  height: 400px;
   left: 20%;
   top: 10%;
-  overflow: hidden;
   transition: transform 0.5s, opacity 0.5s;
   cursor: pointer;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 .carousel-stage-xa3 .carousel-slide-op8 img {
   width: 80%;
+  height: 400px;
   object-fit: cover;
   display: block;
 }
@@ -1278,7 +1277,6 @@ html {
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel {
     margin: 60px 0;
     height: 480px;
-    overflow: hidden;
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content {
     margin: 70px 0;
@@ -1604,6 +1602,130 @@ html {
   background: none;
 }
 
+.games .games_content .games_box .games_box_content a:nth-child(1) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(2) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(3) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(4) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(5) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(6) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(7) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(8) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(9) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(10) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(11) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(12) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(13) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(14) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(15) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(16) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(17) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(18) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(19) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(20) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(21) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(22) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(23) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(24) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(25) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(26) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(27) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(28) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(29) {
+  transform: translateY(-40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(30) {
+  transform: translateY(40px);
+}
+
+.games .games_content .games_box .games_box_content a:nth-child(31) {
+  transform: translateY(40px);
+}
+
 @media screen and (max-width: 1055px) {
   .games .games_content {
     width: 100%;
@@ -1616,6 +1738,99 @@ html {
   }
   .games .games_content .games_box .games_box_content a {
     width: 50%;
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(1) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(2) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(3) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(4) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(5) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(6) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(7) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(8) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(9) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(10) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(11) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(12) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(13) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(14) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(15) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(16) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(17) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(18) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(19) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(20) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(21) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(22) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(23) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(24) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(25) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(26) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(27) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(28) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(29) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(30) {
+    transform: translateY(0px);
+  }
+  .games .games_content .games_box .games_box_content a:nth-child(31) {
+    transform: translateY(0px);
   }
 }
 
