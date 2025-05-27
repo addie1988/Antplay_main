@@ -1298,14 +1298,32 @@ html {
     width: 100%;
     margin: 6px 0;
   }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_1_title, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_2_title, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_3_title, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_4_title, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_5_title, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_6_title, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_7_title, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_8_title {
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_1_title {
+    height: 550px;
+  }
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_2_title {
+    height: 400px;
+  }
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_3_title {
+    height: 350px;
+  }
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_4_title {
+    height: 300px;
+  }
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_4_title .report_li_4_title_content {
     width: 100%;
   }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_1_title .operator .operator_content .operator_img, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_2_title .operator .operator_content .operator_img, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_3_title .operator .operator_content .operator_img, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_4_title .operator .operator_content .operator_img, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_5_title .operator .operator_content .operator_img, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_6_title .operator .operator_content .operator_img, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_7_title .operator .operator_content .operator_img, .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_8_title .operator .operator_content .operator_img {
-    width: 100%;
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_5_title {
+    height: 300px;
   }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry .report_li_7_title_content .report_li_7_title_h1 {
-    padding: 0px;
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_6_title {
+    height: 350px;
+  }
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_7_title {
+    height: 450px;
+  }
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_8_title {
+    height: 250px;
   }
   .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry.module-visible-from-top-left {
     transform: translateY(0);
