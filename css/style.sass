@@ -330,18 +330,21 @@ html
                                 .carousel-shell-yz9
                                     width: 100%
                                     max-width: 400px
+                                    height: 430px
                                     perspective: 1200px
                                     position: relative
                                     @extend %display_flex
                                     .carousel-stage-xa3
-                                        width: 70%
+                                        width: 100%
+                                        height: 100%
                                         position: absolute
                                         transform-style: preserve-3d
-                                        transition: transform 1s
+                                        transition: transform 1s ease-in-out
                                         @extend %display_flex
                                         .carousel-slide-op8
                                             position: absolute
-                                            width: 70%
+                                            width: 60%
+                                            height: 80%
                                             left: 20%
                                             top: 10%
                                             overflow: hidden
@@ -352,7 +355,6 @@ html
                                                 width: 80%
                                                 object-fit: cover
                                                 display: block
-                                                border-radius: 8px
                         .module-content-display-grid
                             display: flex
                             flex-wrap: wrap
@@ -960,7 +962,7 @@ html
                                 .data_carousel_content
                                     margin: 70px 0
                                     .carousel-shell-yz9
-                                        max-width: 900px
+                                        max-width: 300px
                                         .carousel-stage-xa3
                                             .carousel-slide-op8
                                                 width: 80%
@@ -1390,7 +1392,4 @@ html
             ul
                 li
 
-.module-content-display-grid
-    gap: 40px
-    margin: 0
-    padding: 0
+

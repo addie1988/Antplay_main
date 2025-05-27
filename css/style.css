@@ -426,20 +426,23 @@ html {
 .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 {
   width: 100%;
   max-width: 400px;
+  height: 430px;
   perspective: 1200px;
   position: relative;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 .carousel-stage-xa3 {
-  width: 70%;
+  width: 100%;
+  height: 100%;
   position: absolute;
   transform-style: preserve-3d;
-  transition: transform 1s;
+  transition: transform 1s ease-in-out;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 .carousel-stage-xa3 .carousel-slide-op8 {
   position: absolute;
-  width: 70%;
+  width: 60%;
+  height: 80%;
   left: 20%;
   top: 10%;
   overflow: hidden;
@@ -451,7 +454,6 @@ html {
   width: 80%;
   object-fit: cover;
   display: block;
-  border-radius: 8px;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid {
@@ -1282,7 +1284,7 @@ html {
     margin: 70px 0;
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 {
-    max-width: 900px;
+    max-width: 300px;
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 .carousel-stage-xa3 .carousel-slide-op8 {
     width: 80%;
@@ -1823,10 +1825,4 @@ html {
     display: block;
     z-index: 6;
   }
-}
-
-.module-content-display-grid {
-  gap: 40px;
-  margin: 0;
-  padding: 0;
 }
