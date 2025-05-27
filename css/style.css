@@ -1275,6 +1275,7 @@ html {
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel {
     margin: 60px 0;
+    height: 480px;
     overflow: hidden;
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content {
