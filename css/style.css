@@ -1275,9 +1275,13 @@ html {
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel {
     margin: 60px 0;
+    overflow: hidden;
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content {
     margin: 70px 0;
+  }
+  .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 {
+    max-width: 900px;
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content .carousel-shell-yz9 .carousel-stage-xa3 .carousel-slide-op8 {
     width: 80%;
