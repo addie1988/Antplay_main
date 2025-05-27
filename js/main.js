@@ -238,143 +238,93 @@ window.addEventListener('scroll', () => {
 // ----------------------------------------------------------------------------------------
 
 // 熱門推播
-const CAROUSEL_SHELL_ID = "carouselShell_8z7";
-const CAROUSEL_TRACK_ID = "carouselRail_3nb";
-
-const shellElement_8z7 = document.getElementById(CAROUSEL_SHELL_ID);
-const trackElement_3nb = document.getElementById(CAROUSEL_TRACK_ID);
-
-const carouselAssets_zy9 = [
-  { src: '../images/Popular_Games_1.png' },
-  { src: '../images/Popular_Games_2.png' },
-  { src: '../images/Popular_Games_3.png' },
-  { src: '../images/Popular_Games_4.png' },
-  { src: '../images/Popular_Games_5.png' },
-  { src: '../images/Popular_Games_6.jpg' },
-  { src: '../images/Popular_Games_7.png' },
-  { src: '../images/Popular_Games_8.png' },
+const imagesList_tq3 = [
+  '../images/Popular_Games_1.png',
+  '../images/Popular_Games_2.png',
+  '../images/Popular_Games_3.png',
+  '../images/Popular_Games_4.png',
+  '../images/Popular_Games_5.png',
+  '../images/Popular_Games_6.jpg',
+  '../images/Popular_Games_7.png',
+  '../images/Popular_Games_8.png',
 ];
 
-let currentSlidePos_i17 = 0;
-let maxVisibleSlides_vg6 = 3;
-let timerInstance_xr4;
+const stageNode_mk1 = document.getElementById("carouselStage_mk1");
+const totalItems_nx7 = imagesList_tq3.length;
+let currentIndex_lp5 = 0;
+let autoRotate_qe6 = null;
 
-function getResponsiveSlideWidth() {
-  const width = window.innerWidth;
-  if (width <= 768) {
-    return 100; // 手機版顯示1個
-  } else if (width <= 1024) {
-    return 50; // 平板顯示2個
-  }
-  return 33.33; // 電腦版顯示3個
-}
+function create3DSlides() {
+  const anglePerSlide_ef2 = 360 / totalItems_nx7;
+  const radius_pz9 = (stageNode_mk1.offsetWidth / 2) / Math.tan(Math.PI / totalItems_nx7);
 
-function getResponsiveMaxSlides() {
-  const width = window.innerWidth;
-  if (width <= 768) {
-    return 1; // 手機版顯示1個
-  } else if (width <= 1024) {
-    return 2; // 平板顯示2個
-  }
-  return 3; // 電腦版顯示3個
-}
+  imagesList_tq3.forEach((src, i) => {
+    const slideNode_ko4 = document.createElement('div');
+    slideNode_ko4.className = 'carousel-slide-op8';
+    slideNode_ko4.innerHTML = `<img src="${src}" alt="image-${i}">`;
 
-function mountSlides_zs4() {
-  trackElement_3nb.innerHTML = '';
+    const angleDeg = i * anglePerSlide_ef2;
+    slideNode_ko4.style.transform = `rotateY(${angleDeg}deg) translateZ(${radius_pz9}px)`;
 
-  const probeSlide_wf3 = document.createElement('div');
-  probeSlide_wf3.className = 'uic-slide-xq2';
-  probeSlide_wf3.style.visibility = 'hidden';
-  trackElement_3nb.appendChild(probeSlide_wf3);
+    // 點擊圖片 → 如果未播放，啟動自動輪播
+    slideNode_ko4.addEventListener('click', () => {
+      if (!autoRotate_qe6) {
+        startAuto3DRotate();
+      }
+    });
 
-  // 根據螢幕寬度設定slide寬度
-  const slideWidth = getResponsiveSlideWidth();
-  probeSlide_wf3.style.width = `${slideWidth}%`;
-  
-  maxVisibleSlides_vg6 = getResponsiveMaxSlides();
-  trackElement_3nb.removeChild(probeSlide_wf3);
-
-  const loopedAssets_qa8 = [...carouselAssets_zy9, ...carouselAssets_zy9.slice(0, maxVisibleSlides_vg6)];
-
-  loopedAssets_qa8.forEach(({ src }) => {
-    const slideUnit_ze0 = document.createElement('div');
-    slideUnit_ze0.className = 'uic-slide-xq2';
-    slideUnit_ze0.style.width = `${slideWidth}%`;
-    slideUnit_ze0.innerHTML = `<img src="${src}" alt="carousel-img">`;
-    trackElement_3nb.appendChild(slideUnit_ze0);
+    stageNode_mk1.appendChild(slideNode_ko4);
   });
 }
 
-function scrollToSlide_py2(index, enableTransition = true) {
-  const sampleUnit_td7 = trackElement_3nb.querySelector('.uic-slide-xq2');
-  if (!sampleUnit_td7) return;
-
-  const gapSize_px3 = parseInt(getComputedStyle(trackElement_3nb).gap) || 0;
-  const fullUnitWidth_jx5 = sampleUnit_td7.offsetWidth + gapSize_px3;
-
-  trackElement_3nb.style.transition = enableTransition ? 'transform 0.5s ease-in-out' : 'none';
-  trackElement_3nb.style.transform = `translateX(-${fullUnitWidth_jx5 * index}px)`;
+function rotate3DCarousel() {
+  const rotationDeg = currentIndex_lp5 * -360 / totalItems_nx7;
+  stageNode_mk1.style.transform = `rotateY(${rotationDeg}deg)`;
 }
 
-function triggerNextSlide_kk9() {
-  currentSlidePos_i17++;
-  scrollToSlide_py2(currentSlidePos_i17, true);
+function startAuto3DRotate() {
+  clearInterval(autoRotate_qe6);
+  autoRotate_qe6 = setInterval(() => {
+    currentIndex_lp5 = (currentIndex_lp5 + 1) % totalItems_nx7;
+    rotate3DCarousel();
+  }, 3000);
+}
 
-  if (currentSlidePos_i17 >= carouselAssets_zy9.length) {
-    setTimeout(() => {
-      currentSlidePos_i17 = 0;
-      scrollToSlide_py2(currentSlidePos_i17, false);
-    }, 500);
+// 初始化
+create3DSlides();
+rotate3DCarousel();
+startAuto3DRotate(); // ✅ 頁面載入立即播放
+
+// 拖曳功能（滑鼠拖動會暫停輪播）
+let dragStartX_bg8 = 0;
+let draggingActive_bu9 = false;
+
+const rootShell_rz0 = document.getElementById("carouselRoot_rz0");
+
+rootShell_rz0.addEventListener('mousedown', (e) => {
+  draggingActive_bu9 = true;
+  dragStartX_bg8 = e.clientX;
+  clearInterval(autoRotate_qe6); // 暫停輪播
+  autoRotate_qe6 = null;
+});
+
+rootShell_rz0.addEventListener('mousemove', (e) => {
+  if (!draggingActive_bu9) return;
+  const deltaX = e.clientX - dragStartX_bg8;
+  if (Math.abs(deltaX) > 50) {
+    currentIndex_lp5 += deltaX > 0 ? -1 : 1;
+    currentIndex_lp5 = (currentIndex_lp5 + totalItems_nx7) % totalItems_nx7;
+    rotate3DCarousel();
+    dragStartX_bg8 = e.clientX;
   }
-}
-
-function autoLoopStarter_tp1() {
-  clearInterval(timerInstance_xr4);
-  timerInstance_xr4 = setInterval(triggerNextSlide_kk9, 3000);
-}
-
-mountSlides_zs4();
-scrollToSlide_py2(currentSlidePos_i17);
-autoLoopStarter_tp1();
-
-window.addEventListener('resize', () => {
-  currentSlidePos_i17 = 0;
-  mountSlides_zs4();
-  scrollToSlide_py2(currentSlidePos_i17, false);
-  autoLoopStarter_tp1(); // 重新啟動自動輪播
 });
 
-// 初始化時也檢查一次螢幕寬度
-window.addEventListener('load', () => {
-  mountSlides_zs4();
-  scrollToSlide_py2(currentSlidePos_i17);
-  autoLoopStarter_tp1();
+rootShell_rz0.addEventListener('mouseup', () => {
+  draggingActive_bu9 = false;
 });
 
-// Hand Swipe Handler
-let dragStart_xz9 = 0;
-let dragEnd_op2 = 0;
-
-shellElement_8z7.addEventListener('touchstart', (e) => {
-  dragStart_xz9 = e.touches[0].clientX;
-});
-
-shellElement_8z7.addEventListener('touchmove', (e) => {
-  dragEnd_op2 = e.touches[0].clientX;
-});
-
-shellElement_8z7.addEventListener('touchend', () => {
-  const deltaSwipe_mt7 = dragEnd_op2 - dragStart_xz9;
-  const swipeThreshold_ab5 = 50;
-
-  if (deltaSwipe_mt7 > swipeThreshold_ab5 && currentSlidePos_i17 > 0) {
-    currentSlidePos_i17--;
-    scrollToSlide_py2(currentSlidePos_i17);
-  } else if (deltaSwipe_mt7 < -swipeThreshold_ab5) {
-    triggerNextSlide_kk9();
-  }
-
-  autoLoopStarter_tp1(); // Restart auto-slide
+rootShell_rz0.addEventListener('mouseleave', () => {
+  draggingActive_bu9 = false;
 });
 
 // ----------------------------------------------------------------------------------------
