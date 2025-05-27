@@ -238,7 +238,7 @@ window.addEventListener('scroll', () => {
 // ----------------------------------------------------------------------------------------
 
 // 熱門推播
-const imagesList_tq3 = [
+const imagePaths = [
   './images/Popular_Games_1.png',
   './images/Popular_Games_2.png',
   './images/Popular_Games_3.png',
@@ -249,83 +249,97 @@ const imagesList_tq3 = [
   './images/Popular_Games_8.png',
 ];
 
-const stageNode_mk1 = document.getElementById("carouselStage_mk1");
-const totalItems_nx7 = imagesList_tq3.length;
-const anglePerSlide = 360 / totalItems_nx7;
-let rotationCount = 0;
-let autoRotate_qe6 = null;
+const carouselStage = document.getElementById("carouselStage_mk1");
+const carouselRoot = document.getElementById("carouselRoot_rz0");
 
-function create3DSlides() {
-  stageNode_mk1.innerHTML = '';
+const slideCount = imagePaths.length;
+const angleBetweenSlides = 360 / slideCount;
+const slideWidth = 200;
+const radius = (slideWidth / 2) / Math.tan(Math.PI / slideCount);
 
-  const slideWidth = 200; // px
-  const radius = (slideWidth / 2) / Math.tan(Math.PI / totalItems_nx7); // perfect circle
+let currentRotationIndex = 0;
+let autoRotateTimer = null;
 
-  imagesList_tq3.forEach((src, i) => {
-    const slideNode = document.createElement('div');
-    slideNode.className = 'carousel-slide-op8';
-    slideNode.innerHTML = `<img src="${src}" alt="image-${i}">`;
-
-    const angleDeg = i * anglePerSlide;
-    slideNode.style.transform = `rotateY(${angleDeg}deg) translateZ(${radius}px)`;
-
-    slideNode.addEventListener('click', () => {
-      if (!autoRotate_qe6) {
-        startAuto3DRotate();
-      }
+function createSlides() {
+  carouselStage.innerHTML = '';
+  imagePaths.forEach((src, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'carousel-slide-op8';
+    slide.innerHTML = `<img src="${src}" alt="slide-${i}">`;
+    const angle = i * angleBetweenSlides;
+    slide.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+    slide.addEventListener('click', () => {
+      if (!autoRotateTimer) startAutoRotate();
     });
-
-    stageNode_mk1.appendChild(slideNode);
+    carouselStage.appendChild(slide);
   });
 }
 
-function rotate3DCarousel() {
-  const deg = rotationCount * anglePerSlide;
-  stageNode_mk1.style.transform = `rotateY(${deg}deg)`;
+function rotateCarousel() {
+  const rotateDeg = currentRotationIndex * angleBetweenSlides;
+  carouselStage.style.transform = `rotateY(${rotateDeg}deg)`;
 }
 
-function startAuto3DRotate() {
-  clearInterval(autoRotate_qe6);
-  autoRotate_qe6 = setInterval(() => {
-    rotationCount++; // no reset
-    rotate3DCarousel();
+function startAutoRotate() {
+  clearInterval(autoRotateTimer);
+  autoRotateTimer = setInterval(() => {
+    currentRotationIndex++;
+    rotateCarousel();
   }, 3000);
 }
 
-// 初始化
-create3DSlides();
-rotate3DCarousel();
-startAuto3DRotate();
-
-// 拖曳功能（滑鼠拖動）
+// Mouse drag
 let dragStartX = 0;
-let dragging = false;
-
-const rootShell = document.getElementById("carouselRoot_rz0");
-
-rootShell.addEventListener('mousedown', (e) => {
-  dragging = true;
+let isDragging = false;
+carouselRoot.addEventListener('mousedown', (e) => {
+  isDragging = true;
   dragStartX = e.clientX;
-  clearInterval(autoRotate_qe6);
-  autoRotate_qe6 = null;
+  clearInterval(autoRotateTimer);
+  autoRotateTimer = null;
 });
-
-rootShell.addEventListener('mousemove', (e) => {
-  if (!dragging) return;
+carouselRoot.addEventListener('mousemove', (e) => {
+  if (!isDragging) return;
   const deltaX = e.clientX - dragStartX;
   if (Math.abs(deltaX) > 50) {
-    rotationCount += deltaX > 0 ? 1 : -1;
-    rotate3DCarousel();
+    currentRotationIndex += deltaX > 0 ? 1 : -1;
+    rotateCarousel();
     dragStartX = e.clientX;
   }
 });
+['mouseup', 'mouseleave'].forEach(evt =>
+  carouselRoot.addEventListener(evt, () => {
+    isDragging = false;
+  })
+);
 
-['mouseup', 'mouseleave'].forEach(evt => {
-  rootShell.addEventListener(evt, () => {
-    dragging = false;
-  });
+// Touch drag
+let touchStartX = 0;
+let isTouching = false;
+carouselRoot.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1) {
+    touchStartX = e.touches[0].clientX;
+    isTouching = true;
+    clearInterval(autoRotateTimer);
+    autoRotateTimer = null;
+  }
+});
+carouselRoot.addEventListener('touchmove', (e) => {
+  if (!isTouching || e.touches.length !== 1) return;
+  const deltaX = e.touches[0].clientX - touchStartX;
+  if (Math.abs(deltaX) > 50) {
+    currentRotationIndex += deltaX > 0 ? 1 : -1;
+    rotateCarousel();
+    touchStartX = e.touches[0].clientX;
+  }
+});
+carouselRoot.addEventListener('touchend', () => {
+  isTouching = false;
 });
 
+// 初始化
+createSlides();
+rotateCarousel();
+startAutoRotate();
 
 
 // ----------------------------------------------------------------------------------------
