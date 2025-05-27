@@ -1,0 +1,90 @@
+@import '../css/style.sass'
+
+// -----------------------------------------------------------------------------------------      
+
+$max-width: 1200px
+$flex_width: 50%
+$main_color: #01223F
+$secondary_color: #2F75B0
+$dynamic_background: #000
+
+%display_flex
+    display: flex
+    align-items: center
+    justify-content: center
+
+%margin
+    margin: 30px 0
+
+// -----------------------------------------------------           
+h1
+    font-size: 37px
+    font-weight: 900
+    @extend %margin
+h6
+    font-size: 27px
+    font-weight: 900
+    @extend %margin
+span
+    font-size: 14px
+    @extend %margin
+p
+    font-size: 14px
+    line-height: 2
+b
+    font-weight: 900
+    @extend %margin
+ol
+    line-height: 2
+    @extend %margin
+
+body
+    background: url('../images/full_background.svg') no-repeat center
+    background-size: cover
+
+.policy_box
+    position: relative
+    padding: 60px 0
+    line-height: 1.1
+    .policy_box_content
+        background-color: #fff
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+        margin: 0 auto
+        width: $max-width
+        .policy
+            position: relative
+            padding: 50px 50px 0 50px
+            .policy_content
+                margin: 0 auto
+                p
+                    a
+                        text-decoration: none
+                        color: #0084FF
+                        font-weight: 900
+        .policy_details
+            position: relative
+            padding: 0 50px 50px 50px
+            .policy_details_content
+                margin: 0 auto
+                ul
+                    li
+                        ol
+                            padding-left: 20px
+                            li
+                                list-style: circle
+
+@media screen and (max-width: 1220px)
+    .policy_box
+        width: 100%
+        margin: 0 auto
+        .policy_box_img
+            width: 90%
+            .policy_box_img_content
+                img
+                    width: 100%
+        .policy_box_content
+            width: 90%
+            .policy
+                padding: 40px
+            .policy_details
+                padding: 40px

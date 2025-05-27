@@ -1,0 +1,569 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+    margin: 0
+    padding: 0
+    border: 0
+    font-size: 100%
+    font: inherit
+    vertical-align: baseline
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
+    display: block
+
+body
+    line-height: 1
+
+ol, ul
+    list-style: none
+
+blockquote, q
+    quotes: none
+
+blockquote:before, blockquote:after,
+q:before, q:after
+    content: ''
+    content: none
+
+table
+    border-collapse: collapse
+    border-spacing: 0
+
+// -----------------------------------------------------    
+
+@import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap')
+
+$max-width: 1200px
+$flex_width: 50%
+$main_color: #01223F
+$secondary_color: #2F75B0
+$dynamic_background: #000
+
+%display_flex
+    display: flex
+    align-items: center
+    justify-content: center
+
+// -----------------------------------------------------    
+
+html
+    scroll-behavior: smooth
+
+.spacer
+    height: 0
+    transition: height 0.3s ease
+    &:active
+        height: 80px
+.header
+    position: relative
+    width: 100%
+    height: 70px
+    background-color: $main_color
+    @extend %display_flex
+    .header_content
+        width: $max-width
+        padding-left: 10px
+        padding-right: 10px
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        margin: 0 auto
+        .logo
+            width: $flex_width
+        .menu_language
+            width: $flex_width
+            display: flex
+            align-items: center
+            justify-content: space-between
+            .menu_language_content
+                width: 100%
+                display: flex
+                align-items: center
+                justify-content: flex-end
+                .hamburger
+                    font-size: 1.5em
+                    cursor: pointer
+                    display: none
+                    user-select: none
+                .menu
+                    width: 70%
+                .nav-menu
+                    display: flex
+                    .menu_content
+                        margin: 0 auto
+                        width: 100%
+                        ul
+                            display: flex
+                            justify-content: space-between
+                            flex-wrap: wrap
+                            li
+                                a
+                                    color: #fff
+                                    text-decoration: none
+                                    transition: all 0.8s ease
+                                    &:hover
+                                        color: #0084FF
+                .show
+                    display: block
+                .language
+                    width: 20%
+                    position: relative
+                    display: flex
+                    margin-left: 20px
+                    .language_content
+                        margin: 0 auto
+                        .dropdown-toggle
+                            font-size: 16px
+                            cursor: pointer
+                            width: 29px
+                            height: 29px
+                    .dropdown-content
+                        display: none
+                        position: absolute
+                        right: 0
+                        background-color: rgba(47, 117, 179, 0.8)
+                        min-width: 160px
+                        box-shadow: 0px 8px 16px rgba(0,0,0,0.2)
+                        z-index: 3
+                        a
+                            color: black
+                            padding: 21px 16px
+                            text-decoration: none
+                            display: flex
+                            align-items: center
+                            border-bottom: 2px solid #fff
+                            &:nth-child(4)
+                                border-bottom: none
+                            &:hover
+                                p
+                                    transform: scale(1.5)
+                            img
+                            p
+                                color: #fff
+                                margin-left: 22px
+                                font-size: 12px
+                                transition: font-size 4s ease-in-out
+                    .show
+                        display: block
+.fixed
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 3
+    background-color: rgba(1, 34, 63, 0.7)
+    backdrop-filter: blur(10px)
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+@media screen and (max-width: 770px)
+    .header
+        .header_content
+            .logo
+            .menu_language
+                .menu_language_content
+                    .hamburger
+                        display: block
+                        color: #fff
+                    .menu
+                    .nav-menu
+                        display: none
+                        flex-direction: column
+                        background-color: #444
+                        position: absolute
+                        top: 100%
+                        left: 0
+                        width: 100%
+                        .menu_content
+                            width: 100%
+                            ul
+                                width: 100%
+                                line-height: 4
+                                li
+                                    border-bottom: 2px solid #fff
+                                    width: 100%
+                                    &:nth-child(4)
+                                        border-bottom: none
+                                    a
+                                        width: 100%
+                                        display: inline-block
+                                        margin: 0 20px
+                    .show
+                        display: flex
+                        z-index: 3
+                        background: rgba(47, 117, 176, 0.8)
+                        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+// -----------------------------------------------------------------------------------------
+
+.banner
+    position: relative
+    width: 100%
+    display: inline-block
+    background-size: cover
+    @extend %display_flex
+    .banner_content
+        margin: 0 auto
+        display: flex
+        align-items: center
+        justify-content: center
+        img
+            width: 100%
+@media screen and (max-width:1300px)
+    .banner
+        background-size: cover
+        .banner_content
+            img
+
+// -----------------------------------------------------------------------------------------     
+
+.teaching
+    position: relative
+    background: url('../images/full_background.svg') no-repeat center
+    background-size: cover
+    .teaching_content
+        margin: 0 auto
+        width: $max-width
+        padding: 100px 0
+        .game_details
+            position: relative
+            .game_details_content
+                margin: 0 auto
+                display: flex
+                justify-content: space-between
+                align-items: center
+                flex-wrap: wrap
+                .game_details_img
+                    position: relative
+                    width: 30%
+                    .game_details_img_content
+                        margin: 0 auto
+                        display: flex
+                        justify-content: center
+                .game_details_text
+                    position: relative
+                    width: 60%
+                    height: 100%
+                    background-color: #fff
+                    border-radius: 10px
+                    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+                    .game_details_text_content
+                        margin: 0 auto
+                        padding: 60px
+                        line-height: 2
+                        span
+                            font-size: 14px
+                            color: #9d9d9d
+                        p
+                            font-size: 18px
+                            color: #333
+                        b
+                            width: 100%
+                            display: block
+                            border: .1px solid #e8e8e8
+                            margin: 20px 0
+                        ul
+                            width: 100%
+                            display: flex
+                            flex-wrap: wrap
+                            padding-bottom: 20px
+                            li
+                                display: flex
+                                align-items: center
+                                padding-right: 20px
+                                margin: 6px 0
+                                img
+
+                                    margin-right: 8px
+                                    border: 1PX solid #d4d4d4
+                                    border-radius: 50%
+                                &:nth-child(5)
+                                    padding-right: 0
+                        .try_it
+                            position: relative
+                            padding-top: 60px
+                            .try_it_content
+                                margin: 0 auto
+                                text-align: center
+                                a
+                                    width: 100%
+                                    color: #fff
+                                    font-size: 24px
+                                    background-color: $main_color
+                                    border-radius: 4px
+                                    display: inline-block
+                                    text-decoration: none
+                                    transition: all 1s ease-in-out
+                                    &:hover
+                                        border: 3px solid $main_color
+                                        color: $main_color
+                                        background: none
+                                        background-color: #fff
+@media screen and (max-width: 1253px)
+    .teaching
+        .teaching_content
+            width: 100%
+            .game_details
+                .game_details_content
+                    justify-content: center
+                    .game_details_img
+                        width: 90%
+                        padding-bottom: 40px
+                    .game_details_text
+                        width: 90%
+                        .game_details_text_content
+                            text-align: center
+                            span
+                            p
+                            ul
+                                display: flex
+                                flex-wrap: wrap
+                                justify-content: center
+                                line-height: 2.6
+                                li
+                                    width: 100%
+                                    display: flex
+                                    justify-content: center
+                                    padding-right: 0
+@media screen and (max-width: 794px)
+    .teaching
+        .teaching_content
+            padding: 30px 0
+            .game_details
+                .game_details_content
+                    .game_details_img
+                    .game_details_text
+                        .game_details_text_content
+                            padding: 30px
+                            span
+                            p
+                            ul
+                                li
+@media screen and (max-width: 460px)
+    .teaching
+        .teaching_content
+            .game_details
+                .game_details_content
+                    .game_details_img
+                        .game_details_img_content
+                            img
+                                width: 80%
+                    .game_details_text
+                        .game_details_text_content
+                            .try_it
+                                .try_it_content
+                                    a
+
+// -----------------------------------------------------------------------------------------     
+
+.footer
+    background-color: $main_color
+    .footer_content
+        margin: 0 auto
+        width: $max-width
+        .footer_logo_content_text
+            position: relative
+            margin-top: 60px
+            .footer_logo_content_text_content
+                margin: 0 auto
+                text-align: center
+                p
+                    font-size: 16px
+                    color: #fff
+        .footer_text
+            position: relative
+            padding-top: 30px
+            .footer_text_content
+                margin: 0 auto
+                ul
+                    display: flex
+                    flex-wrap: wrap
+                    align-items: center
+                    justify-content: center
+                    li
+                        width: 50%
+                        margin: 20px 0
+                        a
+                            text-decoration: none
+                        .contact_details
+                            position: relative
+                            .contact_details_content
+                                margin: 0 auto
+                                display: flex
+                                align-items: center
+                                .contact_details_img
+                                    position: relative
+                                    width: 20%
+                                    .contact_details_img_content
+                                        margin: 0 auto
+                                        @extend %display_flex
+                                .contact_details_text
+                                    position: relative
+                                    width: 80%
+                                    .contact_details_text_content
+                                        margin: 0 auto
+                                        text-align: left
+                                        span
+                                            color: #0084FF
+                                        p
+                                            font-size: 14px
+                                            color: #fff
+                                            margin-top: 10px
+                                            line-height: 1.5
+        .copyright
+            position: relative
+            padding: 10px 0
+            .copyright_content
+                margin: 0 auto
+                text-align: center
+                p
+                    width: 80%
+                    margin: 0 auto
+                    line-height: 1.5
+                    color: #fff
+                    font-size: 12px
+                    padding: 10px 0
+@media screen and (max-width: 1192px)
+    .footer
+        .footer_content
+            width: 100%
+            .footer_logo_content_text
+                width: 90%
+            .footer_text
+                .footer_text_content
+                    ul
+                        li
+                            width: 100%
+            .copyright
+                .copyright_content
+                    p
+
+// -----------------------------------------------------------------------------------------    
+
+.float
+    position: fixed
+    right: 0
+    bottom: 4%
+    z-index: 6
+    .float_content
+        margin: 0 auto
+        background-color: rgba(0, 34, 63, 0.7)
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+        width: 85px
+        border-top-left-radius: 10px
+        border-bottom-left-radius: 10px
+        ul
+            padding: 0.5px
+            li
+                margin: 20px 0
+                a
+                    display: flex
+                    flex-wrap: wrap
+                    justify-content: center
+                    img
+                    p
+                        font-size: 11px
+                        color: #fff
+                        margin-top: 20px
+                        text-align: center
+                        line-height: 1.8
+            span
+                border-bottom: 2px solid #fff
+                width: 60%
+                display: block
+                margin: 0 auto
+
+.float_rwd
+    position: relative
+    display: none
+    .float_rwd_content
+        margin: 0 auto
+        ul
+            li
+                width: 60px
+                height: 60px
+                margin: 20px 0
+                background-color: #fff
+                border-radius: 50%
+                display: flex
+                justify-content: center
+                align-items: center
+                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+                a
+                    text-decoration: none
+                     padding: 10px
+                    img
+                        width: 30px
+
+@media screen and (max-width: 500px)
+    .float
+        display: none
+    .float_rwd
+        position: fixed
+        right: 10px
+        bottom: 100px
+        display: block
+        z-index: 6
+        .float_rwd_content
+            ul
+                li
+
+.report_li_6_text_carousel
+    position: relative
+    width: 100%
+    .slide
+        display: none
+        opacity: 0
+        transition: opacity 0.5s ease-in-out
+        text-align: center
+        padding: 20px
+        &.active
+            display: block
+            opacity: 1
+
+.controls
+    margin-top: 20px
+    text-align: center
+    span
+        display: inline-block
+        width: 12px
+        height: 12px
+        margin: 0 5px
+        background: rgba(0, 0, 0, 0.2)
+        border-radius: 50%
+        cursor: pointer
+        transition: background-color 0.3s ease
+        &.active
+            background: rgba(0, 0, 0, 0.8)
+
+.report_li_7_ul
+    display: flex
+    overflow-x: hidden
+    scroll-behavior: smooth
+    cursor: grab
+    user-select: none
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    &.active
+        cursor: grabbing
+        cursor: -webkit-grabbing
+    li
+        flex: 0 0 auto
+        transition: transform 0.3s ease
+        &:hover
+            transform: scale(1.05)
+        img
+            width: 100%
+            height: auto
+            border-radius: 10px
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15)
+Ｆ

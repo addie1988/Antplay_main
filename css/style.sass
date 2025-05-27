@@ -1,0 +1,1385 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+    margin: 0
+    padding: 0
+    border: 0
+    font-size: 100%
+    font: inherit
+    vertical-align: baseline
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section
+    display: block
+
+body
+    line-height: 1
+
+ol, ul
+    list-style: none
+
+blockquote, q
+    quotes: none
+
+blockquote:before, blockquote:after,
+q:before, q:after
+    content: ''
+    content: none
+
+table
+    border-collapse: collapse
+    border-spacing: 0
+
+// -----------------------------------------------------    
+
+$max-width: 1200px
+$flex_width: 50%
+$main_color: #01223F
+$secondary_color: #2F75B0
+$dynamic_background: #000
+
+%display_flex
+    display: flex
+    align-items: center
+    justify-content: center
+
+// -----------------------------------------------------    
+
+html
+    scroll-behavior: smooth
+
+.spacer
+    height: 0
+    transition: height 0.3s ease
+    &:active
+        height: 80px
+.header
+    position: relative
+    width: 100%
+    height: 70px
+    background-color: $main_color
+    @extend %display_flex
+    .header_content
+        width: $max-width
+        padding-left: 10px
+        padding-right: 10px
+        display: flex
+        align-items: center
+        justify-content: flex-end
+        margin: 0 auto
+        .logo
+            width: $flex_width
+        .menu_language
+            width: $flex_width
+            display: flex
+            align-items: center
+            justify-content: space-between
+            .menu_language_content
+                width: 100%
+                display: flex
+                align-items: center
+                justify-content: flex-end
+                .hamburger
+                    font-size: 1.5em
+                    cursor: pointer
+                    display: none
+                    user-select: none
+                .menu
+                    width: 70%
+                .nav-menu
+                    display: flex
+                    .menu_content
+                        margin: 0 auto
+                        width: 100%
+                        ul
+                            display: flex
+                            justify-content: space-between
+                            flex-wrap: wrap
+                            li
+                                a
+                                    color: #fff
+                                    text-decoration: none
+                                    transition: all 0.8s ease
+                                    &:hover
+                                        color: #0084FF
+                .show
+                    display: block
+                .language
+                    width: 20%
+                    position: relative
+                    display: flex
+                    margin-left: 20px
+                    .language_content
+                        margin: 0 auto
+                        .dropdown-toggle
+                            font-size: 16px
+                            cursor: pointer
+                            width: 29px
+                            height: 29px
+                    .dropdown-content
+                        display: none
+                        position: absolute
+                        right: 0
+                        background-color: rgba(47, 117, 179, 0.8)
+                        min-width: 160px
+                        box-shadow: 0px 8px 16px rgba(0,0,0,0.2)
+                        z-index: 3
+                        a
+                            color: black
+                            padding: 21px 16px
+                            text-decoration: none
+                            display: flex
+                            align-items: center
+                            border-bottom: 2px solid #fff
+                            &:nth-child(4)
+                                border-bottom: none
+                            &:hover
+                                p
+                                    transform: scale(1.5)
+                            img
+                            p
+                                color: #fff
+                                margin-left: 22px
+                                font-size: 12px
+                                transition: font-size 4s ease-in-out
+                    .show
+                        display: block
+.fixed
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 3
+    background-color: rgba(1, 34, 63, 0.7)
+    backdrop-filter: blur(10px)
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+@media screen and (max-width: 770px)
+    .header
+        .header_content
+            .logo
+            .menu_language
+                .menu_language_content
+                    .hamburger
+                        display: block
+                        color: #fff
+                    .menu
+                    .nav-menu
+                        display: none
+                        flex-direction: column
+                        background-color: #444
+                        position: absolute
+                        top: 100%
+                        left: 0
+                        width: 100%
+                        .menu_content
+                            width: 100%
+                            ul
+                                width: 100%
+                                line-height: 4
+                                li
+                                    border-bottom: 2px solid #fff
+                                    width: 100%
+                                    &:nth-child(4)
+                                        border-bottom: none
+                                    a
+                                        width: 100%
+                                        display: inline-block
+                                        margin: 0 20px
+                    .show
+                        display: flex
+                        z-index: 3
+                        background: rgba(47, 117, 176, 0.8)
+                        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+// -----------------------------------------------------------------------------------------
+
+.banner
+    position: relative
+    overflow: hidden
+    &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0px
+        width: 100%
+        height: 100%
+        background: url('../images/Banner_4.png') no-repeat
+        background-position: center
+        z-index: 2
+        animation: bounce 5s infinite
+    .banner_content
+        margin: 0 auto
+        img
+            width: 100%
+/* 彈跳動畫 */
+@keyframes bounce
+    0%, 20%, 50%, 80%, 100%
+        transform: translateY(0)
+
+    40%
+        transform: translateY(-50px)
+
+    60%
+        transform: translateY(-75px)
+
+@media screen and (max-width:1300px)
+    .banner
+        &::before
+            width: 60%
+            height: 100%
+            left: 0
+            right: 0
+            margin: 0 auto
+            background-size: cover
+        .banner_content
+            img
+
+// -----------------------------------------------------------------------------------------    
+
+.management
+    position: relative
+    background: url('../images/full_background.svg') no-repeat center
+    background-size: cover
+    .management_content
+        margin: 0 auto
+        padding: 30px 0 70px 0
+        width: $max-width
+        .management_title
+            position: relative
+            padding: 70px 0
+            .management_title_content
+                margin: 0 auto
+                max-width: $max-width
+                display: flex
+                justify-content: center
+                position: relative
+                h1
+                    color: $main_color
+                    font-size: 40px
+                    display: inline-block
+                    font-weight: 700
+                    font-family: 'system-ui'
+                    position:
+                    display: flex
+                    justify-content: center
+                    text-transform: uppercase
+                    &::before
+                        content: ''
+                        position: absolute
+                        top: -20px
+                        width: 200px
+                        display: inline-block
+                        border-top: 4px solid $main_color
+                    &::after
+                        content: ''
+                        position: absolute
+                        bottom: -20px
+                        width: 110px
+                        display: inline-block
+                        border-top: 4px solid $main_color
+        .container
+            position: relative
+            .container_content
+                margin: 0 auto
+                max-width: $max-width
+                .data_report
+                    position: relative
+                    .data_report_content
+                        margin: 0 auto
+                        .data_report_ul
+                            position: relative
+                            .data_report_ul_content
+                                margin: 0 auto
+                                display: flex
+                                justify-content: center
+                                ul
+                                    display: flex
+                                    li
+                                        text-align: center
+                                        margin: 0 20px
+                                        h1
+                                            font-size: 60px
+                            .data_report_content_text
+                                position: relative
+                                margin-top: 80px
+                                .data_report_content_text_content
+                                    margin: 0 auto
+                                    p
+                                        text-align: center
+                        .data_carousel
+                            position: relative
+                            padding: 160px 0 100px 0
+                            .data_carousel_content
+                                margin: 0 auto
+                                display: flex
+                                justify-content: center
+                                align-items: center
+                                .uic-wrapper-8z7
+                                    overflow: hidden
+                                    width: 100%
+                                    margin: auto
+                                    border-radius: 16px
+                                    touch-action: pan-y
+                                    .uic-track-3nb
+                                        width: 100%
+                                        display: flex
+                                        transition: transform 0.5s ease-in-out
+                                        gap: 20px
+                                        .uic-slide-xq2
+                                            flex: 0 0 auto
+                                            width: 100%
+                                            overflow: hidden
+                                            display: flex
+                                            justify-content: center
+                                            align-items: center
+                                            img
+                                                width: 90%
+                                                height: 100%
+                                                object-fit: cover
+                                                display: block
+                                                border-radius: 20px
+                        .module-content-display-grid
+                            display: flex
+                            flex-wrap: wrap
+                            justify-content: center
+                            gap: 20px
+                            margin: 0 auto
+                            .module-block-animated-entry
+                                opacity: 0
+                                transform: translate(0, 0)
+                                transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1)
+                                margin: 0
+                                padding: 0
+                                width: 40%
+                                height: 600px
+                                .report_li_1_title, .report_li_2_title, .report_li_3_title, .report_li_4_title, .report_li_5_title, .report_li_6_title, .report_li_7_title, .report_li_8_title
+                                    width: 40%
+                                    height: 100%
+                                    margin: 0
+                                    padding: 10px
+                            .report_li_1_title
+                                width: 40%
+                                height: 600px
+                                background-color: #fff
+                                border: 1px solid #e0e0e0
+                                padding: 10px
+                                border-radius: 20px
+                                @extend %display_flex
+                                .report_li_1_title_content
+                                    margin: 0 auto
+                                    padding: 20px
+                                    text-align: center
+                                    .report_li_1_title_h1
+                                        position: relative
+                                        .report_li_1_title_h1_content
+                                            margin: 0 auto
+                                            display: flex
+                                            align-items: center
+                                            padding: 20px
+                                            h1
+                                                font-size: 40px
+                                                font-weight: 900
+                                                margin-right: 10px
+                                                padding-right: 20px
+                                                border-right: 3px solid rgb(93, 183, 254)
+                                            span
+                                                font-size: 16px
+                                                margin: 0 auto
+                                                text-align: left
+                                                display: flex
+                                                align-items: center
+                                                flex-wrap: wrap
+                                    svg
+                                        width: 50%
+                                        animation: report_li_title_svg 10s infinite
+                                        margin: 30px 0
+                                    .report_color
+                                        position: relative
+                                        display: flex
+                                        width: 80%
+                                        margin: 0 auto
+                                        padding-top: 20px
+                                        justify-content: space-between
+                                        .report_color_content
+                                            display: flex
+                                            align-items: center
+                                            .box_1
+                                                width: 10px
+                                                height: 10px
+                                                display: inline-block
+                                                background: rgb(255, 61, 106)
+                                                margin-right: 10px
+                                            .box_2
+                                                width: 10px
+                                                height: 10px
+                                                display: inline-block
+                                                background: rgb(245, 159, 33)
+                                                margin-right: 10px
+                                            .box_3
+                                                width: 10px
+                                                height: 10px
+                                                display: inline-block
+                                                background: rgb(242, 222, 81)
+                                                margin-right: 10px
+                                            .box_4
+                                                width: 10px
+                                                height: 10px
+                                                display: inline-block
+                                                background: rgb(93, 183, 254)
+                                                margin-right: 10px
+                                            .box_5
+                                                width: 10px
+                                                height: 10px
+                                                display: inline-block
+                                                background: rgb(166, 56, 230)
+                                                margin-right: 10px
+                                            p
+                                        span
+                                            font-weight: 900
+                                            position: relative
+                            .report_li_6_title
+                                width: 40%
+                                height: 600px
+                                background-color: #fff
+                                border: 1px solid #e0e0e0
+                                padding: 10px
+                                border-radius: 20px
+                                @extend %display_flex
+                                .report_li_6_title_content
+                                    margin: 0 auto
+                                    padding: 20px
+                                    text-align: center
+                                    .report_li_6_title_h1
+                                        position: relative
+                                        .report_li_6_title_h1_content
+                                            margin: 0 auto
+                                            display: flex
+                                            align-items: center
+                                            padding: 20px
+                                            h1
+                                                font-size: 40px
+                                                font-weight: 900
+                                                margin-right: 10px
+                                                padding-right: 20px
+                                                border-right: 3px solid rgb(255, 61, 106)
+                                            span
+                                                font-size: 16px
+                                                margin: 0 auto
+                                                text-align: left
+                                                margin-left: 10px
+                                                display: flex
+                                                align-items: center
+                                                flex-wrap: wrap
+                                    .report_li_6_text
+                                        position: relative
+                                        .report_li_6_text_content
+                                            margin: 0 auto
+                                            @extend %display_flex
+                                            .report_li_6_text_carousel
+                                                position: relative
+                                                width: 80%
+                                                max-width: 400px
+                                                aspect-ratio: 1 / 1
+                                                display: flex
+                                                justify-content: center
+                                                align-items: center
+                                                .slide
+                                                    position: absolute
+                                                    width: 100%
+                                                    height: 100%
+                                                    display: flex
+                                                    justify-content: center
+                                                    align-items: center
+                                                    opacity: 0
+                                                    transition: opacity 1s ease-in-out
+                                                    padding: 20px
+                                                    text-align: center
+                                                    border-radius: 50%
+                                                .active
+                                                    opacity: 1
+                                            .controls
+                                                position: absolute
+                                                bottom: 10px
+                                                width: 100%
+                                                text-align: center
+                                                span
+                                                    display: inline-block
+                                                    width: 12px
+                                                    height: 12px
+                                                    margin: 0 5px
+                                                    background: rgba(0, 0, 0, 0.4)
+                                                    border-radius: 50%
+                                                    cursor: pointer
+                                                .active
+                                                    background: #333
+                            .report_li_2_title
+                                width: 40%
+                                height: 600px
+                                background-color: #fff
+                                border: 1px solid #e0e0e0
+                                padding: 10px
+                                border-radius: 20px
+                                @extend %display_flex
+                                .report_li_2_title_content
+                                    margin: 0 auto
+                                    padding: 20px
+                                    text-align: center
+                                    .report_li_2_title_h1
+                                        position: relative
+                                        .report_li_2_title_h1_content
+                                            margin: 0 auto
+                                            padding: 20px
+                                            text-align: center
+                                            h1
+                                                font-size: 40px
+                                                font-weight: 900
+                                            span
+                                                font-size: 16px
+                                                margin: 0 auto
+                                                text-align: left
+                                                flex-wrap: wrap
+                                    .operator
+                                        position: relative
+                                        .operator_content
+                                            margin: 0 auto
+                                            display: flex
+                                            flex-wrap: wrap
+                                            justify-items: center
+                                            .operator_text
+                                                position: relative
+                                                display: flex
+                                                align-items: center
+                                                .operator_content
+                                                    margin: 0 auto
+                                                    p
+                                                        font-size: 14px
+                                                        font-weight: 300
+                                                        text-align: lefts
+                                            .operator_img
+                                                position: relative
+                                                width: 100%
+                                                .operator_img_content
+                                                    margin: 0 auto
+                                                    video
+                                                        width: 160px
+                                                        height: 160px
+                                                        object-fit: cover
+                                                        border-radius: 10px
+                            .report_li_4_title
+                                width: 40%
+                                height: 600px
+                                background-color: #fff
+                                border: 1px solid #e0e0e0
+                                padding: 10px
+                                border-radius: 20px
+                                @extend %display_flex
+                                .report_li_4_title_content
+                                    margin: 0 auto
+                                    padding: 20px
+                                    text-align: center
+                                    .report_li_4_title_h1
+                                        position: relative
+                                        .report_li_4_title_h1_content
+                                            margin: 0 auto
+                                            display: flex
+                                            align-items: center
+                                            justify-content: center
+                                            padding: 20px
+                                            h1
+                                                font-size: 40px
+                                                font-weight: 900
+                                                margin-right: 10px
+                                                padding-right: 20px
+                                                border-right: 3px solid rgb(255, 61, 106)
+                                            span
+                                                font-size: 16px
+                                                margin-left: 10px
+                                                display: flex
+                                                flex-wrap: wrap
+                                    .report_li_4_img
+                                        display: flex
+                                        justify-content: center
+                                        max-width: 700px
+                                        margin: auto
+                                        gap: 20px
+                                        .image-row
+                                            display: flex
+                                            width: 420px
+                                            height: 140px
+                                            gap: 6px
+                                            overflow: hidden
+                                            .img-box
+                                                width: 100%
+                                                overflow: hidden
+                                                transition: flex 1s ease-in-out
+                                                border-radius: 6px
+                                                cursor: pointer
+                                                img
+                                                    width: 100%
+                                                    height: 100%
+                                                    object-fit: cover
+                                                    display: block
+                                                    opacity: 0.3
+                                                    transition: all 0.7s ease-in-out
+                                                    border-radius: 6px
+                                                    transform: scale(0.9)
+                                            .active
+                                                img
+                                                    opacity: 1
+                                                    transform: scale(1)
+                            .report_li_7_title
+                                width: 40%
+                                height: 600px
+                                background-color: #fff
+                                border: 1px solid #e0e0e0
+                                padding: 10px
+                                border-radius: 20px
+                                @extend %display_flex
+                                .report_li_7_title_content
+                                    margin: 0 auto
+                                    padding: 10px
+                                    height: 230px
+                                    text-align: center
+                                    display: flex
+                                    align-items: center
+                                    .report_li_7_title_h1
+                                        position: relative
+                                        margin: 0 auto
+                                        padding: 20px
+                                        .report_li_7_title_h1_content
+                                            margin: 0 auto
+                                            display: flex
+                                            justify-content: center
+                                            padding: 20px 0
+                                            h1
+                                                font-size: 40px
+                                                font-weight: 900
+                                                padding-right: 20px
+                                                border-right: 3px solid rgb(20, 230, 145)
+                                            span
+                                                font-size: 16px
+                                                text-align: left
+                                                margin-left: 10px
+                                                flex-wrap: wrap
+                                        .report_li_7_ul
+                                            position: relative
+                                            .sliderContainer
+                                                max-width: 600px
+                                                overflow: hidden
+                                                .sliderTrack
+                                                    display: flex
+                                                    transition: transform 0.5s ease
+                                                    .slideItem
+                                                        flex: 0 0 40%
+                                                        display: flex
+                                                        justify-content: center
+                                                        align-items: center
+                                                        background-color: $main_color
+                                                        border-radius: 50px
+                                                        opacity: 0.3
+                                                        transform: scale(0.7)
+                                                        transition: all 0.5s ease
+                                                        img
+                                                            width: 50%
+                                                            height: 50%
+                                                            padding: 6px
+                                                            pointer-events: none
+                                                            user-select: none
+                                                    .active
+                                                        opacity: 1
+                                                        transform: scale(0.8)
+                            .report_li_3_title
+                                width: 40%
+                                height: 600px
+                                background-color: #fff
+                                border: 1px solid #e0e0e0
+                                padding: 10px
+                                border-radius: 20px
+                                @extend %display_flex
+                                .report_li_3_title_content
+                                    margin: 0 auto
+                                    padding: 10px
+                                    text-align: center
+                                    .report_li_3_title_h1
+                                        position: relative
+                                        .report_li_3_title_h1_content
+                                            margin: 0 auto
+                                            display: flex
+                                            align-items: center
+                                            justify-content: center
+                                            padding: 20px
+                                            h1
+                                                font-size: 40px
+                                                font-weight: 900
+                                                padding-right: 20px
+                                                border-right: 3px solid rgb(255, 61, 106)
+                                            span
+                                                font-size: 16px
+                                                text-align: left
+                                                margin-left: 10px
+                                    .icon_grid
+                                        display: flex
+                                        flex-wrap: wrap
+                                        align-content: center
+                                        justify-content: center
+                                        li
+                                            width: 20%
+                                            margin: 4px
+                                            display: flex
+                                            justify-content: center
+                                            align-items: center
+                                            img
+                                                max-width: 100%
+                                                height: auto
+                                                opacity: 0.3
+                                                animation: blink 4s infinite
+                                            &:nth-child(1)
+                                                img
+                                                    animation-delay: 0s
+                                            &:nth-child(2)
+                                                img
+                                                    animation-delay: 1.6s
+                                            &:nth-child(3)
+                                                img
+                                                    animation-delay: 3.2s
+                                            &:nth-child(4)
+                                                img
+                                                    animation-delay: 4.8s
+                                            &:nth-child(5)
+                                                img
+                                                    animation-delay: 0.4s
+                                            &:nth-child(6)
+                                                img
+                                                    animation-delay: 2.0s
+                                            &:nth-child(7)
+                                                img
+                                                    animation-delay: 3.6s
+                                            &:nth-child(8)
+                                                img
+                                                    animation-delay: 5.2s
+                                            &:nth-child(9)
+                                                img
+                                                    animation-delay: 0.8s
+                                            &:nth-child(10)
+                                                img
+                                                    animation-delay: 2.4s
+                                            &:nth-child(11)
+                                                img
+                                                    animation-delay: 4.0s
+                                            &:nth-child(12)
+                                                img
+                                                    animation-delay: 5.6s
+                                            &:nth-child(13)
+                                                img
+                                                    animation-delay: 1.2s
+                                            &:nth-child(14)
+                                                img
+                                                    animation-delay: 2.8s
+                                            &:nth-child(15)
+                                                img
+                                                    animation-delay: 4.4s
+                                            &:nth-child(16)
+                                                img
+                                                    animation-delay: 6.0s
+                                        .icon-grid
+                                            display: gr7d
+                                            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr))
+                                            gap: 16px
+                                            padding: 0
+                                            margin: 0
+                                            lit-style: none
+                            .report_li_5_title
+                                width: 40%
+                                height: 600px
+                                background-color: #fff
+                                border: 1px solid #e0e0e0
+                                padding: 10px
+                                border-radius: 20px
+                                @extend %display_flex
+                                .report_li_5_title_content
+                                    margin: 0 auto
+                                    padding: 10px
+                                    text-align: center
+                                    .report_li_5_title_h1
+                                        position: relative
+                                        .report_li_5_title_h1_content
+                                            margin: 0 auto
+                                            display: flex
+                                            align-items: center
+                                            justify-content: center
+                                            padding: 20px
+                                            h1
+                                                font-size: 40px
+                                                font-weight: 900
+                                                padding-right: 20px
+                                                border-right: 3px solid rgb(245, 159, 33)
+                                            span
+                                                font-size: 16px
+                                                margin-left: 10px
+                                    .carousel_container
+                                        display: flex
+                                        justify-content: flex-start
+                                        overflow: hidden
+                                        width: 100%
+                                        .carousel-track
+                                            display: flex
+                                            transition: transform 0.6s ease-in-out
+                                            width: 300%
+                                            gap: 0
+                                            padding: 0
+                                            margin: 0
+                                            .carousel-item
+                                                flex: 0 0 33.33%
+                                                width: 33.33%
+                                                margin: 0
+                                                padding: 0
+                                                opacity: 0.2
+                                                transition: all 0.5s ease
+                                                img
+                                                    width: 100%
+                                                    height: 100%
+                                                    object-fit: cover
+                                                    border-radius: 50%
+                                                    border: 2px solid white
+                                                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15)
+                                                    .active
+                                                        opacity: 1
+                            .report_li_8_title
+                                width: 40%
+                                height: 600px
+                                background-color: #fff
+                                border: 1px solid #e0e0e0
+                                padding: 10px
+                                border-radius: 20px
+                                @extend %display_flex
+                                .report_li_8_title_content
+                                    margin: 0 auto
+                                    padding: 10px
+                                    height: 185px
+                                    display: flex
+                                    align-items: center
+                                    justify-content: center
+                                    text-align: center
+                                    .report_li_8_title_h1
+                                        position: relative
+                                        display: flex
+                                        align-items: center
+                                        justify-content: center
+                                        .report_li_8_title_h1_content
+                                            padding: 20px
+                                            h1
+                                                font-size: 40px
+                                                font-weight: 900
+                                                text-align: left
+                                                width: 100%
+                                            span
+                                                font-size: 16px
+                                                margin: 0 auto
+                                                text-align: left
+                                                width: 100%
+                                                flex-wrap: wrap
+                                    .report_li_8_img
+                                        position: relative
+                                        .report_li_8_img_content
+                                            margin: 0 auto
+                                            .icon-carousel
+                                                width: 80px
+                                                height: 160px
+                                                overflow: hidden
+                                                position: relative
+                                                .icon-track
+                                                    position: absolute
+                                                    top: 0
+                                                    left: 0
+                                                    width: 100%
+                                                    transition: transform 0.5s ease-in-out
+                                                    .icon-item
+                                                        height: 60px
+                                                        display: flex
+                                                        justify-content: center
+                                                        align-items: center
+                                                        img
+                                                            width: 40px
+                                                            height: 40px
+                            .module-block-animated-entry.module-visible-from-top-left
+                                opacity: 1
+                                transform: translate(0px, -30px)
+                            .module-block-animated-entry.module-visible-from-bottom-right
+                                opacity: 1
+                                transform: translate(0px, 30px)
+@keyframes blink
+    0%, 100%
+        opacity: 0.3
+
+    50%
+        opacity: 1
+
+@keyframes report_li_title_svg
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(360deg)
+@keyframes fadeIn
+    0%
+        opacity: 0
+        transform: translateY(10px)
+    100%
+        opacity: 1
+        transform: translateY(0)
+@media screen and (max-width: 1100px)
+    .management
+        .management_content
+            width: 90%
+            .management_title
+            .container
+                .container_content
+                    width: 90%
+                    margin: 0 auto
+                    .data_report
+                        .data_report_content
+                            .data_report_ul
+                            .data_carousel
+                                padding: 0
+                                .data_carousel_content
+                                    margin: 70px 0
+                                    .uic-wrapper-8z7
+                                        .uic-track-3nb
+                                            .uic-slide-xq2
+                                                width: 100%
+                            .module-content-display-grid
+                                width: 100%
+                                display: flex
+                                flex-wrap: wrap
+                                justify-content: center
+                                align-items: center
+                                .module-block-animated-entry
+                                    width: 100%
+                                    margin: 6px 0
+                                    .report_li_1_title, .report_li_2_title, .report_li_3_title, .report_li_4_title, .report_li_5_title, .report_li_6_title, .report_li_7_title, .report_li_8_title
+                                        width: 100%
+                                        .report_li_2_title_h1
+                                        .operator
+                                            .operator_content
+                                                .operator_img
+                                                    width: 100%
+                                    .report_li_7_title_content
+                                        .report_li_7_title_h1
+                                            padding: 0px
+                                            .report_li_7_title_h1_content
+                                            .report_li_7_ul
+                                                .sliderContainer
+                                                    .sliderTrack
+                                                        .slideItem
+                                .module-block-animated-entry.module-visible-from-top-left
+                                    transform: translateY(0)
+                                .module-block-animated-entry.module-visible-from-bottom-right
+                                    transform: translateY(0)
+
+// ------------------------------------------------------------------------------------------
+
+// 動態效果
+.welcome_to_antplay
+    position: relative
+    width: 100%
+    height: auto
+    .welcome_to_antplay_content
+        position: relative
+        margin: 0 auto
+        width: 100%
+        height: 600px
+        overflow: hidden
+        @extend %display_flex
+        .customer_service_text_and_pictures
+            .customer_service_text_and_pictures_content
+                margin: 0 auto
+                @extend %display_flex
+                flex-wrap: wrap
+                p
+                    color: #fff
+                    font-size: 22px
+    .welcome_to_antplay_img
+        position: absolute
+        width: 100%
+        height: 600px
+        overflow: hidden
+        z-index: -1
+        display: flex
+        justify-content: center
+        align-items: center
+        &::before
+            content: ''
+            position: absolute
+            left: 0
+            width: 100%
+            height: 100%
+            background-color: rgba(0, 0, 0, 0.7)
+            background-size: cover
+            z-index: 1
+        .welcome_to_antplay_img_content
+            margin: 0 auto
+            transform: scale(1.5)
+            background-color: #000
+            .image_container
+                display: flex
+                flex-wrap: wrap
+                justify-content: center
+                width: 100%
+                height: auto
+                margin: auto
+                gap: 10px
+                position: relative
+                .image_container_box
+                    width: 160px
+                    height: 200px
+                    aspect-ratio: 4 / 3
+                    overflow: hidden
+                    border-radius: 6px
+                    position: relative
+                    img
+                        position: absolute
+                        width: 100%
+                        height: 100%
+                        object-fit: cover
+                        border-radius: 6px
+                        transition: transform 0.2s ease
+                        &:hover
+                            img
+                                transform: scale(1.05)
+@keyframes fade-in
+      from { opacity: 0; }
+      to { opacity: 1; }
+
+@media screen and (max-width: 1197px)
+    .welcome_to_antplay
+        .welcome_to_antplay_content
+            .customer_service_text_and_pictures
+                .customer_service_text_and_pictures_content
+                    width: 80%
+                    text-align: center
+            .welcome_to_antplay_img
+                .welcome_to_antplay_img_content
+
+@media screen and (max-width: 719px)
+    .welcome_to_antplay
+        .welcome_to_antplay_content
+            .customer_service_text_and_pictures
+                .customer_service_text_and_pictures_content
+            .welcome_to_antplay_img
+                .welcome_to_antplay_img_content
+                    transform: scale(1.3)
+                    .image_container
+                        display: flex
+                        justify-content: center
+                        align-items: center
+
+// -----------------------------------------------------------------------------------------        
+
+.games
+    position: relative
+    background: url('../images/full_background.svg') no-repeat center
+    background-size: cover
+    .games_content
+        margin: 0 auto
+        width: $max-width
+        display: block
+        .games_title
+            position: relative
+            padding: 90px 0
+            .games_title_content
+                text-align: center
+                margin: 0 auto
+                h1
+                    color: $main_color
+                    font-size: 40px
+                    display: inline-block
+                    font-weight: 700
+                    font-family: 'system-ui'
+                    position:
+                    display: flex
+                    justify-content: center
+                    &::before
+                        content: ''
+                        position: absolute
+                        top: 70px
+                        width: 200px
+                        display: inline-block
+                        border-top: 4px solid $main_color
+                    &::after
+                        content: ''
+                        position: absolute
+                        bottom: 70px
+                        width: 110px
+                        display: inline-block
+                        border-top: 4px solid $main_color
+        .games_box
+            position: relative
+            transition: all 1s ease
+            .games_box_content
+                margin: 0 auto
+                display: flex
+                flex-wrap: wrap
+                justify-content: center
+                display: flex
+                align-items: center
+                justify-content: center
+                flex-wrap: wrap
+                position: relative
+                padding-bottom: 100px
+                a
+                    width: 20%
+                    .games_box_area
+                        position: relative
+                        transition: all 1s ease
+                        transform-origin: center
+                        margin: 6px
+                        overflow: hidden
+                        border-radius: 10px
+                        &::after
+                            content: ''
+                            position: absolute
+                            top: 0
+                            left: 0
+                            bottom: 0
+                            width: 100%
+                            background-color: rgba(1, 34, 63, 1)
+                            z-index: 1
+                            opacity: 0
+                            transition: all 1s ease
+                            border-radius: 50%
+                        img
+                            width: 100%
+                        .games_box_area_content
+                            position: absolute
+                            top: 0
+                            left: 0
+                            bottom: 0
+                            width: 100%
+                            z-index: 2
+                            opacity: 0
+                            display: flex
+                            align-items: center
+                            justify-content: center
+                            flex-wrap: wrap
+                            transition: opacity 1s ease
+                            .games_box_area_text
+                                width: 100%
+                                @extend %display_flex
+                                .games_box_area_text_content
+                                    text-align: center
+                                    line-height: 6
+                                    width: 90%
+                                    p
+                                        color: #fff
+                                        font-size: 25px
+                                        text-align: center
+                                        line-height: 1
+                                        &:nth-child(2)
+                                            color: $main_color
+                                            font-size: 22px
+                                            background-color: #fff
+                                            padding: 10px 60px
+                                            border-radius: 100px
+                                            transition: all 1s ease
+                                            margin-top: 40px
+                    &:hover
+                        .games_box_area
+                            &::after
+                                opacity: 1
+                                transform: scale(1.6)
+                            .games_box_area_content
+                                opacity: 1
+                                .games_box_area_text
+                                    .games_box_area_text_content
+                                        p
+                                            &:nth-child(2)
+                                                color: #fff
+                                                border: 2px solid #fff
+                                                background: none
+@media screen and (max-width: 1055px)
+    .games
+        .games_content
+            width: 100%
+            .games_title
+            .games_box
+                .games_box_content
+                    a
+                        .games_box_area
+@media screen and (max-width: 524px)
+    .games
+        .games_content
+            width: 100%
+            .games_title
+            .games_box
+                .games_box_content
+                    a
+                        width: 50%
+                        .games_box_area
+
+// -----------------------------------------------------------------------------------------        
+
+.footer
+    background-color: $main_color
+    .footer_content
+        margin: 0 auto
+        width: $max-width
+        .footer_logo_content_text
+            position: relative
+            margin-top: 60px
+            .footer_logo_content_text_content
+                margin: 0 auto
+                text-align: center
+                p
+                    font-size: 16px
+                    color: #fff
+        .footer_text
+            position: relative
+            padding-top: 30px
+            .footer_text_content
+                margin: 0 auto
+                ul
+                    display: flex
+                    flex-wrap: wrap
+                    align-items: center
+                    justify-content: center
+                    li
+                        width: 50%
+                        margin: 20px 0
+                        a
+                            text-decoration: none
+                        .contact_details
+                            position: relative
+                            .contact_details_content
+                                margin: 0 auto
+                                display: flex
+                                align-items: center
+                                .contact_details_img
+                                    position: relative
+                                    width: 20%
+                                    .contact_details_img_content
+                                        margin: 0 auto
+                                        @extend %display_flex
+                                .contact_details_text
+                                    position: relative
+                                    width: 80%
+                                    .contact_details_text_content
+                                        margin: 0 auto
+                                        text-align: left
+                                        span
+                                            color: #0084FF
+                                        p
+                                            font-size: 14px
+                                            color: #fff
+                                            margin-top: 10px
+                                            line-height: 1.5
+        .copyright
+            position: relative
+            padding: 10px 0
+            .copyright_content
+                margin: 0 auto
+                text-align: center
+                p
+                    width: 80%
+                    margin: 0 auto
+                    line-height: 1.5
+                    color: #fff
+                    font-size: 12px
+                    padding: 10px 0
+@media screen and (max-width: 1192px)
+    .footer
+        .footer_content
+            width: 100%
+            .footer_logo_content_text
+                width: 90%
+            .footer_text
+                .footer_text_content
+                    ul
+                        li
+                            width: 100%
+            .copyright
+                .copyright_content
+                    p
+// -----------------------------------------------------------------------------------------    
+
+.float
+    position: fixed
+    right: 0
+    bottom: 4%
+    z-index: 6
+    .float_content
+        margin: 0 auto
+        background-color: rgba(0, 34, 63, 0.7)
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+        width: 85px
+        border-top-left-radius: 10px
+        border-bottom-left-radius: 10px
+        ul
+            padding: 0.5px
+            li
+                margin: 20px 0
+                a
+                    display: flex
+                    flex-wrap: wrap
+                    justify-content: center
+                    img
+                    p
+                        font-size: 11px
+                        color: #fff
+                        margin-top: 20px
+                        text-align: center
+                        line-height: 1.8
+            span
+                border-bottom: 2px solid #fff
+                width: 60%
+                display: block
+                margin: 0 auto
+
+.float_rwd
+    position: relative
+    display: none
+    .float_rwd_content
+        margin: 0 auto
+        ul
+            li
+                width: 60px
+                height: 60px
+                margin: 20px 0
+                background-color: #fff
+                border-radius: 50%
+                display: flex
+                justify-content: center
+                align-items: center
+                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+                a
+                    text-decoration: none
+                    padding: 10px
+                    img
+                        width: 30px
+
+@media screen and (max-width: 500px)
+    .float
+        display: none
+    .float_rwd
+        position: fixed
+        right: 10px
+        bottom: 100px
+        display: block
+        z-index: 6
+        .float_rwd_content
+            ul
+                li
+
+.module-content-display-grid
+    gap: 40px
+    margin: 0
+    padding: 0
