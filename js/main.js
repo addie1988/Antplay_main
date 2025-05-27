@@ -251,41 +251,43 @@ const imagesList_tq3 = [
 
 const stageNode_mk1 = document.getElementById("carouselStage_mk1");
 const totalItems_nx7 = imagesList_tq3.length;
-let currentIndex_lp5 = 0;
+const anglePerSlide = 360 / totalItems_nx7;
+let rotationCount = 0;
 let autoRotate_qe6 = null;
 
 function create3DSlides() {
-  const anglePerSlide_ef2 = 360 / totalItems_nx7;
-  const radius_pz9 = (stageNode_mk1.offsetWidth / 2) / Math.tan(Math.PI / totalItems_nx7);
+  stageNode_mk1.innerHTML = '';
+
+  const slideWidth = 200; // px
+  const radius = (slideWidth / 2) / Math.tan(Math.PI / totalItems_nx7); // perfect circle
 
   imagesList_tq3.forEach((src, i) => {
-    const slideNode_ko4 = document.createElement('div');
-    slideNode_ko4.className = 'carousel-slide-op8';
-    slideNode_ko4.innerHTML = `<img src="${src}" alt="image-${i}">`;
+    const slideNode = document.createElement('div');
+    slideNode.className = 'carousel-slide-op8';
+    slideNode.innerHTML = `<img src="${src}" alt="image-${i}">`;
 
-    const angleDeg = i * anglePerSlide_ef2;
-    slideNode_ko4.style.transform = `rotateY(${angleDeg}deg) translateZ(${radius_pz9}px)`;
+    const angleDeg = i * anglePerSlide;
+    slideNode.style.transform = `rotateY(${angleDeg}deg) translateZ(${radius}px)`;
 
-    // 點擊圖片 → 如果未播放，啟動自動輪播
-    slideNode_ko4.addEventListener('click', () => {
+    slideNode.addEventListener('click', () => {
       if (!autoRotate_qe6) {
         startAuto3DRotate();
       }
     });
 
-    stageNode_mk1.appendChild(slideNode_ko4);
+    stageNode_mk1.appendChild(slideNode);
   });
 }
 
 function rotate3DCarousel() {
-  const rotationDeg = currentIndex_lp5 * -360 / totalItems_nx7;
-  stageNode_mk1.style.transform = `rotateY(${rotationDeg}deg)`;
+  const deg = rotationCount * anglePerSlide;
+  stageNode_mk1.style.transform = `rotateY(${deg}deg)`;
 }
 
 function startAuto3DRotate() {
   clearInterval(autoRotate_qe6);
   autoRotate_qe6 = setInterval(() => {
-    currentIndex_lp5 = (currentIndex_lp5 + 1) % totalItems_nx7;
+    rotationCount++; // no reset
     rotate3DCarousel();
   }, 3000);
 }
@@ -293,39 +295,38 @@ function startAuto3DRotate() {
 // 初始化
 create3DSlides();
 rotate3DCarousel();
-startAuto3DRotate(); // ✅ 頁面載入立即播放
+startAuto3DRotate();
 
-// 拖曳功能（滑鼠拖動會暫停輪播）
-let dragStartX_bg8 = 0;
-let draggingActive_bu9 = false;
+// 拖曳功能（滑鼠拖動）
+let dragStartX = 0;
+let dragging = false;
 
-const rootShell_rz0 = document.getElementById("carouselRoot_rz0");
+const rootShell = document.getElementById("carouselRoot_rz0");
 
-rootShell_rz0.addEventListener('mousedown', (e) => {
-  draggingActive_bu9 = true;
-  dragStartX_bg8 = e.clientX;
-  clearInterval(autoRotate_qe6); // 暫停輪播
+rootShell.addEventListener('mousedown', (e) => {
+  dragging = true;
+  dragStartX = e.clientX;
+  clearInterval(autoRotate_qe6);
   autoRotate_qe6 = null;
 });
 
-rootShell_rz0.addEventListener('mousemove', (e) => {
-  if (!draggingActive_bu9) return;
-  const deltaX = e.clientX - dragStartX_bg8;
+rootShell.addEventListener('mousemove', (e) => {
+  if (!dragging) return;
+  const deltaX = e.clientX - dragStartX;
   if (Math.abs(deltaX) > 50) {
-    currentIndex_lp5 += deltaX > 0 ? -1 : 1;
-    currentIndex_lp5 = (currentIndex_lp5 + totalItems_nx7) % totalItems_nx7;
+    rotationCount += deltaX > 0 ? 1 : -1;
     rotate3DCarousel();
-    dragStartX_bg8 = e.clientX;
+    dragStartX = e.clientX;
   }
 });
 
-rootShell_rz0.addEventListener('mouseup', () => {
-  draggingActive_bu9 = false;
+['mouseup', 'mouseleave'].forEach(evt => {
+  rootShell.addEventListener(evt, () => {
+    dragging = false;
+  });
 });
 
-rootShell_rz0.addEventListener('mouseleave', () => {
-  draggingActive_bu9 = false;
-});
+
 
 // ----------------------------------------------------------------------------------------
 
