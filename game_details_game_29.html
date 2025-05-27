@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/favicon.png" />
+    <title>SHARP SHOOTER</title>
+    <link rel="stylesheet" href="./css/game_details_style.css">
+
+  <!-- Google 翻譯功能 -->
+    <script type="text/javascript">
+        var googTrans = null;
+        
+        function googleTranslateElementInit() {
+            googTrans = new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'zh-TW,ja,pt',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function changeLanguage(langCode) {
+            // 關閉下拉選單
+            document.getElementById('dropdownMenu').classList.remove('show');
+            
+            // 設置 cookie
+            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}`;
+            document.cookie = `googtrans=/en/${langCode}; path=/`;
+            
+            // 重新加載翻譯
+            location.reload();
+        }
+
+        // 在頁面加載時檢查並應用已保存的語言設置
+        window.addEventListener('load', function() {
+            // 檢查 URL 參數
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang');
+            if (lang) {
+                changeLanguage(lang);
+            }
+        });
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <style>
+        /* 隱藏 Google Translate 元素 */
+        .goog-te-banner-frame,
+        .goog-te-gadget-simple,
+        .goog-te-menu-frame,
+        .goog-te-menu-value,
+        .goog-te-gadget span,
+        .goog-te-balloon-frame,
+        .goog-tooltip,
+        .goog-tooltip:hover,
+        .goog-text-highlight,
+        .VIpgJd-ZVi9od-ORHb,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd,
+        .VIpgJd-ZVi9od-SmfZ-OEVmcd,
+        .VIpgJd-ZVi9od-vH1Gmf,
+        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
+            display: none !important;
+        }
+        
+        body {
+            top: 0 !important;
+            position: static !important;
+        }
+        
+        .translated-ltr {
+            margin-top: 0 !important;
+        }
+        
+        #google_translate_element {
+            position: absolute !important;
+            top: -1000px !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        .VIpgJd-ZVi9od-ORHb {
+            background: transparent !important;
+            box-shadow: none !important;
+            position: absolute !important;
+            top: -9999px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+        }
+
+        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+            display: none !important;
+        }
+
+        .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            height: 0 !important;
+            overflow: hidden !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="google_translate_element"></div>
+
+
+    <div class="spacer" id="spacer"></div>
+    <div class="header" id="header">
+        <div class="header_content">
+            <div class="logo">
+                <div class="logo_content">
+                    <a href="./index.html">
+                        <img src="./images/logo.svg" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="menu_language">
+                <div class="menu_language_content">
+                    <div class="hamburger" id="hamburger">☰</div>
+                    <div class="menu nav-menu" id="nav-menu">
+                        <div class="menu_content">
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>
+                                <li><a class="scroll-link" href="#introduce">Introduce</a></li>
+                                <li><a class="scroll-link" href="#connect">Connect</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="language">
+                        <div class="language_content">
+                            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+                                <img src="./images/icon_1.svg" alt="icon_1">
+                            </a>
+                          <div id="dropdownMenu" class="dropdown-content">
+                                <a href="#" onclick="changeLanguage('en'); return false;"><img src="./images/icon_1.svg"
+                                        alt="icon_1">
+                                    <p>English</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('zh-TW'); return false;"><img
+                                        src="./images/icon_2.svg" alt="icon_2">
+                                    <p>繁體中文</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('ja'); return false;"><img src="./images/icon_3.svg"
+                                        alt="icon_3">
+                                    <p>日本</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('pt'); return false;"><img src="./images/icon_4.svg"
+                                        alt="icon_4">
+                                    <p>Português</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="banner">
+        <div class="banner_content">
+            <img src="./images/Banner_5.jpg" alt="Banner">
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="teaching" id="introduce">
+        <div class="teaching_content">
+            <div class="game_details">
+                <div class="game_details_content">
+                    <div class="game_details_img">
+                        <div class="game_details_img_content">
+                            <img src="./images/MockUp_29.webp" alt="遊戲介紹">
+                        </div>
+                    </div>
+                    <div class="game_details_text">
+                        <div class="game_details_text_content">
+                            <span>Game Title</span>
+                            <p>Master Archer</p>
+                            <b></b>
+                            <span>Game Type</span>
+                            <p>Slot Machine</p>
+                            <b></b>
+                            <span>Game Mechanics</span>
+                            <p>
+                                Wild strikes, rewards are on the horizon! During the free game, 1 to 9 wilds will be randomly launched onto the board for each spin, greatly increasing your chances of winning. Winning the full prize is no longer a dream, and your expectations for the super high prizes are soaring!
+                            </p>
+                            <b></b>
+                            <span>Supported Systems</span>
+                            <ul>
+                                <li><img src="./images/android.svg" alt="android">Android</li>
+                                <li><img src="./images/html5.svg" alt="html5">HTML5</li>
+                                <li><img src="./images/macos.svg" alt="macos">Mac OS</li>
+                                <li><img src="./images/ios.svg" alt="ios">iOS</li>
+                                <li><img src="./images/windows.svg" alt="windows">Windows</li>
+                            </ul>
+                            <b></b>
+                            <span>Supported Languages</span>
+                              <ul>
+                                <li><img src="./images/icon_1.svg" alt=""><p>English</p></li>
+                                <li><img src="./images/icon_2.svg" alt=""><p>Traditional Chinese</p></li>
+                                <li><img src="./images/icon_3.svg" alt=""><p>Japan</p></li>
+                                <li><img src="./images/icon_4.svg" alt=""><p>Portuguese</p></li>
+                            </ul>
+                            <div class="try_it">
+                                <div class="try_it_content">
+                                    <a href="https://antplay.com/web/#/game-play">Play Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="footer" id="connect">
+        <div class="footer_content">
+            <div class="footer_text">
+                <div class="footer_text_content">
+                    <ul>
+                        <li>
+                            <a href="./privacy.html">
+                                <div class="contact_details">
+                                    <div class="contact_details_content">
+                                        <div class="contact_details_img">
+                                            <div class="contact_details_img_content">
+                                                <img src="./images/Component 10.svg" alt="icon">
+                                            </div>
+                                        </div>
+                                        <div class="contact_details_text">
+                                            <div class="contact_details_text_content">
+                                                <span>Privacy</span>
+                                                <p>Protect user data, browse privacy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/Antplay_BD" target="_blank">
+                                <div class="contact_details">
+                                    <div class="contact_details_content">
+                                        <div class="contact_details_img">
+                                            <div class="contact_details_img_content">
+                                                <img src="./images/Component 11.svg" alt="icon">
+                                            </div>
+                                        </div>
+                                        <div class="contact_details_text">
+                                            <div class="contact_details_text_content">
+                                                <span>Contact Us</span>
+                                                <p>Registration number: 160629 (0)</p>
+                                                <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="copyright_content">
+                    <p>COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="float">
+        <div class="float_content">
+            <ul>
+                <li><a href="https://t.me/Antplay_BD" target="_blank">
+                        <img src="./images/telegram 1.svg" alt="icon">
+                        <p>@Antplay_BD</p>
+                    </a></li>
+                <span></span>
+                <li><a href="https://api.whatsapp.com/send/?phone=%2B18458660888&text&type=phone_number&app_absent=0"
+                        target="_blank">
+                        <img src="./images/whatsapp 1.svg" alt="icon">
+                        <p>+1 (845) 866-0888</p>
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="float_rwd">
+        <div class="float_rwd_content">
+            <ul>
+                <li>
+                    <a href="https://t.me/Antplay_BD" target="_blank">
+                        <img src="./images/telegram 1.svg" alt="icon">
+                    </a>
+                </li>
+                <li><a href="https://api.whatsapp.com/send/?phone=%2B18458660888&text&type=phone_number&app_absent=0"
+                        target="_blank">
+                        <img src="./images/whatsapp 1.svg" alt="icon">
+                    </a></li>
+        </div>
+    </div>
+
+
+
+    <script src="./js/game_details_style.js"></script>
+
+</body>
+
+</html>

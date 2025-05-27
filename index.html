@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="./images/favicon.png" />
+    <title>Antplay</title>
+    <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Google 翻譯功能 -->
+    <script type="text/javascript">
+        var googTrans = null;
+
+        function googleTranslateElementInit() {
+            googTrans = new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'zh-TW,ja,pt',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+
+            // 檢查並應用已保存的語言設置
+            const cookies = document.cookie.split(';');
+            let currentLang = 'en';
+
+            for (let cookie of cookies) {
+                if (cookie.includes('googtrans')) {
+                    currentLang = cookie.split('/')[2];
+                    break;
+                }
+            }
+
+            // 如果當前語言不是英文，則應用翻譯
+            if (currentLang !== 'en') {
+                setTimeout(function () {
+                    var select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.value = currentLang;
+                        select.dispatchEvent(new Event('change'));
+                    }
+                }, 1000);
+            }
+        }
+
+        function changeLanguage(langCode) {
+            // 關閉下拉選單
+            document.getElementById('dropdownMenu').classList.remove('show');
+
+            // 設置 cookie，添加過期時間和安全性設置
+            const expiryDate = new Date();
+            expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
+            document.cookie = `googtrans=/en/${langCode}; path=/; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
+
+            // 更新語言圖標
+            const languageIcon = document.getElementById('languageIcon');
+            if (languageIcon) {
+                switch (langCode) {
+                    case 'en':
+                        languageIcon.src = './images/icon_1.svg';
+                        languageIcon.alt = 'English';
+                        break;
+                    case 'zh-TW':
+                        languageIcon.src = './images/icon_2.svg';
+                        languageIcon.alt = '中文';
+                        break;
+                    case 'ja':
+                        languageIcon.src = './images/icon_3.svg';
+                        languageIcon.alt = '日本語';
+                        break;
+                    case 'pt':
+                        languageIcon.src = './images/icon_4.svg';
+                        languageIcon.alt = 'Português';
+                        break;
+                }
+            }
+
+            // 重新加載翻譯
+            location.reload();
+        }
+
+        // 在頁面加載時檢查並應用已保存的語言設置
+        window.addEventListener('load', function () {
+            // 檢查 URL 參數
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang');
+            if (lang) {
+                changeLanguage(lang);
+            }
+        });
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <style>
+        /* 隱藏 Google Translate 元素 */
+        .goog-te-banner-frame,
+        .goog-te-gadget-simple,
+        .goog-te-menu-frame,
+        .goog-te-menu-value,
+        .goog-te-gadget span,
+        .goog-te-balloon-frame,
+        .goog-tooltip,
+        .goog-tooltip:hover,
+        .goog-text-highlight,
+        .VIpgJd-ZVi9od-ORHb,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd,
+        .VIpgJd-ZVi9od-SmfZ-OEVmcd,
+        .VIpgJd-ZVi9od-vH1Gmf,
+        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
+            display: none !important;
+        }
+
+        body {
+            top: 0 !important;
+            position: static !important;
+        }
+
+        .translated-ltr {
+            margin-top: 0 !important;
+        }
+
+        #google_translate_element {
+            position: absolute !important;
+            top: -1000px !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        .VIpgJd-ZVi9od-ORHb {
+            background: transparent !important;
+            box-shadow: none !important;
+            position: absolute !important;
+            top: -9999px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+        }
+
+        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+            display: none !important;
+        }
+
+        .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            height: 0 !important;
+            overflow: hidden !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="google_translate_element"></div>
+
+    <div class="spacer" id="spacer"></div>
+    <div class="header" id="header">
+        <div class="header_content">
+            <div class="logo">
+                <div class="logo_content">
+                    <a href="./index.html">
+                        <img src="./images/logo.svg" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="menu_language">
+                <div class="menu_language_content">
+                    <div class="hamburger" id="hamburger">☰</div>
+                    <div class="menu nav-menu" id="nav-menu">
+                        <div class="menu_content">
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>
+                                <li><a class="scroll-link" href="#data">Data</a></li>
+                                <li><a class="scroll-link" href="#games">Games</a></li>
+                                <li><a class="scroll-link" href="#connect">Connect</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="language">
+                        <div class="language_content">
+                            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+                                <img src="./images/icon_1.svg" alt="icon_1">
+                            </a>
+                            <div id="dropdownMenu" class="dropdown-content">
+                                <a href="#" onclick="changeLanguage('en'); return false;"><img src="./images/icon_1.svg"
+                                        alt="icon_1">
+                                    <p>English</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('zh-TW'); return false;"><img
+                                        src="./images/icon_2.svg" alt="icon_2">
+                                    <p>繁體中文</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('ja'); return false;"><img src="./images/icon_3.svg"
+                                        alt="icon_3">
+                                    <p>日本</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('pt'); return false;"><img src="./images/icon_4.svg"
+                                        alt="icon_4">
+                                    <p>Português</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="banner">
+        <div class="banner_content">
+            <img src="./images/Banner_0.webp" alt="Banner">
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="management" id="imageRow">
+        <div class="management_content" id="data">
+            <div class="management_title">
+                <div class="management_title_content">
+                    <h1>DATA</h1>
+                </div>
+            </div>
+            <div class="container">
+                <div class="container_content">
+                    <div class="data_report">
+                        <div class="data_report_content">
+                            <div class="data_report_ul">
+                                <div class="data_report_ul_content">
+                                    <ul>
+                                        <li>
+                                            <h1 data-target="31">0</h1>
+                                            <span>Game</span>
+                                        </li>
+                                        <li>
+                                            <h1 data-target="4">0</h1>
+                                            <span>Languages</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="data_report_content_text">
+                                    <div class="data_report_content_text_content">
+                                        <p>As a game changer in the mobile gaming industry, PG SOFT® has made a massive
+                                            impact on the gaming world since its inception in 2015.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="data_carousel">
+                                <div class="data_carousel_content">
+
+                                    <div class="uic-wrapper-8z7" id="carouselShell_8z7">
+                                        <div class="uic-track-3nb" id="carouselRail_3nb"></div>
+                                      </div>
+
+                                </div>
+                            </div>
+
+                            <div class="module-content-display-grid">
+                                <div class="report_li_1_title module-block-animated-entry">
+                                    <div class="report_li_1_title_content">
+                                        <div class="report_li_1_title_h1">
+                                            <div class="report_li_1_title_h1_content">
+                                                <h1>103</h1>
+                                                <span>CUSTOMERS IN <br> 103 COUNTRIES</span>
+                                            </div>
+                                        </div>
+                                        <svg id="report" data-name="report" xmlns="http://www.w3.org/2000/svg"
+                                            version="1.1" viewBox="0 0 321 321">
+                                            <defs>
+                                                <style>
+                                                    .st0 {
+                                                        fill: #ff3d6a;
+                                                    }
+
+                                                    .st1 {
+                                                        fill: #9c38e6;
+                                                    }
+
+                                                    .st2 {
+                                                        fill: #f59f21;
+                                                    }
+
+                                                    .st3 {
+                                                        fill: #5db7fe;
+                                                    }
+
+                                                    .st4 {
+                                                        fill: #f2de51;
+                                                    }
+                                                </style>
+                                            </defs>
+                                            <path class="st4"
+                                                d="M160.82,70.58c.17,0,.33,0,.49,0L161.11-.04c-.1,0-.19,0-.29,0C121.27-.05,85.07,14.27,57.1,37.98l46.29,53.35c15.58-12.96,35.6-20.75,57.44-20.75Z" />
+                                            <path class="st0"
+                                                d="M161.11-.04l.21,70.63c49.41.27,89.38,40.4,89.38,89.87,0,26.42-11.4,50.17-29.54,66.61l46.29,53.34c33.05-29.4,53.88-72.24,53.88-119.96C321.32,71.91,249.62.11,161.11-.04Z" />
+                                            <path class="st3"
+                                                d="M103.38,91.33l-46.29-53.35C33.75,57.78,16.14,84.12,7.1,114.18l68.01,19.16c5.25-16.61,15.19-31.13,28.27-42.01Z" />
+                                            <path class="st2"
+                                                d="M160.82,250.33c-49.52,0-89.69-40.06-89.87-89.54L.36,163.19c1.46,87.38,72.74,157.76,160.47,157.76,40.93,0,78.27-15.33,106.62-40.54l-46.29-53.34c-15.95,14.46-37.11,23.26-60.33,23.26Z" />
+                                            <path class="st1"
+                                                d="M70.95,160.45c0-9.45,1.46-18.55,4.17-27.11L7.1,114.18c-4.4,14.65-6.78,30.18-6.78,46.27,0,.92.02,1.83.03,2.74l70.59-2.4c0-.11,0-.22,0-.34Z" />
+                                            <polygon class="st1"
+                                                points="161.57 157.7 161.57 157.7 160.78 157.48 160.99 157.72 161.57 157.7" />
+                                            <polygon class="st1"
+                                                points="161.57 157.7 161.57 157.7 161.57 157.7 161.57 157.7" />
+                                        </svg>
+                                        <div class="report_color">
+                                            <div class="report_color_content">
+                                                <span class="box_1"></span>
+                                                <p>ASIA</p>
+                                            </div>
+                                            <span>42%</span>
+                                        </div>
+                                        <div class="report_color">
+                                            <div class="report_color_content">
+                                                <span class="box_2"></span>
+                                                <p>EUROPE</p>
+                                            </div>
+                                            <span>36%</span>
+                                        </div>
+                                        <div class="report_color">
+                                            <div class="report_color_content">
+                                                <span class="box_3"></span>
+                                                <p>AFRICA</p>
+                                            </div>
+                                            <span>11%</span>
+                                        </div>
+                                        <div class="report_color">
+                                            <div class="report_color_content">
+                                                <span class="box_4"></span>
+                                                <p>AMERICA</p>
+                                            </div>
+                                            <span>7%</span>
+                                        </div>
+                                        <div class="report_color">
+                                            <div class="report_color_content">
+                                                <span class="box_5"></span>
+                                                <p>OCEANIA</p>
+                                            </div>
+                                            <span>4%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="report_li_2_title module-block-animated-entry">
+                                    <div class="report_li_2_title_content">
+                                        <div class="report_li_2_title_h1">
+                                            <div class="report_li_2_title_h1_content">
+                                                <h1>24-HOUR</h1>
+                                                <span>OPERATOR ACCESS</span>
+                                            </div>
+                                        </div>
+                                        <div class="operator">
+                                            <div class="operator_content">
+                                                <div class="operator_text">
+                                                    <div class="operator_content">
+                                                        <p>24/7 access ensures operators' businesses runs
+                                                            smoothly all year long.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="operator_img">
+                                                    <div class="operator_img_content">
+                                                        <video autoplay muted loop playsinline id="myVideo">
+                                                            <source src="./images/operator.mov" type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="report_li_7_title module-block-animated-entry">
+                                    <div class="report_li_7_title_content">
+                                        <div class="report_li_7_title_h1">
+                                            <div class="report_li_7_title_h1_content">
+                                                <h1>5</h1>
+                                                <span>All DEVICES <br> SUPPORTEDS</span>
+                                            </div>
+                                            <div class="report_li_7_ul">
+                                                <div class="sliderContainer">
+                                                    <div id="sliderTrack" class="sliderTrack"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="report_li_5_title module-block-animated-entry">
+                                    <div class="report_li_5_title_content">
+                                        <div class="report_li_5_title_h1">
+                                            <div class="report_li_5_title_h1_content">
+                                                <h1>173</h1>
+                                                <p></p>
+                                                <span>CURRENCY <br> SUPPORTED</span>
+                                            </div>
+                                        </div>
+                                        <div class="carousel_container">
+                                            <div class="carousel-track" id="carouselTrack"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="report_li_6_title module-block-animated-entry">
+                                    <div class="report_li_6_title_content">
+                                        <div class="report_li_6_title_h1">
+                                            <div class="report_li_6_title_h1_content">
+                                                <h1>1063</h1>
+                                                <span>OPERATORS <br> GLOBALLY</span>
+                                            </div>
+                                        </div>
+                                        <div class="report_li_6_text">
+                                            <div class="report_li_6_text_content">
+                                                <div class="report_li_6_text_carousel">
+                                                    <div class="slide active">
+                                                        <p>Leander is an independant game company that
+                                                            developed the eGR B2B Award Winning remote
+                                                            gaming server (RGS), LeGa.</p>
+                                                    </div>
+                                                    <div class="slide">
+                                                        <p>ComeOn! is an award-winning online casino and
+                                                            sportbook site that offers unrivaled and
+                                                            reliable online casino gaming experience to all
+                                                            players.</p>
+                                                    </div>
+                                                    <div class="slide">
+                                                        <p>BetConstruct is a global award-winning technology
+                                                            and services provider for online and land-based
+                                                            gaming industry.</p>
+                                                    </div>
+                                                    <div class="slide">
+                                                        <p>Leander is an independant game company that developed
+                                                            the eGR B2B Award Winning remote gaming server
+                                                            (RGS), LeGa.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="controls"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="report_li_4_title module-block-animated-entry">
+                                    <div class="report_li_4_title_content">
+                                        <div class="report_li_4_title_h1">
+                                            <div class="report_li_4_title_h1_content">
+                                                <h1>1</h1>
+                                                <p></p>
+                                                <span>PG SOFT
+                                                    TABLE GAMES</span>
+                                            </div>
+                                        </div>
+                                        <div class="report_li_4_img">
+                                            <div class="image-row" id="imageRow">
+                                                <div class="img-box">
+                                                    <img src="./images/data_img/data_img_1.webp" alt="Data Icon 17">
+                                                </div>
+                                                <div class="img-box">
+                                                    <img src="./images/data_img/data_img_2.webp" alt="Data Icon 18">
+                                                </div>
+                                                <div class="img-box">
+                                                    <img src="./images/data_img/data_img_3.webp" alt="Data Icon 19">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="report_li_3_title module-block-animated-entry">
+                                    <div class="report_li_3_title_content">
+                                        <div class="report_li_3_title_h1">
+                                            <div class="report_li_3_title_h1_content">
+                                                <h1>103</h1>
+                                                <span>CUSTOMERS IN 103 COUNTRIES</span>
+                                            </div>
+                                        </div>
+                                        <ul class="icon_grid">
+                                            <li><img src="./images/data_img/data_img_1.webp" alt="Data Icon 1">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_2.webp" alt="Data Icon 2">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_3.webp" alt="Data Icon 3">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_4.webp" alt="Data Icon 4">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_5.webp" alt="Data Icon 5">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_6.webp" alt="Data Icon 6">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_7.webp" alt="Data Icon 7">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_8.webp" alt="Data Icon 8">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_9.webp" alt="Data Icon 9">
+                                            </li>
+                                            <li><img src="./images/data_img/data_img_10.webp" alt="Data Icon 10"></li>
+                                            <li><img src="./images/data_img/data_img_11.webp" alt="Data Icon 11"></li>
+                                            <li><img src="./images/data_img/data_img_12.webp" alt="Data Icon 12"></li>
+                                            <li><img src="./images/data_img/data_img_13.webp" alt="Data Icon 13"></li>
+                                            <li><img src="./images/data_img/data_img_14.webp" alt="Data Icon 14"></li>
+                                            <li><img src="./images/data_img/data_img_15.webp" alt="Data Icon 15"></li>
+                                            <li><img src="./images/data_img/data_img_16.webp" alt="Data Icon 16"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="report_li_8_title module-block-animated-entry">
+                                    <div class="report_li_8_title_content">
+                                        <div class="report_li_8_title_h1">
+                                            <div class="report_li_8_title_h1_content">
+                                                <h1>44</h1>
+                                                <span>LANGUAGES <br> SUPPORTED</span>
+                                            </div>
+                                            <div class="report_li_8_img">
+                                                <div class="report_li_8_img_content">
+                                                    <div class="icon-carousel">
+                                                        <div class="icon-track" id="iconTrack">
+                                                            <div class="icon-item"><img src="./images/nation_1.svg"
+                                                                    alt="1">
+                                                            </div>
+                                                            <div class="icon-item"><img src="./images/nation_2.svg"
+                                                                    alt="2">
+                                                            </div>
+                                                            <div class="icon-item"><img src="./images/nation_3.svg"
+                                                                    alt="3">
+                                                            </div>
+                                                            <div class="icon-item"><img src="./images/nation_4.svg"
+                                                                    alt="4">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+
+    <div class="welcome_to_antplay">
+        <div class="welcome_to_antplay_content">
+            <div class="customer_service_text_and_pictures">
+                <div class="customer_service_text_and_pictures_content">
+                    <p>The best game platform in 2024 7x24 hours professional customer service for you!</p>
+                </div>
+            </div>
+            <div class="welcome_to_antplay_img">
+                <div class="welcome_to_antplay_img_content">
+                    <div class="image_container" id="carousel"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ---------------------------------------------------------------------------------------------- -->
+
+        <div class="games" id="games">
+            <div class="games_content">
+                <div class="games_title">
+                    <div class="games_title_content">
+                        <h1>GAMES</h1>
+                    </div>
+                </div>
+                <div class="games_box">
+                    <div class="games_box_content">
+
+                        <a href="./game_details_game_1.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_1.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Respin Feista</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_2.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_2.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Alien Abduction</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_3.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_3.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>God of Fortune</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_4.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_4.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>ZEUS KING OF OLYMPUS</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_5.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_5.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>DISCO WILD</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_6.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_6.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Candy Fairy</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_7.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_7.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Hero Adventure</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_8.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_8.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Chameleon Frenzy</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_9.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_9.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Forest Turesure</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_10.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_10.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Magical Beanstalk</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_11.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_11.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Castle of wicked cat</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_12.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_12.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Crazy Lab</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_13.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_13.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>CLAW FORCE</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_14.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_14.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Mystery Museum Horror Night</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_15.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_15.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Pirate Gold</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_16.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_16.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>The Cat House</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_17.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_17.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Ocean Enigma</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_18.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_18.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>RAGNAROK THOR'S LAST STAND</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_19.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_19.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Extinction Dinosaurs</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_20.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_20.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>BOOK OF HERACLESB</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_21.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_21.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>STREET BEAVER</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_22.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_22.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>BOOK OF EGYPT CLEOPATRA</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_23.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_23.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Super Burger</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_24.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_24.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>HAPPY FARM</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_25.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_25.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>BUFFALO FRENZY</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_26.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_26.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Genie Lamp</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_27.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_27.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>Sherlock of Baker Stree</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_28.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_28.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>JOKER FRENZY</p>
+                                            <span>More</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_29.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_29.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>SHARP SHOOTER</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_30.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_30.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>NINJA Double up</p>
+                                            <span>More</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <a href="./game_details_game_31.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_31.png" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p>YUMMY YUMMY SUSHI KITTY</p>
+                                            <p>More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="footer" id="connect">
+        <div class="footer_content">
+            <div class="footer_text">
+                <div class="footer_text_content">
+                    <ul>
+                        <li>
+                            <a href="./privacy.html">
+                                <div class="contact_details">
+                                    <div class="contact_details_content">
+                                        <div class="contact_details_img">
+                                            <div class="contact_details_img_content">
+                                                <img src="./images/Component 10.svg" alt="icon">
+                                            </div>
+                                        </div>
+                                        <div class="contact_details_text">
+                                            <div class="contact_details_text_content">
+                                                <span>Privacy</span>
+                                                <p>Protect user data, browse privacy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/Antplay_BD" target="_blank">
+                                <div class="contact_details">
+                                    <div class="contact_details_content">
+                                        <div class="contact_details_img">
+                                            <div class="contact_details_img_content">
+                                                <img src="./images/Component 11.svg" alt="icon">
+                                            </div>
+                                        </div>
+                                        <div class="contact_details_text">
+                                            <div class="contact_details_text_content">
+                                                <span>Contact Us</span>
+                                                <p>Registration number: 160629 (0)</p>
+                                                <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="copyright_content">
+                    <p>COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="float">
+        <div class="float_content">
+            <ul>
+                <li><a href="https://t.me/Antplay_BD" target="_blank">
+                        <img src="./images/telegram 1.svg" alt="icon">
+                        <p>@Antplay_BD</p>
+                    </a></li>
+                <span></span>
+                <li><a href="https://api.whatsapp.com/send/?phone=%2B18458660888&text&type=phone_number&app_absent=0"
+                        target="_blank">
+                        <img src="./images/whatsapp 1.svg" alt="icon">
+                        <p>+1 (845) 866-0888</p>
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="float_rwd">
+        <div class="float_rwd_content">
+            <ul>
+                <li>
+                    <a href="https://t.me/Antplay_BD" target="_blank">
+                        <img src="./images/telegram 1.svg" alt="icon">
+                    </a>
+                </li>
+                <li><a href="https://api.whatsapp.com/send/?phone=%2B18458660888&text&type=phone_number&app_absent=0"
+                        target="_blank">
+                        <img src="./images/whatsapp 1.svg" alt="icon">
+                    </a></li>
+        </div>
+    </div>
+
+    <div class="float_rwd">
+        <div class="float_rwd_content">
+            <ul>
+                <li>
+                    <a href="https://t.me/Antplay_BD" target="_blank">
+                        <img src="./images/telegram 1.svg" alt="icon">
+                    </a>
+                </li>
+                <li><a href="https://api.whatsapp.com/send/?phone=%2B18458660888&text&type=phone_number&app_absent=0"
+                        target="_blank">
+                        <img src="./images/whatsapp 1.svg" alt="icon">
+                    </a></li>
+        </div>
+    </div>
+
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>

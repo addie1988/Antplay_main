@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./images/favicon.png" />
+    <title>privacy</title>
+    <link rel="stylesheet" href="./css/privacy_style.css">
+
+     <!-- Google 翻譯功能 -->
+    <script type="text/javascript">
+        var googTrans = null;
+        
+        function googleTranslateElementInit() {
+            googTrans = new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'zh-TW,ja,pt',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+
+        function changeLanguage(langCode) {
+            // 關閉下拉選單
+            document.getElementById('dropdownMenu').classList.remove('show');
+            
+            // 設置 cookie
+            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}`;
+            document.cookie = `googtrans=/en/${langCode}; path=/`;
+            
+            // 重新加載翻譯
+            location.reload();
+        }
+
+        // 在頁面加載時檢查並應用已保存的語言設置
+        window.addEventListener('load', function() {
+            // 檢查 URL 參數
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang');
+            if (lang) {
+                changeLanguage(lang);
+            }
+        });
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    
+    <style>
+        /* 隱藏 Google Translate 元素 */
+        .goog-te-banner-frame,
+        .goog-te-gadget-simple,
+        .goog-te-menu-frame,
+        .goog-te-menu-value,
+        .goog-te-gadget span,
+        .goog-te-balloon-frame,
+        .goog-tooltip,
+        .goog-tooltip:hover,
+        .goog-text-highlight,
+        .VIpgJd-ZVi9od-ORHb,
+        .VIpgJd-ZVi9od-ORHb-OEVmcd,
+        .VIpgJd-ZVi9od-SmfZ-OEVmcd,
+        .VIpgJd-ZVi9od-vH1Gmf,
+        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
+            display: none !important;
+        }
+        
+        body {
+            top: 0 !important;
+            position: static !important;
+        }
+        
+        .translated-ltr {
+            margin-top: 0 !important;
+        }
+        
+        #google_translate_element {
+            position: absolute !important;
+            top: -1000px !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        .VIpgJd-ZVi9od-ORHb {
+            background: transparent !important;
+            box-shadow: none !important;
+            position: absolute !important;
+            top: -9999px !important;
+            overflow: hidden !important;
+            opacity: 0 !important;
+        }
+
+        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+            display: none !important;
+        }
+
+        .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            height: 0 !important;
+            overflow: hidden !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="google_translate_element"></div>
+
+    <div class="spacer" id="spacer"></div>
+    <div class="header" id="header">
+        <div class="header_content">
+            <div class="logo">
+                <div class="logo_content">
+                    <a href="./index.html">
+                        <img src="./images/logo.svg" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="menu_language">
+                <div class="menu_language_content">
+                    <div class="hamburger" id="hamburger">☰</div>
+                    <div class="menu nav-menu" id="nav-menu">
+                        <div class="menu_content">
+                            <ul>
+                                <li><a href="./index.html">Home</a></li>
+                                <li><a class="scroll-link" href="#fairness">Fairness</a></li>
+                                <li><a class="scroll-link" href="#connect">Connect</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="language">
+                        <div class="language_content">
+                            <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
+                                <img src="./images/icon_1.svg" alt="icon_1">
+                            </a>
+                          <div id="dropdownMenu" class="dropdown-content">
+                                <a href="#" onclick="changeLanguage('en'); return false;"><img src="./images/icon_1.svg"
+                                        alt="icon_1">
+                                    <p>English</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('zh-TW'); return false;"><img
+                                        src="./images/icon_2.svg" alt="icon_2">
+                                    <p>繁體中文</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('ja'); return false;"><img src="./images/icon_3.svg"
+                                        alt="icon_3">
+                                    <p>日本</p>
+                                </a>
+                                <a href="#" onclick="changeLanguage('pt'); return false;"><img src="./images/icon_4.svg"
+                                        alt="icon_4">
+                                    <p>Português</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="policy_box" id="fairness">
+        <div class="policy_box_content">
+            <div class="policy">
+                <div class="policy_content">
+                    <h1>PRIVACY POLICY</h1>
+                    <span>Last Updated: January 1, 2025 (VERSION 3)</span>
+                    <p>Registration number: 160629 (0)</p>
+                    <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+
+                    <h6>Company Profile</h6>
+                    <p><b>AntPlay N.V., Curaçao</b> (hereinafter referred to as "we," "us," or "our") complies with the
+                        <b>Curaçao Personal Data Protection Act (2013).</b> This Privacy Policy is issued on behalf of
+                        the <b>AntPlay N.V., Curaçao</b> group of companies, which includes the website<a
+                            href="https://antplay.com/.">
+                            <p>https://antplay.com/.</p>
+                        </a>
+                    </p>
+
+                    <p>The data controller for <a href="https://antplay.com/">https://antplay.com/</a> is <b>AntPlay
+                            N.V., Curaçao.</b> You may contact us with any inquiries.</p>
+
+                    <h6>Changes to This Privacy Statement</h6>
+
+                    <p>The latest update to this version is dated <b>January 1, 2025.</b> If you wish to obtain previous
+                        versions, please contact <b>AntPlay N.V., Curaçao.</b></p>
+                    <p>It is important that the personal data we hold about you be accurate and up to date. If your
+                        personal data change at any time during your relationship with us, please inform us.</p>
+                </div>
+            </div>
+            <div class="policy_details">
+                <div class="policy_details_content">
+                    <ul>
+                        <li>
+                            <h1>1. How We Use Your Personal Data</h1>
+                            <p>We will only use your data for lawful purposes. Most commonly, we will use your personal
+                                data under the following circumstances:</p>
+                            <ol>
+                                <li>Where it is necessary for the performance of a contract we are about to enter into
+                                    or have already entered into with you.</li>
+                                <li>Where it is necessary for our legitimate interests (or those of a third party), and
+                                    your interests and fundamental rights do not override those interests.</li>
+                                <li>Where it is necessary to comply with legal or regulatory obligations.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h1>2. Data We Collect About You</h1>
+                            <p>Personal data (or personal information) means any information about an individual from
+                                which that person can be identified. We may collect, use, store, and transfer different
+                                kinds of personal data about you, which we have grouped as follows:</p>
+                            <ol>
+                                <li>Identity Data: Includes first name, maiden name, last name, username or similar
+                                    identifier, date of birth, and gender.</li>
+                                <li>Contact Data: Includes billing address, delivery address, email address, and
+                                    telephone numbers.</li>
+                                <li>Financial Data: Includes bank account details, payment card information, and credit
+                                    ratings.</li>
+                                <li>Technical Data: Includes internet protocol (IP) address, login data, browser type
+                                    and version, etc.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h1>3. Purposes for Which We Collect Your Personal Data</h1>
+                            <p>We collect and process your personal data for various purposes, including:</p>
+                            <ol>
+                                <li>To register you as a new customer and provide our gambling services.</li>
+                                <li>To process and monitor your transactions.</li>
+                                <li>To manage our relationship with you.</li>
+                                <li>To enable you to participate in promotions and competitions.</li>
+                                <li>To administer and protect our business and website.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h1>4. With Whom We May Share Your Data</h1>
+                            <p>Your data may be shared with:</p>
+                            <ol>
+                                <li>Third parties for fraud detection and control purposes.</li>
+                                <li>Other AntPlay N.V., Curaçao group companies.</li>
+                                <li>Cloud services providers and data centers.</li>
+                                <li>Payment services and banks.</li>
+                                <li>We will take all reasonable steps to ensure your personal data is treated securely
+                                    and in accordance with applicable laws.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h1>5. Data Retention Period</h1>
+                            <p>To comply with our legal, financial, and regulatory obligations, we retain your
+                                information for the minimum period required by such obligations.</p>
+                            <ol>
+                                <li>The retention period will follow the relevant regulations in Curaçao (at least 10
+                                    years).</li>
+                                <li>If you request the erasure of your data and that request meets our deletion
+                                    criteria, your personal data will be anonymized.</li>
+                                <li>If there is no account activity, and we have retained your data for the minimum
+                                    period required by law and regulation, your account will be closed and
+                                    pseudonymized.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h1>6. Your Rights</h1>
+                            <p>Subject to certain limitations, you have the following rights relating to your
+                                information:</p>
+                            <ol>
+                                <li>Right of Access: You have the right to request access to your personal data and
+                                    supplementary information.</li>
+                                <li>Right to Rectification: You have the right to request the correction or completion
+                                    of any inaccurate or incomplete personal data.</li>
+                                <li>Right to Erasure: You have the right to request the erasure of your personal data
+                                    where there is no longer a compelling reason for us to continue processing it.</li>
+                                <li>Right to Data Portability: You have the right to request the personal data you have
+                                    provided to us.</li>
+                            </ol>
+                        </li>
+                        <li>
+                            <h1>7. Cookie Policy</h1>
+                            <p>The AntPlay N.V., Curaçao website uses Cookies and similar technologies to manage login
+                                sessions, provide personalized web pages, and tailor content to your specific needs and
+                                interests.</p>
+                            <p>Types of Cookies we use:</p>
+                            <ol>
+                                <li>Necessary Cookies: Essential for the website's basic functions.</li>
+                                <li>Performance Cookies: Help us improve website performance.</li>
+                                <li>Functional Cookies: Remember your preferences and choices.</li>
+                                <li>Targeting Cookies: Used to deliver relevant content and advertisements.</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+  <div class="footer" id="connect">
+        <div class="footer_content">
+            <div class="footer_text">
+                <div class="footer_text_content">
+                    <ul>
+                        <li>
+                            <a href="./privacy.html">
+                                <div class="contact_details">
+                                    <div class="contact_details_content">
+                                        <div class="contact_details_img">
+                                            <div class="contact_details_img_content">
+                                                <img src="./images/Component 10.svg" alt="icon">
+                                            </div>
+                                        </div>
+                                        <div class="contact_details_text">
+                                            <div class="contact_details_text_content">
+                                                <span>Privacy</span>
+                                                <p>Protect user data, browse privacy</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://t.me/Antplay_BD" target="_blank">
+                                <div class="contact_details">
+                                    <div class="contact_details_content">
+                                        <div class="contact_details_img">
+                                            <div class="contact_details_img_content">
+                                                <img src="./images/Component 11.svg" alt="icon">
+                                            </div>
+                                        </div>
+                                        <div class="contact_details_text">
+                                            <div class="contact_details_text_content">
+                                                <span>Contact Us</span>
+                                                <p>Registration number: 160629 (0)</p>
+                                                <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="copyright_content">
+                    <p>COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <div class="float">
+        <div class="float_content">
+            <ul>
+                <li><a href="https://t.me/Antplay_BD" target="_blank">
+                        <img src="./images/telegram 1.svg" alt="icon">
+                        <p>@Antplay_BD</p>
+                    </a></li>
+                <span></span>
+                <li><a href="https://api.whatsapp.com/send/?phone=%2B18458660888&text&type=phone_number&app_absent=0"
+                        target="_blank">
+                        <img src="./images/whatsapp 1.svg" alt="icon">
+                        <p>+1 (845) 866-0888</p>
+                    </a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="float_rwd">
+        <div class="float_rwd_content">
+            <ul>
+                <li>
+                    <a href="https://t.me/Antplay_BD" target="_blank">
+                        <img src="./images/telegram 1.svg" alt="icon">
+                    </a>
+                </li>
+                <li><a href="https://api.whatsapp.com/send/?phone=%2B18458660888&text&type=phone_number&app_absent=0"
+                        target="_blank">
+                        <img src="./images/whatsapp 1.svg" alt="icon">
+                    </a></li>
+        </div>
+    </div>
+
+
+
+    <script src="./js/privacy_style.js"></script>
+
+</body>
+
+</html>
