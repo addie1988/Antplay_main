@@ -48,7 +48,6 @@ buttons.forEach(btn => {
 
 // ----------------------------------------------------------------------------------------
 
-// language 語系
 function toggleDropdown(event) {
   event.preventDefault();
   const menu = document.getElementById("dropdownMenu");
