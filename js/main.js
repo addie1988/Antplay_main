@@ -239,14 +239,14 @@ window.addEventListener('scroll', () => {
 
 // 熱門推播
 const imagePaths = [
-  './images/popular_1.webp',
-  './images/popular_2.webp',
-  './images/popular_3.webp',
-  './images/popular_4.webp',
-  './images/popular_5.webp',
-  './images/popular_6.webp',
-  './images/popular_7.webp',
-  './images/popular_8.webp',
+  './images/Popular_Games_1.png',
+  './images/Popular_Games_2.png',
+  './images/Popular_Games_3.png',
+  './images/Popular_Games_4.png',
+  './images/Popular_Games_5.png',
+  './images/Popular_Games_6.jpg',
+  './images/Popular_Games_7.png',
+  './images/Popular_Games_8.png',
 ];
 
 const carouselStage = document.getElementById("carouselStage_mk1");
@@ -268,9 +268,14 @@ function createSlides() {
     slide.innerHTML = `<img src="${src}" alt="slide-${i}">`;
     const angle = i * angleBetweenSlides;
     slide.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+
+    // 點擊圖片 → 旋轉到該圖片
     slide.addEventListener('click', () => {
+      currentRotationIndex = i;
+      rotateCarousel();
       if (!autoRotateTimer) startAutoRotate();
     });
+
     carouselStage.appendChild(slide);
   });
 }
@@ -283,58 +288,10 @@ function rotateCarousel() {
 function startAutoRotate() {
   clearInterval(autoRotateTimer);
   autoRotateTimer = setInterval(() => {
-    currentRotationIndex++;
+    currentRotationIndex = (currentRotationIndex + 1) % slideCount;
     rotateCarousel();
   }, 3000);
 }
-
-// Mouse drag
-let dragStartX = 0;
-let isDragging = false;
-carouselRoot.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  dragStartX = e.clientX;
-  clearInterval(autoRotateTimer);
-  autoRotateTimer = null;
-});
-carouselRoot.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  const deltaX = e.clientX - dragStartX;
-  if (Math.abs(deltaX) > 50) {
-    currentRotationIndex += deltaX > 0 ? 1 : -1;
-    rotateCarousel();
-    dragStartX = e.clientX;
-  }
-});
-['mouseup', 'mouseleave'].forEach(evt =>
-  carouselRoot.addEventListener(evt, () => {
-    isDragging = false;
-  })
-);
-
-// Touch drag
-let touchStartX = 0;
-let isTouching = false;
-carouselRoot.addEventListener('touchstart', (e) => {
-  if (e.touches.length === 1) {
-    touchStartX = e.touches[0].clientX;
-    isTouching = true;
-    clearInterval(autoRotateTimer);
-    autoRotateTimer = null;
-  }
-});
-carouselRoot.addEventListener('touchmove', (e) => {
-  if (!isTouching || e.touches.length !== 1) return;
-  const deltaX = e.touches[0].clientX - touchStartX;
-  if (Math.abs(deltaX) > 50) {
-    currentRotationIndex += deltaX > 0 ? 1 : -1;
-    rotateCarousel();
-    touchStartX = e.touches[0].clientX;
-  }
-});
-carouselRoot.addEventListener('touchend', () => {
-  isTouching = false;
-});
 
 // 初始化
 createSlides();
@@ -681,5 +638,4 @@ const visibilityTransitionObserver = new IntersectionObserver(entries => {
 animatedEntryBlocks.forEach(block => visibilityTransitionObserver.observe(block));
 
 // ----------------------------------------------------------------------------------------
-
 
