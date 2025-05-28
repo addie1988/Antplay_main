@@ -354,6 +354,7 @@ html
                                                 height: 400px
                                                 object-fit: cover
                                                 display: block
+                                                border-radius: 8px
                         .module-content-display-grid
                             display: flex
                             flex-wrap: wrap
@@ -562,6 +563,7 @@ html
                                             flex-wrap: wrap
                                             justify-items: center
                                             .operator_text
+                                                width: 100%
                                                 position: relative
                                                 display: flex
                                                 align-items: center
@@ -944,6 +946,7 @@ html
         transform: translateY(0)
 @media screen and (max-width: 1100px)
     .management
+        overflow: hidden
         .management_content
             width: 90%
             .management_title
@@ -975,28 +978,46 @@ html
                                     width: 100%
                                     margin: 6px 0
                                 .report_li_1_title
-                                    height: 550px
                                 .report_li_2_title
-                                    height: 400px
                                 .report_li_3_title
-                                    height: 350px
+                                    .report_li_3_title_content
+                                        .report_li_3_title_h1
                                 .report_li_4_title
-                                    height: 300px
                                     .report_li_4_title_content
                                         width: 100%
                                 .report_li_5_title
-                                    height: 300px
                                 .report_li_6_title
-                                    height: 350px
                                 .report_li_7_title
-                                    height: 450px
                                 .report_li_8_title
-                                    height: 250px
                                 .module-block-animated-entry.module-visible-from-top-left
                                     transform: translateY(0)
                                 .module-block-animated-entry.module-visible-from-bottom-right
                                     transform: translateY(0)
-
+@media screen and (max-width: 160px)
+    .management
+        .management_content
+            .management_title
+            .container
+                .container_content
+                    .data_report
+                        .data_report_content
+                            .data_report_ul
+                            .data_carousel
+                                .data_carousel_content
+                                    .carousel-shell-yz9
+                                        .carousel-stage-xa3
+                                            .carousel-slide-op8
+                            .module-content-display-grid
+                                .module-block-animated-entry
+                                .report_li_1_title
+                                .report_li_2_title
+                                .report_li_3_title
+                                    .report_li_3_title_content
+                                        .report_li_3_title_h1
+                                        .icon_grid
+                                            li
+                                                img
+                                                    width: 16%    
 // ------------------------------------------------------------------------------------------
 
 // 動態效果
@@ -1034,7 +1055,7 @@ html
             left: 0
             width: 100%
             height: 100%
-            background-color: rgba(0, 0, 0, 0.7)
+            background-color: rgba(0, 0, 0, 0.5)
             background-size: cover
             z-index: 1
         .welcome_to_antplay_img_content

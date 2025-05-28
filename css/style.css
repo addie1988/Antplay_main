@@ -453,6 +453,7 @@ html {
   height: 400px;
   object-fit: cover;
   display: block;
+  border-radius: 8px;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid {
@@ -738,6 +739,7 @@ html {
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_2_title .report_li_2_title_content .operator .operator_content .operator_text {
+  width: 100%;
   position: relative;
   display: flex;
   align-items: center;
@@ -1267,6 +1269,9 @@ html {
 }
 
 @media screen and (max-width: 1100px) {
+  .management {
+    overflow: hidden;
+  }
   .management .management_content {
     width: 90%;
   }
@@ -1299,38 +1304,20 @@ html {
     width: 100%;
     margin: 6px 0;
   }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_1_title {
-    height: 550px;
-  }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_2_title {
-    height: 400px;
-  }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_3_title {
-    height: 350px;
-  }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_4_title {
-    height: 300px;
-  }
   .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_4_title .report_li_4_title_content {
     width: 100%;
-  }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_5_title {
-    height: 300px;
-  }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_6_title {
-    height: 350px;
-  }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_7_title {
-    height: 450px;
-  }
-  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_8_title {
-    height: 250px;
   }
   .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry.module-visible-from-top-left {
     transform: translateY(0);
   }
   .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .module-block-animated-entry.module-visible-from-bottom-right {
     transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 160px) {
+  .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_3_title .report_li_3_title_content .icon_grid li img {
+    width: 16%;
   }
 }
 
@@ -1375,7 +1362,7 @@ html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   background-size: cover;
   z-index: 1;
 }
