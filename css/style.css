@@ -1267,6 +1267,9 @@ html {
 }
 
 @media screen and (max-width: 1100px) {
+  .management {
+    overflow: hidden;
+  }
   .management .management_content {
     width: 90%;
   }
@@ -1276,8 +1279,7 @@ html {
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel {
     margin: 60px 0;
-    height: 600px;
-    overflow: hidden;
+    height: 480px;
   }
   .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content {
     margin: 70px 0;
