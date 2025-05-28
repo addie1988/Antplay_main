@@ -718,6 +718,7 @@ html {
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_2_title .report_li_2_title_content .report_li_2_title_h1 .report_li_2_title_h1_content h1 {
   font-size: 40px;
   font-weight: 900;
+  margin: 14px 0;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_2_title .report_li_2_title_content .report_li_2_title_h1 .report_li_2_title_h1_content span {
@@ -895,7 +896,8 @@ html {
   font-size: 16px;
   text-align: left;
   margin-left: 10px;
-  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_7_title .report_li_7_title_content .report_li_7_title_h1 .report_li_7_ul {
@@ -1109,6 +1111,7 @@ html {
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_5_title .report_li_5_title_content .report_li_5_title_h1 .report_li_5_title_h1_content span {
   font-size: 16px;
   margin-left: 10px;
+  text-align: left;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_5_title .report_li_5_title_content .carousel_container {
@@ -1184,6 +1187,7 @@ html {
   font-weight: 900;
   text-align: left;
   width: 100%;
+  margin: 14px 0;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .module-content-display-grid .report_li_8_title .report_li_8_title_content .report_li_8_title_h1 .report_li_8_title_h1_content span {
