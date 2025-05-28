@@ -239,14 +239,14 @@ window.addEventListener('scroll', () => {
 
 // 熱門推播
 const imagePaths = [
-  './images/Popular_Games_1.png',
-  './images/Popular_Games_2.png',
-  './images/Popular_Games_3.png',
-  './images/Popular_Games_4.png',
-  './images/Popular_Games_5.png',
-  './images/Popular_Games_6.jpg',
-  './images/Popular_Games_7.png',
-  './images/Popular_Games_8.png',
+  './images/popular_1.webp',
+  './images/popular_2.webp',
+  './images/popular_3.webp',
+  './images/popular_4.webp',
+  './images/popular_5.webp',
+  './images/popular_6.webp',
+  './images/popular_7.webp',
+  './images/popular_8.webp',
 ];
 
 const carouselStage = document.getElementById("carouselStage_mk1");
