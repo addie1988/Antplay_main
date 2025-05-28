@@ -15,19 +15,66 @@
         function googleTranslateElementInit() {
             googTrans = new google.translate.TranslateElement({
                 pageLanguage: 'en',
-                includedLanguages: 'zh-TW,ja,pt',
+                includedLanguages: 'zh-CN,ja,pt',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 autoDisplay: false
             }, 'google_translate_element');
+
+            // 檢查並應用已保存的語言設置
+            const cookies = document.cookie.split(';');
+            let currentLang = 'en';
+
+            for (let cookie of cookies) {
+                if (cookie.includes('googtrans')) {
+                    currentLang = cookie.split('/')[2];
+                    break;
+                }
+            }
+
+            // 如果當前語言不是英文，則應用翻譯
+            if (currentLang !== 'en') {
+                setTimeout(function () {
+                    var select = document.querySelector('.goog-te-combo');
+                    if (select) {
+                        select.value = currentLang;
+                        select.dispatchEvent(new Event('change'));
+                    }
+                }, 1000);
+            }
         }
 
         function changeLanguage(langCode) {
             // 關閉下拉選單
             document.getElementById('dropdownMenu').classList.remove('show');
 
-            // 設置 cookie
-            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}`;
-            document.cookie = `googtrans=/en/${langCode}; path=/`;
+            // 設置 cookie，添加過期時間和安全性設置
+            const expiryDate = new Date();
+            expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
+            document.cookie = `googtrans=/en/${langCode}; path=/; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
+
+            // 更新語言圖標
+            const languageIcon = document.getElementById('languageIcon');
+            if (languageIcon) {
+                switch (langCode) {
+                    case 'en':
+                        languageIcon.src = './images/icon_1.svg';
+                        languageIcon.alt = 'English';
+                        break;
+                    case 'zh-CN':
+                        languageIcon.src = './images/icon_2.svg';
+                        languageIcon.alt = '简体中文';
+                        break;
+                    case 'ja':
+                        languageIcon.src = './images/icon_3.svg';
+                        languageIcon.alt = '日本語';
+                        break;
+                    case 'pt':
+                        languageIcon.src = './images/icon_4.svg';
+                        languageIcon.alt = 'Português';
+                        break;
+                }
+            }
 
             // 重新加載翻譯
             location.reload();
@@ -142,9 +189,9 @@
                                         alt="icon_1">
                                     <p>English</p>
                                 </a>
-                                <a href="#" onclick="changeLanguage('zh-TW'); return false;"><img
+                                <a href="#" onclick="changeLanguage('zh-CN'); return false;"><img
                                         src="./images/icon_2.svg" alt="icon_2">
-                                    <p>繁體中文</p>
+                                    <p>简体中文</p>
                                 </a>
                                 <a href="#" onclick="changeLanguage('ja'); return false;"><img src="./images/icon_3.svg"
                                         alt="icon_3">
@@ -209,7 +256,7 @@
                             <span>Supported Languages</span>
                               <ul>
                                 <li><img src="./images/icon_1.svg" alt=""><p>English</p></li>
-                                <li><img src="./images/icon_2.svg" alt=""><p>Traditional Chinese</p></li>
+                                <li><img src="./images/icon_2.svg" alt=""><p>Simplified Chinese</p></li>
                                 <li><img src="./images/icon_3.svg" alt=""><p>Japan</p></li>
                                 <li><img src="./images/icon_4.svg" alt=""><p>Portuguese</p></li>
                             </ul>
