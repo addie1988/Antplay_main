@@ -19,7 +19,7 @@ const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
 
 hamburger.addEventListener('click', () => {
-  navMenu.classList.toggle('show');
+  navMenu.classList.toggle('show');Popular_Games_1
 });
 
 // Close hamburger menu when clicking outside
@@ -239,14 +239,14 @@ window.addEventListener('scroll', () => {
 
 // 熱門推播
 const imagePaths = [
-  './images/Popular_Games_1.png',
-  './images/Popular_Games_2.png',
-  './images/Popular_Games_3.png',
-  './images/Popular_Games_4.png',
-  './images/Popular_Games_5.png',
-  './images/Popular_Games_6.jpg',
-  './images/Popular_Games_7.png',
-  './images/Popular_Games_8.png',
+  './images/popular_1.webp',
+  './images/popular_2.webp',
+  './images/popular_3.webp',
+  './images/popular_4.webp',
+  './images/popular_5.webp',
+  './images/popular_6.webp',
+  './images/popular_7.webp',
+  './images/popular_8.webp',
 ];
 
 const carouselStage = document.getElementById("carouselStage_mk1");
@@ -268,9 +268,31 @@ function createSlides() {
     slide.innerHTML = `<img src="${src}" alt="slide-${i}">`;
     const angle = i * angleBetweenSlides;
     slide.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+    
+    // 添加點擊事件
     slide.addEventListener('click', () => {
-      if (!autoRotateTimer) startAutoRotate();
+      // 停止當前旋轉
+      clearInterval(autoRotateTimer);
+      autoRotateTimer = null;
+      
+      // 計算需要旋轉到目標位置的角度
+      const targetIndex = i;
+      const currentAngle = currentRotationIndex * angleBetweenSlides;
+      const targetAngle = targetIndex * angleBetweenSlides;
+      
+      // 設置旋轉動畫
+      carouselStage.style.transition = 'transform 0.5s ease';
+      carouselStage.style.transform = `rotateY(${targetAngle}deg)`;
+      
+      // 更新當前索引
+      currentRotationIndex = targetIndex;
+      
+      // 3秒後重新開始自動旋轉
+      setTimeout(() => {
+        startAutoRotate();
+      }, 3000);
     });
+    
     carouselStage.appendChild(slide);
   });
 }
@@ -287,54 +309,6 @@ function startAutoRotate() {
     rotateCarousel();
   }, 3000);
 }
-
-// Mouse drag
-let dragStartX = 0;
-let isDragging = false;
-carouselRoot.addEventListener('mousedown', (e) => {
-  isDragging = true;
-  dragStartX = e.clientX;
-  clearInterval(autoRotateTimer);
-  autoRotateTimer = null;
-});
-carouselRoot.addEventListener('mousemove', (e) => {
-  if (!isDragging) return;
-  const deltaX = e.clientX - dragStartX;
-  if (Math.abs(deltaX) > 50) {
-    currentRotationIndex += deltaX > 0 ? 1 : -1;
-    rotateCarousel();
-    dragStartX = e.clientX;
-  }
-});
-['mouseup', 'mouseleave'].forEach(evt =>
-  carouselRoot.addEventListener(evt, () => {
-    isDragging = false;
-  })
-);
-
-// Touch drag
-let touchStartX = 0;
-let isTouching = false;
-carouselRoot.addEventListener('touchstart', (e) => {
-  if (e.touches.length === 1) {
-    touchStartX = e.touches[0].clientX;
-    isTouching = true;
-    clearInterval(autoRotateTimer);
-    autoRotateTimer = null;
-  }
-});
-carouselRoot.addEventListener('touchmove', (e) => {
-  if (!isTouching || e.touches.length !== 1) return;
-  const deltaX = e.touches[0].clientX - touchStartX;
-  if (Math.abs(deltaX) > 50) {
-    currentRotationIndex += deltaX > 0 ? 1 : -1;
-    rotateCarousel();
-    touchStartX = e.touches[0].clientX;
-  }
-});
-carouselRoot.addEventListener('touchend', () => {
-  isTouching = false;
-});
 
 // 初始化
 createSlides();
@@ -681,5 +655,4 @@ const visibilityTransitionObserver = new IntersectionObserver(entries => {
 animatedEntryBlocks.forEach(block => visibilityTransitionObserver.observe(block));
 
 // ----------------------------------------------------------------------------------------
-
 
