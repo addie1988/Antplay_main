@@ -188,7 +188,7 @@ document.addEventListener('click', (event) => {
 // ----------------------------------------------------------------------------------------
 
 // 數據報告 倒數
-const counters = document.querySelectorAll('.data_report_ul_content h1');
+const counters = document.querySelectorAll('.eciprocal h1');
 
 function startCountAnimation() {
   counters.forEach(counter => {
@@ -317,318 +317,6 @@ startAutoRotate();
 
 // ----------------------------------------------------------------------------------------
 
-
-// report_li_4 輪播
-const boxes = document.querySelectorAll('.img-box');
-let currentIndex = 0;
-let intervalId;
-
-function showImage(index) {
-  boxes.forEach((box, i) => {
-    if (i === index) {
-      box.classList.add('active');
-    } else {
-      box.classList.remove('active');
-    }
-  });
-}
-
-function startCarousel() {
-  intervalId = setInterval(() => {
-    currentIndex = (currentIndex + 1) % boxes.length;
-    showImage(currentIndex);
-  }, 3000);
-}
-
-function stopCarousel() {
-  clearInterval(intervalId);
-}
-
-// 初始化第一張
-showImage(currentIndex);
-startCarousel();
-
-// 滑鼠移入暫停輪播
-boxes.forEach((box, index) => {
-  box.addEventListener('mouseenter', () => {
-    stopCarousel();
-    currentIndex = index;
-    showImage(currentIndex);
-  });
-
-  box.addEventListener('mouseleave', () => {
-    startCarousel();
-  });
-
-  // 如需支援點擊切換，也可加入以下：
-  // box.addEventListener('click', () => {
-  //   stopCarousel();
-  //   currentIndex = index;
-  //   showImage(currentIndex);
-  // });
-});
-
-// ----------------------------------------------------------------------------------------
-
-// report_li_5 硬幣輪播
-const coinImages = [
-  './images/coin_1.svg',
-  './images/coin_2.svg',
-  './images/coin_3.svg'
-];
-
-const track = document.getElementById('carouselTrack');
-
-// 複製三組圖片做無縫輪播 (前中後)
-[...coinImages, ...coinImages, ...coinImages].forEach((src, i) => {
-  const item = document.createElement('div');
-  item.className = 'carousel-item';
-  item.innerHTML = `<img src="${src}" alt="carousel image" />`;
-  item.style.opacity = '0.3';
-  item.style.flex = '0 0 33.33%';
-  item.style.padding = '0';
-  item.style.margin = '0';
-  track.appendChild(item);
-});
-
-const items = track.children;
-const total = coinImages.length;
-let index = total - 1;
-
-// 設置 track 的樣式
-track.style.display = 'flex';
-track.style.width = '300%';
-track.style.gap = '0';
-track.style.padding = '0';
-track.style.margin = '0';
-track.style.justifyContent = 'flex-start';
-track.style.transition = 'transform 0.5s ease';
-
-// 設置每個輪播項的樣式
-Array.from(items).forEach(item => {
-  item.style.margin = '0';
-  item.style.padding = '0';
-  item.style.width = '33.33%';
-  item.style.flex = '0 0 33.33%';
-  item.style.transition = 'all 0.5s ease';
-});
-
-function updateCarousel() {
-  // 重置所有項目的透明度和active狀態
-  for (let i = 0; i < items.length; i++) {
-    items[i].classList.remove('active');
-    items[i].style.opacity = '0.3';
-    items[i].style.transform = 'scale(0.8)';
-  }
-
-  // 設置當前項目及其相鄰項目
-  const prevIndex = (index - 1 + items.length) % items.length;
-  const nextIndex = (index + 1) % items.length;
-
-  // 設置三個可見項目的狀態
-  items[prevIndex].style.opacity = '0.3';
-  items[prevIndex].classList.add('active');
-  items[prevIndex].style.transform = 'scale(0.8)';
-
-  items[index].style.opacity = '1';
-  items[index].classList.add('active');
-  items[index].style.transform = 'scale(1)';
-
-  items[nextIndex].style.opacity = '0.3';
-  items[nextIndex].classList.add('active');
-  items[nextIndex].style.transform = 'scale(0.8)';
-
-  const itemWidth = items[0].offsetWidth;
-  const offset = itemWidth * (index - Math.floor(total / 2));
-  track.style.transform = `translateX(${-offset}px)`;
-
-  // 當滑到最後一組的最後一張時，瞬間跳回中間組的最後一張
-  if (index >= total * 2) {
-    setTimeout(() => {
-      track.style.transition = 'none';
-      index = total;
-      const resetOffset = itemWidth * (index - Math.floor(total / 2));
-      track.style.transform = `translateX(${-resetOffset}px)`;
-      track.offsetHeight; // 強制重繪
-      track.style.transition = 'transform 0.5s ease';
-      updateCarousel();
-    }, 500);
-  }
-  // 當滑到第一組的第一張時，瞬間跳回中間組的第一張
-  else if (index < total) {
-    setTimeout(() => {
-      track.style.transition = 'none';
-      index = total * 2 - 1;
-      const resetOffset = itemWidth * (index - Math.floor(total / 2));
-      track.style.transform = `translateX(${-resetOffset}px)`;
-      track.offsetHeight; // 強制重繪
-      track.style.transition = 'transform 0.5s ease';
-      updateCarousel();
-    }, 500);
-  }
-}
-
-function autoSlide() {
-  index++;
-  updateCarousel();
-}
-
-// 初始化
-track.style.transition = 'transform 0.5s ease';
-updateCarousel();
-setInterval(autoSlide, 2500);
-
-window.addEventListener('resize', updateCarousel);
-
-// ----------------------------------------------------------------------------------------
-
-// report_li_6_title 內容輪播
-const slides = document.querySelectorAll(".report_li_6_text_carousel .slide");
-const controls = document.querySelector(".controls");
-let current = 0;
-
-// Create navigation dots
-const dots = Array.from(slides).map((_, i) => {
-  const dot = document.createElement("span");
-  dot.addEventListener("click", () => {
-    current = i;
-    showSlide(current);
-    clearInterval(interval);
-    interval = setInterval(nextSlide, 3000);
-  });
-  controls.appendChild(dot);
-  return dot;
-});
-
-// Initialize first dot as active
-dots[0].classList.add("active");
-
-function showSlide(index) {
-  slides.forEach((slide, i) => {
-    slide.classList.toggle("active", i === index);
-    dots[i].classList.toggle("active", i === index);
-  });
-}
-
-function nextSlide() {
-  current = (current + 1) % slides.length;
-  showSlide(current);
-}
-
-// Start automatic slideshow
-let interval = setInterval(nextSlide, 3000);
-
-// Pause slideshow on hover
-const carousel = document.querySelector(".report_li_6_text_carousel");
-carousel.addEventListener("mouseenter", () => clearInterval(interval));
-carousel.addEventListener("mouseleave", () => {
-  interval = setInterval(nextSlide, 3000);
-});
-
-// ----------------------------------------------------------------------------------------
-
-// report_li_7_ul 系統
-const imageList = [
-  './images/data_img/android.webp',
-  './images/data_img/html-5.webp',
-  './images/data_img/mac-os-logo.webp',
-  './images/data_img/macos.webp',
-  './images/data_img/windows.webp',
-];
-
-const sliderTrack = document.getElementById('sliderTrack');
-
-// 設置 sliderTrack 的樣式
-sliderTrack.style.display = 'flex';
-sliderTrack.style.flexWrap = 'wrap';
-sliderTrack.style.justifyContent = 'center';
-sliderTrack.style.gap = '20px';
-sliderTrack.style.padding = '20px';
-
-// 創建所有圖片元素
-imageList.forEach(src => {
-  const slide = document.createElement('div');
-  slide.className = 'slideItem';
-  slide.style.width = '80px';
-  slide.style.height = '80px';
-  slide.style.display = 'flex';
-  slide.style.alignItems = 'center';
-  slide.style.justifyContent = 'center';
-
-  const img = document.createElement('img');
-  img.src = src;
-  img.alt = 'system image';
-  img.style.width = '80%';
-  img.style.height = '80%';
-  img.style.objectFit = 'contain';
-  img.style.transition = 'opacity 0.3s ease';
-
-  slide.appendChild(img);
-  sliderTrack.appendChild(slide);
-});
-
-const systemSlides = sliderTrack.querySelectorAll('.slideItem');
-
-function randomBlink() {
-  // 隨機選擇1-3個圖片進行閃爍
-  const blinkCount = Math.floor(Math.random() * 3) + 1;
-  const selectedSlides = new Set();
-
-  while (selectedSlides.size < blinkCount) {
-    const randomIndex = Math.floor(Math.random() * systemSlides.length);
-    selectedSlides.add(randomIndex);
-  }
-
-  // 重置所有圖片的透明度
-  systemSlides.forEach(slide => {
-    const img = slide.querySelector('img');
-    img.style.opacity = '1';
-  });
-
-  // 對選中的圖片進行閃爍
-  selectedSlides.forEach(index => {
-    const img = systemSlides[index].querySelector('img');
-    img.style.opacity = '0.3';
-    setTimeout(() => {
-      img.style.opacity = '1';
-    }, 300);
-  });
-}
-
-// 初始化時立即執行一次閃爍
-randomBlink();
-
-// 每2秒執行一次閃爍
-setInterval(randomBlink, 2000);
-
-// ----------------------------------------------------------------------------------------
-
-// report_li_8_t 國旗輪播
-const iconTrack = document.getElementById("iconTrack");
-const iconItems = document.querySelectorAll(".icon-item");
-const itemHeight = iconItems[0].offsetHeight;
-const totalItems = iconItems.length;
-
-let activeSlideIndex = 0;
-
-setInterval(() => {
-  activeSlideIndex++;
-  if (activeSlideIndex > totalItems - 3) {
-    iconTrack.style.transition = "none";
-    iconTrack.style.transform = "translateY(0)";
-    activeSlideIndex = 1;
-
-    setTimeout(() => {
-      iconTrack.style.transition = "transform 0.5s ease-in-out";
-      iconTrack.style.transform = `translateY(-${itemHeight * activeSlideIndex}px)`;
-    }, 50);
-  } else {
-    iconTrack.style.transform = `translateY(-${itemHeight * activeSlideIndex}px)`;
-  }
-}, 2000);
-
-// ----------------------------------------------------------------------------------------
-
 // 交錯移動
 const animatedEntryBlocks = document.querySelectorAll('.module-block-animated-entry');
 
@@ -655,3 +343,26 @@ animatedEntryBlocks.forEach(block => visibilityTransitionObserver.observe(block)
 
 // ----------------------------------------------------------------------------------------
 
+// data_advantage
+const listItems = document.querySelectorAll('#data_advantage_ul li');
+let currentState = false; // false = 飛出狀態, true = 飛入狀態
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY >= 600 && !currentState) {
+    currentState = true;
+    listItems.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.add('animate');
+      }, index * 200);
+    });
+  }
+
+  if (window.scrollY < 600 && currentState) {
+    currentState = false;
+    listItems.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.remove('animate');
+      }, index * 200);
+    });
+  }
+});
