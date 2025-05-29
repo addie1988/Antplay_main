@@ -297,31 +297,11 @@ html
                     position: relative
                     .data_report_content
                         margin: 0 auto
-                        .data_report_ul
-                            position: relative
-                            .data_report_ul_content
-                                margin: 0 auto
-                                display: flex
-                                justify-content: center
-                                ul
-                                    display: flex
-                                    li
-                                        text-align: center
-                                        margin: 0 20px
-                                        h1
-                                            font-size: 60px
-                            .data_report_content_text
-                                position: relative
-                                margin-top: 80px
-                                .data_report_content_text_content
-                                    margin: 0 auto
-                                    p
-                                        text-align: center
                         .data_carousel
                             position: relative
                             width: 100%
                             height: 400px
-                            margin: 160px 0
+                            padding: 50px 0
                             .data_carousel_content
                                 margin: 0 auto
                                 display: flex
@@ -355,600 +335,70 @@ html
                                                 object-fit: cover
                                                 display: block
                                                 border-radius: 8px
-                        .module-content-display-grid
-                            display: flex
-                            flex-wrap: wrap
-                            justify-content: center
-                            gap: 20px
-                            margin: 0 auto
-                            .module-block-animated-entry
-                                opacity: 0
-                                transform: translate(0, 0)
-                                transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1)
-                                margin: 0
-                                padding: 0
-                                width: 40%
-                                height: 100%
-                                .report_li_1_title, .report_li_2_title, .report_li_3_title, .report_li_4_title, .report_li_5_title, .report_li_6_title, .report_li_7_title, .report_li_8_title
-                                    width: 40%
-                                    height: 100%
-                                    margin: 0
-                                    padding: 10px
-                            .report_li_1_title
-                                width: 40%
-                                height: 550px
-                                background-color: #fff
-                                border: 1px solid #e0e0e0
-                                padding: 10px
-                                border-radius: 20px
-                                @extend %display_flex
-                                .report_li_1_title_content
-                                    margin: 0 auto
-                                    padding: 20px
-                                    text-align: center
-                                    .report_li_1_title_h1
-                                        position: relative
-                                        .report_li_1_title_h1_content
-                                            margin: 0 auto
-                                            display: flex
-                                            align-items: center
-                                            padding: 20px
-                                            h1
-                                                font-size: 40px
-                                                font-weight: 900
-                                                margin-right: 10px
-                                                padding-right: 20px
-                                                border-right: 3px solid rgb(93, 183, 254)
-                                            span
-                                                font-size: 16px
-                                                margin: 0 auto
-                                                text-align: left
-                                                display: flex
-                                                align-items: center
-                                                flex-wrap: wrap
-                                    svg
-                                        width: 50%
-                                        animation: report_li_title_svg 10s infinite
-                                        margin: 30px 0
-                                    .report_color
-                                        position: relative
-                                        display: flex
-                                        width: 80%
-                                        margin: 0 auto
-                                        padding-top: 20px
-                                        justify-content: space-between
-                                        .report_color_content
-                                            display: flex
-                                            align-items: center
-                                            .box_1
-                                                width: 10px
-                                                height: 10px
-                                                display: inline-block
-                                                background: rgb(255, 61, 106)
-                                                margin-right: 10px
-                                            .box_2
-                                                width: 10px
-                                                height: 10px
-                                                display: inline-block
-                                                background: rgb(245, 159, 33)
-                                                margin-right: 10px
-                                            .box_3
-                                                width: 10px
-                                                height: 10px
-                                                display: inline-block
-                                                background: rgb(242, 222, 81)
-                                                margin-right: 10px
-                                            .box_4
-                                                width: 10px
-                                                height: 10px
-                                                display: inline-block
-                                                background: rgb(93, 183, 254)
-                                                margin-right: 10px
-                                            .box_5
-                                                width: 10px
-                                                height: 10px
-                                                display: inline-block
-                                                background: rgb(166, 56, 230)
-                                                margin-right: 10px
-                                            p
-                                        span
-                                            font-weight: 900
-                                            position: relative
-                            .report_li_6_title
-                                width: 40%
-                                height: 550px
-                                background-color: #fff
-                                border: 1px solid #e0e0e0
-                                padding: 10px
-                                border-radius: 20px
-                                @extend %display_flex
-                                .report_li_6_title_content
-                                    margin: 0 auto
-                                    padding: 20px
-                                    text-align: center
-                                    .report_li_6_title_h1
-                                        position: relative
-                                        .report_li_6_title_h1_content
-                                            margin: 0 auto
-                                            display: flex
-                                            align-items: center
-                                            padding: 20px
-                                            h1
-                                                font-size: 40px
-                                                font-weight: 900
-                                                margin-right: 10px
-                                                padding-right: 20px
-                                                border-right: 3px solid rgb(255, 61, 106)
-                                            span
-                                                font-size: 16px
-                                                margin: 0 auto
-                                                text-align: left
-                                                margin-left: 10px
-                                                display: flex
-                                                align-items: center
-                                                flex-wrap: wrap
-                                    .report_li_6_text
-                                        position: relative
-                                        .report_li_6_text_content
-                                            margin: 0 auto
-                                            @extend %display_flex
-                                            .report_li_6_text_carousel
-                                                position: relative
-                                                width: 80%
-                                                max-width: 400px
-                                                aspect-ratio: 1 / 1
-                                                display: flex
-                                                justify-content: center
-                                                align-items: center
-                                                .slide
-                                                    position: absolute
-                                                    width: 100%
-                                                    height: 100%
-                                                    display: flex
-                                                    justify-content: center
-                                                    align-items: center
-                                                    opacity: 0
-                                                    transition: opacity 1s ease-in-out
-                                                    padding: 20px
-                                                    text-align: center
-                                                    border-radius: 50%
-                                                .active
-                                                    opacity: 1
-                                            .controls
-                                                position: absolute
-                                                bottom: 10px
-                                                width: 100%
-                                                text-align: center
-                                                span
-                                                    display: inline-block
-                                                    width: 12px
-                                                    height: 12px
-                                                    margin: 0 5px
-                                                    background: rgba(0, 0, 0, 0.4)
-                                                    border-radius: 50%
-                                                    cursor: pointer
-                                                .active
-                                                    background: #333
-                            .report_li_2_title
-                                width: 40%
-                                height: 550px
-                                background-color: #fff
-                                border: 1px solid #e0e0e0
-                                padding: 10px
-                                border-radius: 20px
-                                @extend %display_flex
-                                .report_li_2_title_content
-                                    margin: 0 auto
-                                    padding: 20px
-                                    text-align: center
-                                    .report_li_2_title_h1
-                                        position: relative
-                                        .report_li_2_title_h1_content
-                                            margin: 0 auto
-                                            padding: 20px
-                                            text-align: center
-                                            h1
-                                                font-size: 40px
-                                                font-weight: 900
-                                                margin: 14px 0
-                                            span
-                                                font-size: 16px
-                                                margin: 0 auto
-                                                text-align: left
-                                                flex-wrap: wrap
-                                    .operator
-                                        position: relative
-                                        .operator_content
-                                            margin: 0 auto
-                                            display: flex
-                                            flex-wrap: wrap
-                                            justify-items: center
-                                            .operator_text
-                                                width: 100%
-                                                position: relative
-                                                display: flex
-                                                align-items: center
-                                                .operator_content
-                                                    margin: 0 auto
-                                                    p
-                                                        font-size: 14px
-                                                        font-weight: 300
-                                                        text-align: lefts
-                                            .operator_img
-                                                position: relative
-                                                width: 100%
-                                                .operator_img_content
-                                                    margin: 0 auto
-                                                    video
-                                                        width: 160px
-                                                        height: 160px
-                                                        object-fit: cover
-                                                        border-radius: 10px
-                            .report_li_4_title
-                                width: 40%
-                                height: 550px
-                                background-color: #fff
-                                border: 1px solid #e0e0e0
-                                padding: 10px
-                                border-radius: 20px
-                                @extend %display_flex
-                                .report_li_4_title_content
-                                    margin: 0 auto
-                                    padding: 20px
-                                    text-align: center
-                                    .report_li_4_title_h1
-                                        position: relative
-                                        .report_li_4_title_h1_content
-                                            margin: 0 auto
-                                            display: flex
-                                            align-items: center
-                                            justify-content: center
-                                            padding: 20px
-                                            h1
-                                                font-size: 40px
-                                                font-weight: 900
-                                                margin-right: 10px
-                                                padding-right: 20px
-                                                border-right: 3px solid rgb(255, 61, 106)
-                                            span
-                                                font-size: 16px
-                                                margin-left: 10px
-                                                display: flex
-                                                flex-wrap: wrap
-                                    .report_li_4_img
-                                        display: flex
-                                        justify-content: center
-                                        max-width: 700px
-                                        margin: auto
-                                        gap: 20px
-                                        .image-row
-                                            display: flex
-                                            width: 420px
-                                            height: 140px
-                                            gap: 6px
-                                            overflow: hidden
-                                            .img-box
-                                                width: 100%
-                                                overflow: hidden
-                                                transition: flex 1s ease-in-out
-                                                border-radius: 6px
-                                                cursor: pointer
-                                                img
-                                                    width: 100%
-                                                    height: 100%
-                                                    object-fit: cover
-                                                    display: block
-                                                    opacity: 0.3
-                                                    transition: all 0.7s ease-in-out
-                                                    border-radius: 6px
-                                                    transform: scale(0.9)
-                                            .active
-                                                img
-                                                    opacity: 1
-                                                    transform: scale(1)
-                            .report_li_7_title
-                                width: 40%
-                                height: 550px
-                                background-color: #fff
-                                border: 1px solid #e0e0e0
-                                padding: 10px
-                                border-radius: 20px
-                                @extend %display_flex
-                                .report_li_7_title_content
-                                    margin: 0 auto
-                                    padding: 10px
-                                    height: 230px
-                                    text-align: center
+                        .data_advantage
+                            position: relative
+                            padding: 100px 0
+                            .data_advantage_content
+                                margin: 0 auto
+                                ul
                                     display: flex
-                                    align-items: center
-                                    .report_li_7_title_h1
-                                        position: relative
-                                        margin: 0 auto
-                                        padding: 20px
-                                        .report_li_7_title_h1_content
-                                            margin: 0 auto
-                                            display: flex
-                                            justify-content: center
-                                            padding: 20px 0
-                                            h1
-                                                font-size: 40px
-                                                font-weight: 900
-                                                padding-right: 20px
-                                                border-right: 3px solid rgb(20, 230, 145)
-                                            span
-                                                font-size: 16px
-                                                text-align: left
-                                                margin-left: 10px
-                                                display: flex
-                                                align-items: center
-                                        .report_li_7_ul
-                                            position: relative
-                                            .sliderContainer
-                                                max-width: 600px
-                                                overflow: hidden
-                                                .sliderTrack
-                                                    display: flex
-                                                    transition: transform 0.5s ease
-                                                    .slideItem
-                                                        display: flex
-                                                        justify-content: center
-                                                        align-items: center
-                                                        background-color: $main_color
-                                                        border-radius: 50px
-                                                        opacity: 0.3
-                                                        transform: scale(0.7)
-                                                        transition: all 0.5s ease
-                                                        img
-                                                            width: 100%
-                                                            height: 100%
-                                                            padding: 6px
-                                                            pointer-events: none
-                                                            user-select: none
-                                                    .active
-                                                        opacity: 1
-                                                        transform: scale(0.8)
-                            .report_li_3_title
-                                width: 40%
-                                height: 550px
-                                background-color: #fff
-                                border: 1px solid #e0e0e0
-                                padding: 10px
-                                border-radius: 20px
-                                @extend %display_flex
-                                .report_li_3_title_content
-                                    margin: 0 auto
-                                    padding: 10px
-                                    text-align: center
-                                    .report_li_3_title_h1
-                                        position: relative
-                                        .report_li_3_title_h1_content
-                                            margin: 0 auto
-                                            display: flex
-                                            align-items: center
-                                            justify-content: center
-                                            padding: 20px
-                                            h1
-                                                font-size: 40px
-                                                font-weight: 900
-                                                padding-right: 20px
-                                                border-right: 3px solid rgb(255, 61, 106)
-                                            span
-                                                font-size: 16px
-                                                text-align: left
-                                                margin-left: 10px
-                                    .icon_grid
-                                        display: flex
-                                        flex-wrap: wrap
-                                        align-content: center
-                                        justify-content: center
-                                        li
-                                            width: 20%
-                                            margin: 4px
-                                            display: flex
-                                            justify-content: center
-                                            align-items: center
-                                            img
-                                                max-width: 100%
-                                                height: auto
-                                                opacity: 0.3
-                                                animation: blink 4s infinite
-                                            &:nth-child(1)
-                                                img
-                                                    animation-delay: 0s
-                                            &:nth-child(2)
-                                                img
-                                                    animation-delay: 1.6s
-                                            &:nth-child(3)
-                                                img
-                                                    animation-delay: 3.2s
-                                            &:nth-child(4)
-                                                img
-                                                    animation-delay: 4.8s
-                                            &:nth-child(5)
-                                                img
-                                                    animation-delay: 0.4s
-                                            &:nth-child(6)
-                                                img
-                                                    animation-delay: 2.0s
-                                            &:nth-child(7)
-                                                img
-                                                    animation-delay: 3.6s
-                                            &:nth-child(8)
-                                                img
-                                                    animation-delay: 5.2s
-                                            &:nth-child(9)
-                                                img
-                                                    animation-delay: 0.8s
-                                            &:nth-child(10)
-                                                img
-                                                    animation-delay: 2.4s
-                                            &:nth-child(11)
-                                                img
-                                                    animation-delay: 4.0s
-                                            &:nth-child(12)
-                                                img
-                                                    animation-delay: 5.6s
-                                            &:nth-child(13)
-                                                img
-                                                    animation-delay: 1.2s
-                                            &:nth-child(14)
-                                                img
-                                                    animation-delay: 2.8s
-                                            &:nth-child(15)
-                                                img
-                                                    animation-delay: 4.4s
-                                            &:nth-child(16)
-                                                img
-                                                    animation-delay: 6.0s
-                                        .icon-grid
-                                            display: gr7d
-                                            grid-template-columns: repeat(auto-fill, minmax(70px, 1fr))
-                                            gap: 16px
-                                            padding: 0
-                                            margin: 0
-                                            lit-style: none
-                            .report_li_5_title
-                                width: 40%
-                                height: 550px
-                                background-color: #fff
-                                border: 1px solid #e0e0e0
-                                padding: 10px
-                                border-radius: 20px
-                                @extend %display_flex
-                                .report_li_5_title_content
-                                    margin: 0 auto
-                                    padding: 10px
-                                    text-align: center
-                                    .report_li_5_title_h1
-                                        position: relative
-                                        .report_li_5_title_h1_content
-                                            margin: 0 auto
-                                            display: flex
-                                            align-items: center
-                                            justify-content: center
-                                            padding: 20px
-                                            h1
-                                                font-size: 40px
-                                                font-weight: 900
-                                                padding-right: 20px
-                                                border-right: 3px solid rgb(245, 159, 33)
-                                            span
-                                                font-size: 16px
-                                                margin-left: 10px
-                                                text-align: left
-                                    .carousel_container
-                                        display: flex
-                                        justify-content: flex-start
-                                        overflow: hidden
-                                        width: 100%
-                                        .carousel-track
-                                            display: flex
-                                            transition: transform 0.6s ease-in-out
-                                            width: 300%
-                                            gap: 0
-                                            padding: 0
-                                            margin: 0
-                                            .carousel-item
-                                                flex: 0 0 33.33%
-                                                width: 33.33%
-                                                margin: 0
-                                                padding: 0
-                                                opacity: 0.2
-                                                transition: all 0.5s ease
-                                                img
-                                                    width: 100%
-                                                    height: 100%
-                                                    object-fit: cover
-                                                    border-radius: 50%
-                                                    border: 2px solid white
-                                                    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15)
-                                                    .active
-                                                        opacity: 1
-                            .report_li_8_title
-                                width: 40%
-                                height: 550px
-                                background-color: #fff
-                                border: 1px solid #e0e0e0
-                                padding: 10px
-                                border-radius: 20px
-                                @extend %display_flex
-                                .report_li_8_title_content
-                                    margin: 0 auto
-                                    padding: 10px
-                                    height: 185px
-                                    display: flex
-                                    align-items: center
+                                    flex-wrap: wrap
                                     justify-content: center
-                                    text-align: center
-                                    .report_li_8_title_h1
-                                        position: relative
-                                        display: flex
-                                        align-items: center
-                                        justify-content: center
-                                        .report_li_8_title_h1_content
-                                            padding: 20px
-                                            text-align: left
-                                            h1
-                                                font-size: 40px
-                                                font-weight: 900
-                                                text-align: left
-                                                width: 100%
-                                                margin: 14px 0
-                                            span
-                                                font-size: 16px
+                                    align-items: center
+                                    gap: 20px
+                                    li
+                                        width: 40%
+                                        height: 200px
+                                        background-color: #fff
+                                        border: 1px solid #dddddd
+                                        border-radius: 16px
+                                        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2)
+                                        overflow: hidden
+                                        transform: translateY(-100px)
+                                        transition: all .4s ease-in-out
+                                        opacity: 0
+                                        @extend %display_flex
+                                        .data_equipment
+                                            position: relative
+                                            .data_equipment_content
+                                                width: 80%
                                                 margin: 0 auto
-                                                text-align: left
-                                                width: 100%
-                                                flex-wrap: wrap
-                                    .report_li_8_img
-                                        position: relative
-                                        .report_li_8_img_content
-                                            margin: 0 auto
-                                            .icon-carousel
-                                                width: 80px
-                                                height: 160px
-                                                overflow: hidden
-                                                position: relative
-                                                .icon-track
-                                                    position: absolute
-                                                    top: 0
-                                                    left: 0
-                                                    width: 100%
-                                                    transition: transform 0.5s ease-in-out
-                                                    .icon-item
-                                                        height: 60px
-                                                        display: flex
-                                                        justify-content: center
-                                                        align-items: center
-                                                        img
-                                                            width: 40px
-                                                            height: 40px
-                            .module-block-animated-entry.module-visible-from-top-left
-                                opacity: 1
-                                transform: translate(0px, -30px)
-                            .module-block-animated-entry.module-visible-from-bottom-right
-                                opacity: 1
-                                transform: translate(0px, 30px)
-@keyframes blink
-    0%, 100%
-        opacity: 0.3
+                                                display: flex
+                                                align-items: center
+                                                justify-content: space-between
+                                                transition: all .4s ease-in-out
+                                                .data_equipment_img
+                                                    width: 30%
+                                                    position: relative
+                                                    padding-right: 20px
+                                                    border-right: 1px solid #000000
+                                                    .data_equipment_img_content
+                                                        margin: 0 auto
+                                                        @extend %display_flex
+                                                        svg
+                                                            width: 80%
+                                                .data_equipment_text
+                                                    width: 70%
+                                                    position: relative
+                                                    padding-left: 20px
+                                                    .data_equipment_text_content
+                                                        h1
+                                                            font-size: 40px
+                                                            font-weight: 900
+                                                            color: $main_color
+                                                        span
+                                                            font-size: 16px
+                                                            font-weight: 700
+                                        &:hover
+                                            .data_equipment
+                                                .data_equipment_content
+                                                    animation: equipment 1s ease-in-out
+                                                    .data_equipment_img
+                                                    .data_equipment_text
+                                    .animate
+                                        opacity: 1
+                                        transform: translateY(0)
 
-    50%
-        opacity: 1
-
-@keyframes report_li_title_svg
-    0%
-        transform: rotate(0deg)
-    100%
-        transform: rotate(360deg)
-@keyframes fadeIn
-    0%
-        opacity: 0
-        transform: translateY(10px)
-    100%
-        opacity: 1
-        transform: translateY(0)
-@media screen and (max-width: 1100px)
     .management
         overflow: hidden
         .management_content
@@ -960,7 +410,6 @@ html
                     margin: 0 auto
                     .data_report
                         .data_report_content
-                            .data_report_ul
                             .data_carousel
                                 margin: 60px 0
                                 height: 480px
@@ -972,32 +421,27 @@ html
                                             .carousel-slide-op8
                                                 width: 80%
                                                 left: 10%
-                            .module-content-display-grid
-                                width: 100%
-                                display: flex
-                                flex-wrap: wrap
-                                justify-content: center
-                                align-items: center
-                                .module-block-animated-entry
-                                    width: 45%
-                                    margin: 6px 0
-                                .report_li_1_title
-                                .report_li_2_title
-                                .report_li_3_title
-                                    .report_li_3_title_content
-                                        .report_li_3_title_h1
-                                .report_li_4_title
-                                    .report_li_4_title_content
-                                        width: 100%
-                                .report_li_5_title
-                                .report_li_6_title
-                                .report_li_7_title
-                                .report_li_8_title
-                                .module-block-animated-entry.module-visible-from-top-left
-                                    transform: translateY(0)
-                                .module-block-animated-entry.module-visible-from-bottom-right
-                                    transform: translateY(0)
-@media screen and (max-width: 790px)
+@keyframes equipment
+    0%
+        transform: translateX(400px)
+    100%
+        transform: translateX(0px)
+
+@media screen and (max-width: 1100px)
+    .management
+        .management_content
+            width: 100%
+            .management_title
+            .container
+                .container_content
+                    .data_report
+                        .data_report_content
+                            .data_carousel
+                                .data_carousel_content
+                                    .carousel-shell-yz9
+                                        .carousel-stage-xa3
+                                            .carousel-slide-op8
+@media screen and (max-width: 900px)
     .management
         .management_content
             .management_title
@@ -1005,40 +449,37 @@ html
                 .container_content
                     .data_report
                         .data_report_content
-                            .data_report_ul
                             .data_carousel
                                 .data_carousel_content
                                     .carousel-shell-yz9
                                         .carousel-stage-xa3
                                             .carousel-slide-op8
-                            .module-content-display-grid
-                                .module-block-animated-entry
-                                    width: 70%                                    
-@media screen and (max-width: 160px)
-    .management
-        .management_content
-            .management_title
-            .container
-                .container_content
-                    .data_report
-                        .data_report_content
-                            .data_report_ul
-                            .data_carousel
-                                .data_carousel_content
-                                    .carousel-shell-yz9
-                                        .carousel-stage-xa3
-                                            .carousel-slide-op8
-                            .module-content-display-grid
-                                .module-block-animated-entry
-                                .report_li_1_title
-                                .report_li_2_title
-                                .report_li_3_title
-                                    .report_li_3_title_content
-                                        .report_li_3_title_h1
-                                        .icon_grid
-                                            li
-                                                img
-                                                    width: 16%    
+                            .data_advantage
+                                padding: 40px 0
+                                .data_advantage_content
+                                    ul
+                                        li
+                                            height: 260px
+                                            width: 80%
+                                            .data_equipment
+                                                .data_equipment_content
+                                                    display: block
+                                                    .data_equipment_img
+                                                        width: 100%
+                                                        padding-right: 0
+                                                        border-right: 0
+                                                        padding-bottom: 10px
+                                                        .data_equipment_img_content
+                                                            svg
+                                                                width: 40%
+                                                    .data_equipment_text
+                                                        width: 100%
+                                                        padding-left: 0
+                                                        padding-top: 10px
+                                                        .data_equipment_text_content
+                                                            text-align: center
+                                                            h1
+                                                                margin-bottom: 10px
 // ------------------------------------------------------------------------------------------
 
 // 動態效果
@@ -1060,7 +501,13 @@ html
                 flex-wrap: wrap
                 p
                     color: #fff
-                    font-size: 22px
+                    font-size: 16px
+                    padding: 10px
+                    transition: all .6s ease-in-out
+                &:hover
+                    p
+                        font-size: 24px
+                        line-height: 1.5
     .welcome_to_antplay_img
         position: absolute
         width: 100%
