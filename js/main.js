@@ -258,6 +258,7 @@ const radius = (slideWidth / 2) / Math.tan(Math.PI / slideCount);
 
 let currentRotationIndex = 0;
 let autoRotateTimer = null;
+let isPlaying = false;  // 添加播放状态变量
 
 function createSlides() {
   carouselStage.innerHTML = '';
@@ -267,37 +268,13 @@ function createSlides() {
     slide.innerHTML = `<img src="${src}" alt="slide-${i}">`;
     const angle = i * angleBetweenSlides;
     slide.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
-    
-    // 添加點擊事件
-    slide.addEventListener('click', () => {
-      // 停止當前旋轉
-      clearInterval(autoRotateTimer);
-      autoRotateTimer = null;
-      
-      // 計算需要旋轉到目標位置的角度
-      const targetIndex = i;
-      const currentAngle = currentRotationIndex * angleBetweenSlides;
-      const targetAngle = targetIndex * angleBetweenSlides;
-      
-      // 設置旋轉動畫
-      carouselStage.style.transition = 'transform 0.5s ease';
-      carouselStage.style.transform = `rotateY(${targetAngle}deg)`;
-      
-      // 更新當前索引
-      currentRotationIndex = targetIndex;
-      
-      // 3秒後重新開始自動旋轉
-      setTimeout(() => {
-        startAutoRotate();
-      }, 3000);
-    });
-    
     carouselStage.appendChild(slide);
   });
 }
 
 function rotateCarousel() {
   const rotateDeg = currentRotationIndex * angleBetweenSlides;
+  carouselStage.style.transition = 'transform 0.5s ease';
   carouselStage.style.transform = `rotateY(${rotateDeg}deg)`;
 }
 
