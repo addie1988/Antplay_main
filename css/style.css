@@ -545,6 +545,11 @@ html {
 }
 
 @media screen and (max-width: 1100px) {
+  .management {
+    -webkit-overflow: hidden;
+    overflow: hidden;
+    overflow-x: hidden;
+  }
   .management .management_content {
     width: 100%;
   }
