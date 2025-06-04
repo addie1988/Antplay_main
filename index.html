@@ -1017,7 +1017,7 @@
 
     <script src="js/main.js"></script>
     <script>
-        // 翻譯
+        // 翻譯文本
         const translations = {
             "en": {
                 "home": "Home",
@@ -1231,51 +1231,51 @@
 
         let currentLang = 'en';
 
-        function toggleDropdown(event) {
-            event.preventDefault();
-            const dropdown = document.getElementById('dropdownMenu');
-            dropdown.classList.toggle('show');
+function toggleDropdown(event) {
+    event.preventDefault();
+    const dropdown = document.getElementById('dropdownMenu');
+    dropdown.classList.toggle('show');
+}
+
+function changeLanguage(lang) {
+    currentLang = lang;
+    const elements = document.querySelectorAll("[data-i18n]");
+    elements.forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[lang] && translations[lang][key]) {
+            // 检查元素是否是输入框
+            if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                el.value = translations[lang][key];
+            } else {
+                el.textContent = translations[lang][key];
+            }
         }
+    });
 
-        function changeLanguage(lang) {
-            currentLang = lang;
-            const elements = document.querySelectorAll("[data-i18n]");
-            elements.forEach(el => {
-                const key = el.getAttribute("data-i18n");
-                if (translations[lang] && translations[lang][key]) {
-                    // 检查元素是否是输入框
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.value = translations[lang][key];
-                    } else {
-                        el.textContent = translations[lang][key];
-                    }
-                }
-            });
-            
-            // 更新语言图标
-            const languageIcon = document.getElementById('languageIcon');
-            languageIcon.src = `./images/icon_${lang === 'en' ? '1' : lang === 'zh-CN' ? '2' : lang === 'ja' ? '3' : '4'}.svg`;
-            
-            // 关闭下拉菜单
-            const dropdown = document.getElementById('dropdownMenu');
-            dropdown.classList.remove('show');
+    // 更新语言图标
+    const languageIcon = document.getElementById('languageIcon');
+    languageIcon.src = `./images/icon_${lang === 'en' ? '1' : lang === 'zh-CN' ? '2' : lang === 'ja' ? '3' : '4'}.svg`;
 
-            // 更新 HTML lang 属性
-            document.documentElement.lang = lang;
-        }
+    // 关闭下拉菜单
+    const dropdown = document.getElementById('dropdownMenu');
+    dropdown.classList.remove('show');
+Ｆ
+    // 更新 HTML lang 属性
+    document.documentElement.lang = lang;
+}
 
-        // 页面加载完成后初始化翻译
-        document.addEventListener('DOMContentLoaded', function() {
-            // 默认使用简体中文
-            const defaultLang = 'zh-CN';
-            
-            // 更新语言图标
-            const languageIcon = document.getElementById('languageIcon');
-            languageIcon.src = `./images/icon_2.svg`;
-            
-            // 应用翻译
-            changeLanguage(defaultLang);
-        });
+// 页面加载完成后初始化翻译
+document.addEventListener('DOMContentLoaded', function() {
+    // 預設使用簡體中文
+    const defaultLang = 'zh-CN';
+    
+    // 更新語言圖標
+    const languageIcon = document.getElementById('languageIcon');
+    languageIcon.src = `./images/icon_2.svg`;
+    
+    // 應用翻譯
+    changeLanguage(defaultLang);
+});
     </script>
 </body>
 
