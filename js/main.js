@@ -61,7 +61,7 @@ for (let i = 0; i < totalImages; i++) {
   imgBox.className = 'image_container_box';
 
   const img = document.createElement('img');
-  img.src = `./images/dynamic_img/${imageIds[i]}.png`; // 使用本地圖片
+  img.src = `./images/dynamic_img/${imageIds[i]}.jpg`; // 使用本地圖片
   img.alt = `img${i + 1}`;
 
   imgBox.appendChild(img);
