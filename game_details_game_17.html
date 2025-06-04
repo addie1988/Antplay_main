@@ -8,7 +8,7 @@
     <title>Ocean Secret Realm</title>
     <link rel="stylesheet" href="./css/game_details_style.css">
 
-   
+
 </head>
 
 <body>
@@ -28,7 +28,7 @@
                     <div class="hamburger" id="hamburger">☰</div>
                     <div class="menu nav-menu" id="nav-menu">
                         <div class="menu_content">
-                           <ul>
+                            <ul>
                                 <li><a href="./index.html" data-i18n="home">Home</a></li>
                                 <li><a class="scroll-link" href="#introduce" data-i18n="introduce">Introduce</a></li>
                                 <li><a class="scroll-link" href="#connect" data-i18n="connect">Connect</a></li>
@@ -38,7 +38,7 @@
                     <div class="language">
                         <div class="language_content">
                             <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-                                <img id="languageIcon" src="./images/icon_1.svg" alt="English">
+                                <img id="languageIcon" src="./images/icon_2.svg" alt="简体中文">
                             </a>
                             <div id="dropdownMenu" class="dropdown-content">
                                 <span onclick="changeLanguage('en')">
@@ -95,24 +95,36 @@
                             <b></b>
                             <span data-i18n="game_mechanics">Game Mechanics</span>
                             <p data-i18n="game_mechanics_desc_17">
-                                WILD always stays, free game bonus is full! In free games, once the WILD symbol appears, it will stay on the board for the whole process, with more chances to connect, greatly increasing the potential and expectation of winning points in each game!
+                                WILD always stays, free game bonus is full! In free games, once the WILD symbol appears,
+                                it will stay on the board for the whole process, with more chances to connect, greatly
+                                increasing the potential and expectation of winning points in each game!
                             </p>
                             <b></b>
                             <span data-i18n="supported_systems">Supported Systems</span>
                             <ul>
-                                <li><img src="./images/android.svg" alt="android"><span data-i18n="android">Android</span></li>
+                                <li><img src="./images/android.svg" alt="android"><span
+                                        data-i18n="android">Android</span></li>
                                 <li><img src="./images/html5.svg" alt="html5"><span data-i18n="html5">HTML5</span></li>
                                 <li><img src="./images/macos.svg" alt="macos"><span data-i18n="macos">Mac OS</span></li>
                                 <li><img src="./images/ios.svg" alt="ios"><span data-i18n="ios">iOS</span></li>
-                                <li><img src="./images/windows.svg" alt="windows"><span data-i18n="windows">Windows</span></li>
+                                <li><img src="./images/windows.svg" alt="windows"><span
+                                        data-i18n="windows">Windows</span></li>
                             </ul>
                             <b></b>
                             <span data-i18n="supported_languages">Supported Languages</span>
-                              <ul>
-                                <li><img src="./images/icon_1.svg" alt=""><p data-i18n="english">English</p></li>
-                                <li><img src="./images/icon_2.svg" alt=""><p data-i18n="simplified_chinese">Simplified Chinese</p></li>
-                                <li><img src="./images/icon_3.svg" alt=""><p data-i18n="japanese">Japan</p></li>
-                                <li><img src="./images/icon_4.svg" alt=""><p data-i18n="portuguese">Portuguese</p></li>
+                            <ul>
+                                <li><img src="./images/icon_1.svg" alt="">
+                                    <p data-i18n="english">English</p>
+                                </li>
+                                <li><img src="./images/icon_2.svg" alt="">
+                                    <p data-i18n="simplified_chinese">Simplified Chinese</p>
+                                </li>
+                                <li><img src="./images/icon_3.svg" alt="">
+                                    <p data-i18n="japanese">Japan</p>
+                                </li>
+                                <li><img src="./images/icon_4.svg" alt="">
+                                    <p data-i18n="portuguese">Portuguese</p>
+                                </li>
                             </ul>
                             <div class="try_it">
                                 <div class="try_it_content">
@@ -165,7 +177,8 @@
                                             <div class="contact_details_text_content">
                                                 <span data-i18n="contact">Contact Us</span>
                                                 <p data-i18n="registration">Registration number: 160629 (0)</p>
-                                                <p data-i18n="address">Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                                                <p data-i18n="address">Address: Zuikertuintjeweg Z/N (Zuikertuin Tower),
+                                                    Curaçao.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -219,8 +232,8 @@
 
 
 
-  <script src="./js/game_details_style.js"></script>
- <script>
+    <script src="./js/game_details_style.js"></script>
+    <script>
         const translations = {
             "en": {
                 "home": "Home",
@@ -347,7 +360,6 @@
                 "game_mechanics_desc_17": "WILD sempre permanece, bônus de jogo gratuito está completo! Nos jogos gratuitos, assim que o símbolo WILD aparecer, ele permanecerá no tabuleiro durante todo o processo, com mais chances de conexão, aumentando muito o potencial e a expectativa de ganhar pontos em cada jogo!"
             }
         };
-
         let currentLang = 'en';
 
         function toggleDropdown(event) {
@@ -362,6 +374,7 @@
             elements.forEach(el => {
                 const key = el.getAttribute("data-i18n");
                 if (translations[lang] && translations[lang][key]) {
+                    // 检查元素是否是输入框
                     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
                         el.value = translations[lang][key];
                     } else {
@@ -369,22 +382,29 @@
                     }
                 }
             });
-            
+
+            // 更新语言图标
             const languageIcon = document.getElementById('languageIcon');
             languageIcon.src = `./images/icon_${lang === 'en' ? '1' : lang === 'zh-CN' ? '2' : lang === 'ja' ? '3' : '4'}.svg`;
-            
+
+            // 关闭下拉菜单
             const dropdown = document.getElementById('dropdownMenu');
             dropdown.classList.remove('show');
 
+            // 更新 HTML lang 属性
             document.documentElement.lang = lang;
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const browserLang = navigator.language || navigator.userLanguage;
-            const defaultLang = browserLang.startsWith('zh') ? 'zh-CN' : 
-                              browserLang.startsWith('ja') ? 'ja' : 
-                              browserLang.startsWith('pt') ? 'pt' : 'en';
-            
+        // 页面加载完成后初始化翻译
+        document.addEventListener('DOMContentLoaded', function () {
+            // 預設使用簡體中文
+            const defaultLang = 'zh-CN';
+
+            // 更新語言圖標
+            const languageIcon = document.getElementById('languageIcon');
+            languageIcon.src = `./images/icon_2.svg`;
+
+            // 應用翻譯
             changeLanguage(defaultLang);
         });
     </script>
