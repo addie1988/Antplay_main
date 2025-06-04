@@ -38,7 +38,7 @@
                     <div class="language">
                         <div class="language_content">
                             <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-                                <img id="languageIcon" src="./images/icon_2.svg" alt="简体中文">
+                                <img id="languageIcon" src="./images/icon_1.svg" alt="English">
                             </a>
                             <div id="dropdownMenu" class="dropdown-content">
                                 <span onclick="changeLanguage('en')">
@@ -1229,7 +1229,7 @@
             }
         };
 
-        let currentLang = 'zh-CN'; // ✅ 預設語言為英文
+        let currentLang = 'en'; // ✅ 預設語言為英文
 
         function toggleDropdown(event) {
             event.preventDefault();
@@ -1262,10 +1262,10 @@
             // ✅ 更新語言圖示
             const languageIcon = document.getElementById('languageIcon');
             const langIconMap = {
-                'zh-CN': '1',
-                'en': '2',
+                'en': '1',
+                'zh-CN': '2',
                 'ja': '3',
-                'pt': '4'
+                'ko': '4'
             };
             languageIcon.src = `./images/icon_${langIconMap[lang] || '1'}.svg`;
 
