@@ -8,153 +8,11 @@
     <title>Chameleon Frenzy</title>
     <link rel="stylesheet" href="./css/game_details_style.css">
 
- <!-- Google 翻譯功能 -->
-    <script type="text/javascript">
-        var googTrans = null;
-
-        function googleTranslateElementInit() {
-            googTrans = new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'zh-CN,ja,pt',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-
-            // 檢查並應用已保存的語言設置
-            const cookies = document.cookie.split(';');
-            let currentLang = 'en';
-
-            for (let cookie of cookies) {
-                if (cookie.includes('googtrans')) {
-                    currentLang = cookie.split('/')[2];
-                    break;
-                }
-            }
-
-            // 如果當前語言不是英文，則應用翻譯
-            if (currentLang !== 'en') {
-                setTimeout(function () {
-                    var select = document.querySelector('.goog-te-combo');
-                    if (select) {
-                        select.value = currentLang;
-                        select.dispatchEvent(new Event('change'));
-                    }
-                }, 1000);
-            }
-        }
-
-        function changeLanguage(langCode) {
-            // 關閉下拉選單
-            document.getElementById('dropdownMenu').classList.remove('show');
-
-            // 設置 cookie，添加過期時間和安全性設置
-            const expiryDate = new Date();
-            expiryDate.setFullYear(expiryDate.getFullYear() + 1);
-            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
-            document.cookie = `googtrans=/en/${langCode}; path=/; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
-
-            // 更新語言圖標
-            const languageIcon = document.getElementById('languageIcon');
-            if (languageIcon) {
-                switch (langCode) {
-                    case 'en':
-                        languageIcon.src = './images/icon_1.svg';
-                        languageIcon.alt = 'English';
-                        break;
-                    case 'zh-CN':
-                        languageIcon.src = './images/icon_2.svg';
-                        languageIcon.alt = '简体中文';
-                        break;
-                    case 'ja':
-                        languageIcon.src = './images/icon_3.svg';
-                        languageIcon.alt = '日本語';
-                        break;
-                    case 'pt':
-                        languageIcon.src = './images/icon_4.svg';
-                        languageIcon.alt = 'Português';
-                        break;
-                }
-            }
-
-            // 重新加載翻譯
-            location.reload();
-        }
-
-        // 在頁面加載時檢查並應用已保存的語言設置
-        window.addEventListener('load', function () {
-            // 檢查 URL 參數
-            const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang');
-            if (lang) {
-                changeLanguage(lang);
-            }
-        });
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
-    <style>
-        /* 隱藏 Google Translate 元素 */
-        .goog-te-banner-frame,
-        .goog-te-gadget-simple,
-        .goog-te-menu-frame,
-        .goog-te-menu-value,
-        .goog-te-gadget span,
-        .goog-te-balloon-frame,
-        .goog-tooltip,
-        .goog-tooltip:hover,
-        .goog-text-highlight,
-        .VIpgJd-ZVi9od-ORHb,
-        .VIpgJd-ZVi9od-ORHb-OEVmcd,
-        .VIpgJd-ZVi9od-SmfZ-OEVmcd,
-        .VIpgJd-ZVi9od-vH1Gmf,
-        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
-            display: none !important;
-        }
-        
-        body {
-            top: 0 !important;
-            position: static !important;
-        }
-        
-        .translated-ltr {
-            margin-top: 0 !important;
-        }
-        
-        #google_translate_element {
-            position: absolute !important;
-            top: -1000px !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            width: 0 !important;
-            height: 0 !important;
-        }
-
-        .VIpgJd-ZVi9od-ORHb {
-            background: transparent !important;
-            box-shadow: none !important;
-            position: absolute !important;
-            top: -9999px !important;
-            overflow: hidden !important;
-            opacity: 0 !important;
-        }
-
-        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
-            display: none !important;
-        }
-
-        .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
-            display: none !important;
-        }
-
-        .goog-te-gadget {
-            height: 0 !important;
-            overflow: hidden !important;
-        }
-    </style>
+ 
 </head>
 
 <body>
-    <div id="google_translate_element"></div>
+    
 
 
     <div class="spacer" id="spacer"></div>
@@ -172,35 +30,35 @@
                     <div class="hamburger" id="hamburger">☰</div>
                     <div class="menu nav-menu" id="nav-menu">
                         <div class="menu_content">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a class="scroll-link" href="#introduce">Introduce</a></li>
-                                <li><a class="scroll-link" href="#connect">Connect</a></li>
+                           <ul>
+                                <li><a href="./index.html" data-i18n="home">Home</a></li>
+                                <li><a class="scroll-link" href="#introduce" data-i18n="introduce">Introduce</a></li>
+                                <li><a class="scroll-link" href="#connect" data-i18n="connect">Connect</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="language">
+                   <div class="language">
                         <div class="language_content">
                             <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-                                <img src="./images/icon_1.svg" alt="icon_1">
+                                <img id="languageIcon" src="./images/icon_1.svg" alt="English">
                             </a>
-                          <div id="dropdownMenu" class="dropdown-content">
-                                <a href="#" onclick="changeLanguage('en'); return false;"><img src="./images/icon_1.svg"
-                                        alt="icon_1">
+                            <div id="dropdownMenu" class="dropdown-content">
+                                <span onclick="changeLanguage('en')">
+                                    <img src="./images/icon_1.svg" alt="English">
                                     <p>English</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('zh-CN'); return false;"><img
-                                        src="./images/icon_2.svg" alt="icon_2">
+                                </span>
+                                <span onclick="changeLanguage('zh-CN')">
+                                    <img src="./images/icon_2.svg" alt="简体中文">
                                     <p>简体中文</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('ja'); return false;"><img src="./images/icon_3.svg"
-                                        alt="icon_3">
-                                    <p>日本</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('pt'); return false;"><img src="./images/icon_4.svg"
-                                        alt="icon_4">
+                                </span>
+                                <span onclick="changeLanguage('ja')">
+                                    <img src="./images/icon_3.svg" alt="日本語">
+                                    <p>日本語</p>
+                                </span>
+                                <span onclick="changeLanguage('pt')">
+                                    <img src="./images/icon_4.svg" alt="Português">
                                     <p>Português</p>
-                                </a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -231,39 +89,39 @@
                     </div>
                     <div class="game_details_text">
                         <div class="game_details_text_content">
-                            <span>Game Title</span>
-                            <p>Chameleon Frenzy</p>
+                            <span data-i18n="game_title">Game Title</span>
+                            <p data-i18n="chameleon_frenzy">Chameleon Frenzy</p>
                             <b></b>
-                            <span>Game Type</span>
-                            <p>Slot Machine</p>
+                            <span data-i18n="game_type">Game Type</span>
+                            <p data-i18n="slot_machine">Slot Machine</p>
                             <b></b>
-                            <span>Game Mechanics</span>
-                            <p>
+                            <span data-i18n="game_mechanics">Game Mechanics</span>
+                            <p data-i18n="game_mechanics_desc_8">
                                 Challenge free games and start your lucky journey! During the free game, every WILD on the screen is your key to winning! The more WILDS you collect, the more chances you have to win more free spins, and upgrade ordinary WILDs to multiplier WILDs, which doubles your bonuses and doubles your luck!
                             </p>
                             <b></b>
-                            <span>Supported Systems</span>
+                            <span data-i18n="supported_systems">Supported Systems</span>
                             <ul>
-                                <li><img src="./images/android.svg" alt="android">Android</li>
-                                <li><img src="./images/html5.svg" alt="html5">HTML5</li>
-                                <li><img src="./images/macos.svg" alt="macos">Mac OS</li>
-                                <li><img src="./images/ios.svg" alt="ios">iOS</li>
-                                <li><img src="./images/windows.svg" alt="windows">Windows</li>
+                                <li><img src="./images/android.svg" alt="android"><span data-i18n="android">Android</span></li>
+                                <li><img src="./images/html5.svg" alt="html5"><span data-i18n="html5">HTML5</span></li>
+                                <li><img src="./images/macos.svg" alt="macos"><span data-i18n="macos">Mac OS</span></li>
+                                <li><img src="./images/ios.svg" alt="ios"><span data-i18n="ios">iOS</span></li>
+                                <li><img src="./images/windows.svg" alt="windows"><span data-i18n="windows">Windows</span></li>
                             </ul>
                             <b></b>
-                            <span>Supported Languages</span>
-                              <ul>
-                                <li><img src="./images/icon_1.svg" alt=""><p>English</p></li>
-                                <li><img src="./images/icon_2.svg" alt=""><p>Simplified Chinese</p></li>
-                                <li><img src="./images/icon_3.svg" alt=""><p>Japan</p></li>
-                                <li><img src="./images/icon_4.svg" alt=""><p>Portuguese</p></li>
+                            <span data-i18n="supported_languages">Supported Languages</span>
+                            <ul>
+                                <li><img src="./images/icon_1.svg" alt=""><p data-i18n="english">English</p></li>
+                                <li><img src="./images/icon_2.svg" alt=""><p data-i18n="simplified_chinese">Simplified Chinese</p></li>
+                                <li><img src="./images/icon_3.svg" alt=""><p data-i18n="japanese">Japan</p></li>
+                                <li><img src="./images/icon_4.svg" alt=""><p data-i18n="portuguese">Portuguese</p></li>
                             </ul>
                             <div class="try_it">
                                 <div class="try_it_content">
-                                    <a href="https://antplay.com/web/#/game-play">Play Now</a>
+                                    <a href="game-launcher.html?game=scf&lang=en" data-i18n="play_now">Play Now</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> 
                     </div>
                 </div>
             </div>
@@ -288,8 +146,8 @@
                                         </div>
                                         <div class="contact_details_text">
                                             <div class="contact_details_text_content">
-                                                <span>Privacy</span>
-                                                <p>Protect user data, browse privacy</p>
+                                                <span data-i18n="privacy">Privacy</span>
+                                                <p data-i18n="privacy_desc">Protect user data, browse privacy</p>
                                             </div>
                                         </div>
                                     </div>
@@ -307,9 +165,9 @@
                                         </div>
                                         <div class="contact_details_text">
                                             <div class="contact_details_text_content">
-                                                <span>Contact Us</span>
-                                                <p>Registration number: 160629 (0)</p>
-                                                <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                                                <span data-i18n="contact">Contact Us</span>
+                                                <p data-i18n="registration">Registration number: 160629 (0)</p>
+                                                <p data-i18n="address">Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -321,7 +179,7 @@
             </div>
             <div class="copyright">
                 <div class="copyright_content">
-                    <p>COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
+                    <p data-i18n="copyright">COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
                 </div>
             </div>
         </div>
@@ -363,7 +221,168 @@
 
 
 
-    <script src="./js/game_details_style.js"></script>
+  <script src="./js/game_details_style.js"></script>
+ <script>
+        const translations = {
+            "en": {
+                "home": "Home",
+                "introduce": "Introduce",
+                "connect": "Connect",
+                "game_title": "Game Title",
+                "chameleon_frenzy": "Chameleon Frenzy",
+                "game_type": "Game Type",
+                "slot_machine": "Slot Machine",
+                "game_mechanics": "Game Mechanics",
+                "game_mechanics_desc_8": "Challenge free games and start your lucky journey! During the free game, every WILD on the screen is your key to winning! The more WILDS you collect, the more chances you have to win more free spins, and upgrade ordinary WILDs to multiplier WILDs, which doubles your bonuses and doubles your luck!",
+                "supported_systems": "Supported Systems",
+                "android": "Android",
+                "html5": "HTML5",
+                "macos": "Mac OS",
+                "ios": "iOS",
+                "windows": "Windows",
+                "supported_languages": "Supported Languages",
+                "english": "English",
+                "simplified_chinese": "Simplified Chinese",
+                "japanese": "Japan",
+                "portuguese": "Portuguese",
+                "play_now": "Play Now",
+                "privacy": "Privacy",
+                "privacy_desc": "Protect user data, browse privacy",
+                "contact": "Contact Us",
+                "registration": "Registration number: 160629 (0)",
+                "address": "Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED"
+            },
+            "zh-CN": {
+                "home": "首页",
+                "introduce": "介绍",
+                "connect": "联系我们",
+                "game_title": "遊戲標題",
+                "chameleon_frenzy": "變色龍狂歡",
+                "game_type": "遊戲類型",
+                "slot_machine": "老虎機",
+                "game_mechanics": "遊戲機制",
+                "game_mechanics_desc_8": "挑戰免費遊戲，開啟你的幸運之旅！在免費遊戲中，螢幕上的每個WILD都是你獲勝的關鍵！收集的WILD越多，獲得更多免費旋轉的機會就越大，還能將普通WILD升級為倍率WILD，讓你的獎金翻倍，運氣加倍！",
+                "supported_systems": "支持系統",
+                "android": "安卓",
+                "html5": "HTML5",
+                "macos": "Mac OS",
+                "ios": "iOS",
+                "windows": "Windows",
+                "supported_languages": "支持語言",
+                "english": "英文",
+                "simplified_chinese": "簡體中文",
+                "japanese": "日文",
+                "portuguese": "葡萄牙文",
+                "play_now": "立即遊戲",
+                "privacy": "隱私",
+                "privacy_desc": "保護用戶數據，瀏覽隱私",
+                "contact": "聯繫我們",
+                "registration": "註冊號：160629 (0)",
+                "address": "地址：Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "版權所有 © 2020-2025 Antplay® 保留所有權利"
+            },
+            "ja": {
+                "home": "ホーム",
+                "introduce": "紹介",
+                "connect": "お問い合わせ",
+                "game_title": "ゲームタイトル",
+                "chameleon_frenzy": "カメレオンフレンジー",
+                "game_type": "ゲームタイプ",
+                "slot_machine": "スロットマシン",
+                "game_mechanics": "ゲームメカニクス",
+                "game_mechanics_desc_8": "フリーゲームに挑戦し、幸運な旅を始めましょう！フリーゲーム中、画面上のWILDはすべて勝利の鍵です！WILDを集めれば集めるほど、より多くのフリースピンを獲得するチャンスが増え、通常のWILDを倍率WILDにアップグレードすることで、ボーナスが2倍になり、運も2倍に！",
+                "supported_systems": "対応システム",
+                "android": "アンドロイド",
+                "html5": "HTML5",
+                "macos": "Mac OS",
+                "ios": "iOS",
+                "windows": "Windows",
+                "supported_languages": "対応言語",
+                "english": "英語",
+                "simplified_chinese": "簡体字中国語",
+                "japanese": "日本語",
+                "portuguese": "ポルトガル語",
+                "play_now": "今すぐプレイ",
+                "privacy": "プライバシー",
+                "privacy_desc": "ユーザーデータの保護、プライバシーの閲覧",
+                "contact": "お問い合わせ",
+                "registration": "登録番号：160629 (0)",
+                "address": "住所：Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "著作権 © 2020-2025 Antplay® All Rights Reserved"
+            },
+            "pt": {
+                "home": "Início",
+                "introduce": "Introdução",
+                "connect": "Contato",
+                "game_title": "Título do Jogo",
+                "chameleon_frenzy": "Frenesi do Camaleão",
+                "game_type": "Tipo de Jogo",
+                "slot_machine": "Caça-Níquel",
+                "game_mechanics": "Mecânicas do Jogo",
+                "game_mechanics_desc_8": "Desafie os jogos gratuitos e comece sua jornada de sorte! Durante o jogo gratuito, cada WILD na tela é sua chave para a vitória! Quanto mais WILDs você coletar, mais chances terá de ganhar mais giros gratuitos, e atualizar WILDs comuns para WILDs multiplicadores, que dobram seus bônus e dobram sua sorte!",
+                "supported_systems": "Sistemas Suportados",
+                "android": "Android",
+                "html5": "HTML5",
+                "macos": "Mac OS",
+                "ios": "iOS",
+                "windows": "Windows",
+                "supported_languages": "Idiomas Suportados",
+                "english": "Inglês",
+                "simplified_chinese": "Chinês Simplificado",
+                "japanese": "Japonês",
+                "portuguese": "Português",
+                "play_now": "Jogar Agora",
+                "privacy": "Privacidade",
+                "privacy_desc": "Proteja dados do usuário, navegue com privacidade",
+                "contact": "Contato",
+                "registration": "Número de registro: 160629 (0)",
+                "address": "Endereço: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "DIREITOS AUTORAIS © 2020-2025 Antplay® TODOS OS DIREITOS RESERVADOS"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show');
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll("[data-i18n]");
+            elements.forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang] && translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.value = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            const languageIcon = document.getElementById('languageIcon');
+            languageIcon.src = `./images/icon_${lang === 'en' ? '1' : lang === 'zh-CN' ? '2' : lang === 'ja' ? '3' : '4'}.svg`;
+            
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.remove('show');
+
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const defaultLang = browserLang.startsWith('zh') ? 'zh-CN' : 
+                              browserLang.startsWith('ja') ? 'ja' : 
+                              browserLang.startsWith('pt') ? 'pt' : 'en';
+            
+            changeLanguage(defaultLang);
+        });
+    </script>
+
 
 </body>
 

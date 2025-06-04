@@ -8,153 +8,11 @@
     <title>privacy</title>
     <link rel="stylesheet" href="./css/privacy_style.css">
 
-     <!-- Google 翻譯功能 -->
-    <script type="text/javascript">
-        var googTrans = null;
 
-        function googleTranslateElementInit() {
-            googTrans = new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'zh-CN,ja,pt',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-
-            // 檢查並應用已保存的語言設置
-            const cookies = document.cookie.split(';');
-            let currentLang = 'en';
-
-            for (let cookie of cookies) {
-                if (cookie.includes('googtrans')) {
-                    currentLang = cookie.split('/')[2];
-                    break;
-                }
-            }
-
-            // 如果當前語言不是英文，則應用翻譯
-            if (currentLang !== 'en') {
-                setTimeout(function () {
-                    var select = document.querySelector('.goog-te-combo');
-                    if (select) {
-                        select.value = currentLang;
-                        select.dispatchEvent(new Event('change'));
-                    }
-                }, 1000);
-            }
-        }
-
-        function changeLanguage(langCode) {
-            // 關閉下拉選單
-            document.getElementById('dropdownMenu').classList.remove('show');
-
-            // 設置 cookie，添加過期時間和安全性設置
-            const expiryDate = new Date();
-            expiryDate.setFullYear(expiryDate.getFullYear() + 1);
-            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
-            document.cookie = `googtrans=/en/${langCode}; path=/; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
-
-            // 更新語言圖標
-            const languageIcon = document.getElementById('languageIcon');
-            if (languageIcon) {
-                switch (langCode) {
-                    case 'en':
-                        languageIcon.src = './images/icon_1.svg';
-                        languageIcon.alt = 'English';
-                        break;
-                    case 'zh-CN':
-                        languageIcon.src = './images/icon_2.svg';
-                        languageIcon.alt = '简体中文';
-                        break;
-                    case 'ja':
-                        languageIcon.src = './images/icon_3.svg';
-                        languageIcon.alt = '日本語';
-                        break;
-                    case 'pt':
-                        languageIcon.src = './images/icon_4.svg';
-                        languageIcon.alt = 'Português';
-                        break;
-                }
-            }
-
-            // 重新加載翻譯
-            location.reload();
-        }
-
-        // 在頁面加載時檢查並應用已保存的語言設置
-        window.addEventListener('load', function () {
-            // 檢查 URL 參數
-            const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang');
-            if (lang) {
-                changeLanguage(lang);
-            }
-        });
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    
-    <style>
-        /* 隱藏 Google Translate 元素 */
-        .goog-te-banner-frame,
-        .goog-te-gadget-simple,
-        .goog-te-menu-frame,
-        .goog-te-menu-value,
-        .goog-te-gadget span,
-        .goog-te-balloon-frame,
-        .goog-tooltip,
-        .goog-tooltip:hover,
-        .goog-text-highlight,
-        .VIpgJd-ZVi9od-ORHb,
-        .VIpgJd-ZVi9od-ORHb-OEVmcd,
-        .VIpgJd-ZVi9od-SmfZ-OEVmcd,
-        .VIpgJd-ZVi9od-vH1Gmf,
-        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
-            display: none !important;
-        }
-        
-        body {
-            top: 0 !important;
-            position: static !important;
-        }
-        
-        .translated-ltr {
-            margin-top: 0 !important;
-        }
-        
-        #google_translate_element {
-            position: absolute !important;
-            top: -1000px !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            width: 0 !important;
-            height: 0 !important;
-        }
-
-        .VIpgJd-ZVi9od-ORHb {
-            background: transparent !important;
-            box-shadow: none !important;
-            position: absolute !important;
-            top: -9999px !important;
-            overflow: hidden !important;
-            opacity: 0 !important;
-        }
-
-        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
-            display: none !important;
-        }
-
-        .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
-            display: none !important;
-        }
-
-        .goog-te-gadget {
-            height: 0 !important;
-            overflow: hidden !important;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="google_translate_element"></div>
+
 
     <div class="spacer" id="spacer"></div>
     <div class="header" id="header">
@@ -172,34 +30,34 @@
                     <div class="menu nav-menu" id="nav-menu">
                         <div class="menu_content">
                             <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a class="scroll-link" href="#fairness">Fairness</a></li>
-                                <li><a class="scroll-link" href="#connect">Connect</a></li>
+                                <li><a href="./index.html" data-i18n="home">Home</a></li>
+                                <li><a class="scroll-link" href="#fairness" data-i18n="fairness">Fairness</a></li>
+                                <li><a class="scroll-link" href="#connect" data-i18n="connect">Connect</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="language">
                         <div class="language_content">
                             <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-                                <img src="./images/icon_1.svg" alt="icon_1">
+                                <img id="languageIcon" src="./images/icon_1.svg" alt="English">
                             </a>
-                          <div id="dropdownMenu" class="dropdown-content">
-                                <a href="#" onclick="changeLanguage('en'); return false;"><img src="./images/icon_1.svg"
-                                        alt="icon_1">
+                            <div id="dropdownMenu" class="dropdown-content">
+                                <span onclick="changeLanguage('en')">
+                                    <img src="./images/icon_1.svg" alt="English">
                                     <p>English</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('zh-CN'); return false;"><img
-                                        src="./images/icon_2.svg" alt="icon_2">
+                                </span>
+                                <span onclick="changeLanguage('zh-CN')">
+                                    <img src="./images/icon_2.svg" alt="简体中文">
                                     <p>简体中文</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('ja'); return false;"><img src="./images/icon_3.svg"
-                                        alt="icon_3">
-                                    <p>日本</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('pt'); return false;"><img src="./images/icon_4.svg"
-                                        alt="icon_4">
+                                </span>
+                                <span onclick="changeLanguage('ja')">
+                                    <img src="./images/icon_3.svg" alt="日本語">
+                                    <p>日本語</p>
+                                </span>
+                                <span onclick="changeLanguage('pt')">
+                                    <img src="./images/icon_4.svg" alt="Português">
                                     <p>Português</p>
-                                </a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -215,125 +73,105 @@
         <div class="policy_box_content">
             <div class="policy">
                 <div class="policy_content">
-                    <h1>PRIVACY POLICY</h1>
-                    <span>Last Updated: January 1, 2025 (VERSION 3)</span>
-                    <p>Registration number: 160629 (0)</p>
-                    <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                    <h1 data-i18n="privacy_policy">PRIVACY POLICY</h1>
+                    <span data-i18n="last_updated">Last Updated: January 1, 2025 (VERSION 3)</span>
+                    <p data-i18n="registration_number">Registration number: 160629 (0)</p>
+                    <p data-i18n="address">Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
 
-                    <h6>Company Profile</h6>
-                    <p><b>AntPlay N.V., Curaçao</b> (hereinafter referred to as "we," "us," or "our") complies with the
-                        <b>Curaçao Personal Data Protection Act (2013).</b> This Privacy Policy is issued on behalf of
-                        the <b>AntPlay N.V., Curaçao</b> group of companies, which includes the website<a
-                            href="https://antplay.com/.">
-                            <p>https://antplay.com/.</p>
-                        </a>
+                    <h6 data-i18n="company_profile">Company Profile</h6>
+                    <p><b data-i18n="antplay_nv">AntPlay N.V., Curaçao</b> <span data-i18n="company_profile_desc">(hereinafter referred to as "we," "us," or "our") complies with the</span>
+                        <b data-i18n="curacao_act">Curaçao Personal Data Protection Act (2013).</b> <span data-i18n="privacy_policy_desc">This Privacy Policy is issued on behalf of the</span> 
+                        <b data-i18n="antplay_nv">AntPlay N.V., Curaçao</b> <span data-i18n="group_companies">group of companies, which includes the website</span>
+                        <a href="./index.html">https://antplay.com/.</a>
                     </p>
 
-                    <p>The data controller for <a href="https://antplay.com/">https://antplay.com/</a> is <b>AntPlay
-                            N.V., Curaçao.</b> You may contact us with any inquiries.</p>
+                    <p><span data-i18n="data_controller">The data controller for</span> <a href="./index.html">https://antplay.com/</a> 
+                        <span data-i18n="is">is</span> <b data-i18n="antplay_nv">AntPlay N.V., Curaçao.</b> 
+                        <span data-i18n="contact_inquiries">You may contact us with any inquiries.</span>
+                    </p>
 
-                    <h6>Changes to This Privacy Statement</h6>
+                    <h6 data-i18n="changes_privacy">Changes to This Privacy Statement</h6>
 
-                    <p>The latest update to this version is dated <b>January 1, 2025.</b> If you wish to obtain previous
-                        versions, please contact <b>AntPlay N.V., Curaçao.</b></p>
-                    <p>It is important that the personal data we hold about you be accurate and up to date. If your
-                        personal data change at any time during your relationship with us, please inform us.</p>
+                    <p><span data-i18n="latest_update">The latest update to this version is dated</span> 
+                        <b data-i18n="update_date">January 1, 2025.</b> 
+                        <span data-i18n="previous_versions">If you wish to obtain previous versions, please contact</span> 
+                        <b data-i18n="antplay_nv">AntPlay N.V., Curaçao.</b>
+                    </p>
+                    <p data-i18n="data_accuracy">It is important that the personal data we hold about you be accurate and up to date. If your personal data change at any time during your relationship with us, please inform us.</p>
                 </div>
             </div>
             <div class="policy_details">
                 <div class="policy_details_content">
                     <ul>
                         <li>
-                            <h1>1. How We Use Your Personal Data</h1>
-                            <p>We will only use your data for lawful purposes. Most commonly, we will use your personal
-                                data under the following circumstances:</p>
+                            <h1 data-i18n="use_personal_data">1. How We Use Your Personal Data</h1>
+                            <p data-i18n="use_data_desc">We will only use your data for lawful purposes. Most commonly, we will use your personal data under the following circumstances:</p>
                             <ol>
-                                <li>Where it is necessary for the performance of a contract we are about to enter into
-                                    or have already entered into with you.</li>
-                                <li>Where it is necessary for our legitimate interests (or those of a third party), and
-                                    your interests and fundamental rights do not override those interests.</li>
-                                <li>Where it is necessary to comply with legal or regulatory obligations.</li>
+                                <li data-i18n="use_data_1">Where it is necessary for the performance of a contract we are about to enter into or have already entered into with you.</li>
+                                <li data-i18n="use_data_2">Where it is necessary for our legitimate interests (or those of a third party), and your interests and fundamental rights do not override those interests.</li>
+                                <li data-i18n="use_data_3">Where it is necessary to comply with legal or regulatory obligations.</li>
                             </ol>
                         </li>
                         <li>
-                            <h1>2. Data We Collect About You</h1>
-                            <p>Personal data (or personal information) means any information about an individual from
-                                which that person can be identified. We may collect, use, store, and transfer different
-                                kinds of personal data about you, which we have grouped as follows:</p>
+                            <h1 data-i18n="data_collect">2. Data We Collect About You</h1>
+                            <p data-i18n="data_collect_desc">Personal data (or personal information) means any information about an individual from which that person can be identified. We may collect, use, store, and transfer different kinds of personal data about you, which we have grouped as follows:</p>
                             <ol>
-                                <li>Identity Data: Includes first name, maiden name, last name, username or similar
-                                    identifier, date of birth, and gender.</li>
-                                <li>Contact Data: Includes billing address, delivery address, email address, and
-                                    telephone numbers.</li>
-                                <li>Financial Data: Includes bank account details, payment card information, and credit
-                                    ratings.</li>
-                                <li>Technical Data: Includes internet protocol (IP) address, login data, browser type
-                                    and version, etc.</li>
+                                <li data-i18n="identity_data">Identity Data: Includes first name, maiden name, last name, username or similar identifier, date of birth, and gender.</li>
+                                <li data-i18n="contact_data">Contact Data: Includes billing address, delivery address, email address, and telephone numbers.</li>
+                                <li data-i18n="financial_data">Financial Data: Includes bank account details, payment card information, and credit ratings.</li>
+                                <li data-i18n="technical_data">Technical Data: Includes internet protocol (IP) address, login data, browser type and version, etc.</li>
                             </ol>
                         </li>
                         <li>
-                            <h1>3. Purposes for Which We Collect Your Personal Data</h1>
-                            <p>We collect and process your personal data for various purposes, including:</p>
+                            <h1 data-i18n="data_purposes">3. Purposes for Which We Collect Your Personal Data</h1>
+                            <p data-i18n="data_purposes_desc">We collect and process your personal data for various purposes, including:</p>
                             <ol>
-                                <li>To register you as a new customer and provide our gambling services.</li>
-                                <li>To process and monitor your transactions.</li>
-                                <li>To manage our relationship with you.</li>
-                                <li>To enable you to participate in promotions and competitions.</li>
-                                <li>To administer and protect our business and website.</li>
+                                <li data-i18n="purpose_1">To register you as a new customer and provide our gambling services.</li>
+                                <li data-i18n="purpose_2">To process and monitor your transactions.</li>
+                                <li data-i18n="purpose_3">To manage our relationship with you.</li>
+                                <li data-i18n="purpose_4">To enable you to participate in promotions and competitions.</li>
+                                <li data-i18n="purpose_5">To administer and protect our business and website.</li>
                             </ol>
                         </li>
                         <li>
-                            <h1>4. With Whom We May Share Your Data</h1>
-                            <p>Your data may be shared with:</p>
+                            <h1 data-i18n="data_sharing">4. With Whom We May Share Your Data</h1>
+                            <p data-i18n="data_sharing_desc">Your data may be shared with:</p>
                             <ol>
-                                <li>Third parties for fraud detection and control purposes.</li>
-                                <li>Other AntPlay N.V., Curaçao group companies.</li>
-                                <li>Cloud services providers and data centers.</li>
-                                <li>Payment services and banks.</li>
-                                <li>We will take all reasonable steps to ensure your personal data is treated securely
-                                    and in accordance with applicable laws.</li>
+                                <li data-i18n="share_1">Third parties for fraud detection and control purposes.</li>
+                                <li data-i18n="share_2">Other AntPlay N.V., Curaçao group companies.</li>
+                                <li data-i18n="share_3">Cloud services providers and data centers.</li>
+                                <li data-i18n="share_4">Payment services and banks.</li>
+                                <li data-i18n="share_5">We will take all reasonable steps to ensure your personal data is treated securely and in accordance with applicable laws.</li>
                             </ol>
                         </li>
                         <li>
-                            <h1>5. Data Retention Period</h1>
-                            <p>To comply with our legal, financial, and regulatory obligations, we retain your
-                                information for the minimum period required by such obligations.</p>
+                            <h1 data-i18n="data_retention">5. Data Retention Period</h1>
+                            <p data-i18n="data_retention_desc">To comply with our legal, financial, and regulatory obligations, we retain your information for the minimum period required by such obligations.</p>
                             <ol>
-                                <li>The retention period will follow the relevant regulations in Curaçao (at least 10
-                                    years).</li>
-                                <li>If you request the erasure of your data and that request meets our deletion
-                                    criteria, your personal data will be anonymized.</li>
-                                <li>If there is no account activity, and we have retained your data for the minimum
-                                    period required by law and regulation, your account will be closed and
-                                    pseudonymized.</li>
+                                <li data-i18n="retention_1">The retention period will follow the relevant regulations in Curaçao (at least 10 years).</li>
+                                <li data-i18n="retention_2">If you request the erasure of your data and that request meets our deletion criteria, your personal data will be anonymized.</li>
+                                <li data-i18n="retention_3">If there is no account activity, and we have retained your data for the minimum period required by law and regulation, your account will be closed and pseudonymized.</li>
                             </ol>
                         </li>
                         <li>
-                            <h1>6. Your Rights</h1>
-                            <p>Subject to certain limitations, you have the following rights relating to your
-                                information:</p>
+                            <h1 data-i18n="your_rights">6. Your Rights</h1>
+                            <p data-i18n="rights_desc">Subject to certain limitations, you have the following rights relating to your information:</p>
                             <ol>
-                                <li>Right of Access: You have the right to request access to your personal data and
-                                    supplementary information.</li>
-                                <li>Right to Rectification: You have the right to request the correction or completion
-                                    of any inaccurate or incomplete personal data.</li>
-                                <li>Right to Erasure: You have the right to request the erasure of your personal data
-                                    where there is no longer a compelling reason for us to continue processing it.</li>
-                                <li>Right to Data Portability: You have the right to request the personal data you have
-                                    provided to us.</li>
+                                <li data-i18n="right_1">Right of Access: You have the right to request access to your personal data and supplementary information.</li>
+                                <li data-i18n="right_2">Right to Rectification: You have the right to request the correction or completion of any inaccurate or incomplete personal data.</li>
+                                <li data-i18n="right_3">Right to Erasure: You have the right to request the erasure of your personal data where there is no longer a compelling reason for us to continue processing it.</li>
+                                <li data-i18n="right_4">Right to Data Portability: You have the right to request the personal data you have provided to us.</li>
                             </ol>
                         </li>
                         <li>
-                            <h1>7. Cookie Policy</h1>
-                            <p>The AntPlay N.V., Curaçao website uses Cookies and similar technologies to manage login
-                                sessions, provide personalized web pages, and tailor content to your specific needs and
-                                interests.</p>
-                            <p>Types of Cookies we use:</p>
+                            <h1 data-i18n="cookie_policy">7. Cookie Policy</h1>
+                            <p data-i18n="cookie_desc">The AntPlay N.V., Curaçao website uses Cookies and similar technologies to manage login sessions, provide personalized web pages, and tailor content to your specific needs and interests.</p>
+                            <p data-i18n="cookie_types">Types of Cookies we use:</p>
                             <ol>
-                                <li>Necessary Cookies: Essential for the website's basic functions.</li>
-                                <li>Performance Cookies: Help us improve website performance.</li>
-                                <li>Functional Cookies: Remember your preferences and choices.</li>
-                                <li>Targeting Cookies: Used to deliver relevant content and advertisements.</li>
+                                <li data-i18n="cookie_1">Necessary Cookies: Essential for the website's basic functions.</li>
+                                <li data-i18n="cookie_2">Performance Cookies: Help us improve website performance.</li>
+                                <li data-i18n="cookie_3">Functional Cookies: Remember your preferences and choices.</li>
+                                <li data-i18n="cookie_4">Targeting Cookies: Used to deliver relevant content and advertisements.</li>
                             </ol>
                         </li>
                     </ul>
@@ -344,7 +182,7 @@
 
     <!-- ---------------------------------------------------------------------------------------------- -->
 
-  <div class="footer" id="connect">
+    <div class="footer" id="connect">
         <div class="footer_content">
             <div class="footer_text">
                 <div class="footer_text_content">
@@ -360,8 +198,8 @@
                                         </div>
                                         <div class="contact_details_text">
                                             <div class="contact_details_text_content">
-                                                <span>Privacy</span>
-                                                <p>Protect user data, browse privacy</p>
+                                                <span data-i18n="privacy">Privacy</span>
+                                                <p data-i18n="privacy_desc">Protect user data, browse privacy</p>
                                             </div>
                                         </div>
                                     </div>
@@ -379,9 +217,10 @@
                                         </div>
                                         <div class="contact_details_text">
                                             <div class="contact_details_text_content">
-                                                <span>Contact Us</span>
-                                                <p>Registration number: 160629 (0)</p>
-                                                <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                                                <span data-i18n="contact">Contact Us</span>
+                                                <p data-i18n="registration">Registration number: 160629 (0)</p>
+                                                <p data-i18n="address">Address: Zuikertuintjeweg Z/N (Zuikertuin Tower),
+                                                    Curaçao.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -436,6 +275,418 @@
 
 
     <script src="./js/privacy_style.js"></script>
+    <script>
+        const translations = {
+            "en": {
+                "home": "Home",
+                "introduce": "Introduce",
+                "connect": "Connect",
+                "game_title": "Game Title",
+                "golden_god": "Golden God of Wealth",
+                "game_type": "Game Type",
+                "slot_machine": "Slot Machine",
+                "game_mechanics": "Game Mechanics",
+                "game_mechanics_desc_3": "243WAYS winning mechanism, as long as you connect, you will win. Every time you win, you can trigger a continuous explosion. The winnings will not stop, and the rewards will come one after another! After entering the free game, continuous explosions not only bring bonuses, but also upgrade high-multiple symbols after more than five consecutive explosions. Every moment of the rotation is full of surprises and explosive power! Continuous explosions and upgrades are in place once, come and experience the refreshing pleasure of winning points!",
+                "supported_systems": "Supported Systems",
+                "android": "Android",
+                "html5": "HTML5",
+                "macos": "Mac OS",
+                "ios": "iOS",
+                "windows": "Windows",
+                "supported_languages": "Supported Languages",
+                "english": "English",
+                "simplified_chinese": "Simplified Chinese",
+                "japanese": "Japan",
+                "portuguese": "Portuguese",
+                "play_now": "Play Now",
+                "privacy": "Privacy",
+                "privacy_desc": "Protect user data, browse privacy",
+                "contact": "Contact Us",
+                "registration": "Registration number: 160629 (0)",
+                "address": "Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED",
+                "ragnarok": "Ragnarök",
+                "game_mechanics_desc_18": "The continuous elimination frenzy is coming! The game is equipped with a continuous elimination mechanism, which allows you to continue eliminating after connecting. When entering the free game, the multiplier can be stacked each time you eliminate. There is also a full-round WILD design that greatly increases the chance of winning points. It is possible to spin out a whole row of high-prize combinations in one spin!",
+                "privacy_policy": "PRIVACY POLICY",
+                "last_updated": "Last Updated: January 1, 2025 (VERSION 3)",
+                "registration_number": "Registration number: 160629 (0)",
+                "company_profile": "Company Profile",
+                "antplay_nv": "AntPlay N.V., Curaçao",
+                "company_profile_desc": "(hereinafter referred to as \"we,\" \"us,\" or \"our\") complies with the",
+                "curacao_act": "Curaçao Personal Data Protection Act (2013).",
+                "privacy_policy_desc": "This Privacy Policy is issued on behalf of the",
+                "group_companies": "group of companies, which includes the website",
+                "website_url": "https://antplay.com/.",
+                "data_controller": "The data controller for",
+                "is": "is",
+                "contact_inquiries": "You may contact us with any inquiries.",
+                "changes_privacy": "Changes to This Privacy Statement",
+                "latest_update": "The latest update to this version is dated",
+                "update_date": "January 1, 2025.",
+                "previous_versions": "If you wish to obtain previous versions, please contact",
+                "data_accuracy": "It is important that the personal data we hold about you be accurate and up to date. If your personal data change at any time during your relationship with us, please inform us.",
+                "use_personal_data": "1. How We Use Your Personal Data",
+                "use_data_desc": "We will only use your data for lawful purposes. Most commonly, we will use your personal data under the following circumstances:",
+                "use_data_1": "Where it is necessary for the performance of a contract we are about to enter into or have already entered into with you.",
+                "use_data_2": "Where it is necessary for our legitimate interests (or those of a third party), and your interests and fundamental rights do not override those interests.",
+                "use_data_3": "Where it is necessary to comply with legal or regulatory obligations.",
+                "data_collect": "2. Data We Collect About You",
+                "data_collect_desc": "Personal data (or personal information) means any information about an individual from which that person can be identified. We may collect, use, store, and transfer different kinds of personal data about you, which we have grouped as follows:",
+                "identity_data": "Identity Data: Includes first name, maiden name, last name, username or similar identifier, date of birth, and gender.",
+                "contact_data": "Contact Data: Includes billing address, delivery address, email address, and telephone numbers.",
+                "financial_data": "Financial Data: Includes bank account details, payment card information, and credit ratings.",
+                "technical_data": "Technical Data: Includes internet protocol (IP) address, login data, browser type and version, etc.",
+                "data_purposes": "3. Purposes for Which We Collect Your Personal Data",
+                "data_purposes_desc": "We collect and process your personal data for various purposes, including:",
+                "purpose_1": "To register you as a new customer and provide our gambling services.",
+                "purpose_2": "To process and monitor your transactions.",
+                "purpose_3": "To manage our relationship with you.",
+                "purpose_4": "To enable you to participate in promotions and competitions.",
+                "purpose_5": "To administer and protect our business and website.",
+                "data_sharing": "4. With Whom We May Share Your Data",
+                "data_sharing_desc": "Your data may be shared with:",
+                "share_1": "Third parties for fraud detection and control purposes.",
+                "share_2": "Other AntPlay N.V., Curaçao group companies.",
+                "share_3": "Cloud services providers and data centers.",
+                "share_4": "Payment services and banks.",
+                "share_5": "We will take all reasonable steps to ensure your personal data is treated securely and in accordance with applicable laws.",
+                "data_retention": "5. Data Retention Period",
+                "data_retention_desc": "To comply with our legal, financial, and regulatory obligations, we retain your information for the minimum period required by such obligations.",
+                "retention_1": "The retention period will follow the relevant regulations in Curaçao (at least 10 years).",
+                "retention_2": "If you request the erasure of your data and that request meets our deletion criteria, your personal data will be anonymized.",
+                "retention_3": "If there is no account activity, and we have retained your data for the minimum period required by law and regulation, your account will be closed and pseudonymized.",
+                "your_rights": "6. Your Rights",
+                "rights_desc": "Subject to certain limitations, you have the following rights relating to your information:",
+                "right_1": "Right of Access: You have the right to request access to your personal data and supplementary information.",
+                "right_2": "Right to Rectification: You have the right to request the correction or completion of any inaccurate or incomplete personal data.",
+                "right_3": "Right to Erasure: You have the right to request the erasure of your personal data where there is no longer a compelling reason for us to continue processing it.",
+                "right_4": "Right to Data Portability: You have the right to request the personal data you have provided to us.",
+                "cookie_policy": "7. Cookie Policy",
+                "cookie_desc": "The AntPlay N.V., Curaçao website uses Cookies and similar technologies to manage login sessions, provide personalized web pages, and tailor content to your specific needs and interests.",
+                "cookie_types": "Types of Cookies we use:",
+                "cookie_1": "Necessary Cookies: Essential for the website's basic functions.",
+                "cookie_2": "Performance Cookies: Help us improve website performance.",
+                "cookie_3": "Functional Cookies: Remember your preferences and choices.",
+                "cookie_4": "Targeting Cookies: Used to deliver relevant content and advertisements."
+            },
+            "zh-CN": {
+                "home": "首页",
+                "introduce": "介绍",
+                "connect": "联系我们",
+                "game_title": "遊戲標題",
+                "golden_god": "財神",
+                "game_type": "遊戲類型",
+                "slot_machine": "老虎機",
+                "game_mechanics": "遊戲機制",
+                "game_mechanics_desc_3": "243線獲勝機制，只要連線就能獲勝。每次獲勝都能觸發連續爆炸，獎金源源不斷，獎勵接踵而至！進入免費遊戲後，連續爆炸不僅帶來獎金，五次以上連續爆炸還能升級高倍率符號。每次轉動都充滿驚喜和爆發力！連續爆炸和升級一觸即發，快來體驗獲獎的暢快感！",
+                "supported_systems": "支持系統",
+                "android": "安卓",
+                "html5": "HTML5",
+                "macos": "Mac OS",
+                "ios": "iOS",
+                "windows": "Windows",
+                "supported_languages": "支持語言",
+                "english": "英文",
+                "simplified_chinese": "簡體中文",
+                "japanese": "日文",
+                "portuguese": "葡萄牙文",
+                "play_now": "立即遊戲",
+                "privacy": "隱私",
+                "privacy_desc": "保護用戶數據，瀏覽隱私",
+                "contact": "聯繫我們",
+                "registration": "註冊號：160629 (0)",
+                "address": "地址：Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "版權所有 © 2020-2025 Antplay® 保留所有權利",
+                "ragnarok": "諸神黃昏",
+                "game_mechanics_desc_18": "連續消除狂潮來襲！遊戲配備連續消除機制，連線後可繼續消除。進入免費遊戲後，每次消除都能疊加倍率，還有全盤WILD設計，大幅提升獲獎機會。一次轉動就能轉出整排高額獎金組合！",
+                "privacy_policy": "隱私政策",
+                "last_updated": "最後更新：2025年1月1日（版本3）",
+                "registration_number": "註冊號：160629 (0)",
+                "company_profile": "公司簡介",
+                "antplay_nv": "AntPlay N.V., Curaçao",
+                "company_profile_desc": "（以下簡稱「我們」）遵守",
+                "curacao_act": "庫拉索個人資料保護法（2013年）。",
+                "privacy_policy_desc": "本隱私政策代表",
+                "group_companies": "公司集團發布，包括網站",
+                "website_url": "https://antplay.com/。",
+                "data_controller": "的數據控制者是",
+                "is": "是",
+                "contact_inquiries": "您可以聯繫我們進行任何查詢。",
+                "changes_privacy": "本隱私聲明的變更",
+                "latest_update": "本版本的最新更新日期為",
+                "update_date": "2025年1月1日。",
+                "previous_versions": "如果您希望獲取以前的版本，請聯繫",
+                "data_accuracy": "我們持有的關於您的個人資料必須準確且最新，這一點很重要。如果您在與我們的關係期間任何時候個人資料發生變化，請告知我們。",
+                "use_personal_data": "1. 我們如何使用您的個人資料",
+                "use_data_desc": "我們只會將您的資料用於合法目的。最常見的是，我們將在以下情況下使用您的個人資料：",
+                "use_data_1": "當我們需要履行與您即將或已經訂立的合同時。",
+                "use_data_2": "當我們（或第三方）的合法利益需要時，且您的利益和基本權利不會凌駕於這些利益之上。",
+                "use_data_3": "當我們需要遵守法律或監管義務時。",
+                "data_collect": "2. 我們收集的關於您的資料",
+                "data_collect_desc": "個人資料（或個人信息）是指可以識別個人的任何信息。我們可能會收集、使用、存儲和轉移關於您的不同類型的個人資料，我們已將其分組如下：",
+                "identity_data": "身份資料：包括名字、婚前姓氏、姓氏、用戶名或類似標識符、出生日期和性別。",
+                "contact_data": "聯繫資料：包括賬單地址、送貨地址、電子郵件地址和電話號碼。",
+                "financial_data": "財務資料：包括銀行賬戶詳情、支付卡信息和信用評級。",
+                "technical_data": "技術資料：包括互聯網協議（IP）地址、登錄數據、瀏覽器類型和版本等。",
+                "data_purposes": "3. 我們收集您個人資料的目的",
+                "data_purposes_desc": "我們收集和處理您的個人資料用於各種目的，包括：",
+                "purpose_1": "將您註冊為新客戶並提供我們的博彩服務。",
+                "purpose_2": "處理和監控您的交易。",
+                "purpose_3": "管理我們與您的關係。",
+                "purpose_4": "使您能夠參與促銷和競賽。",
+                "purpose_5": "管理和保護我們的業務和網站。",
+                "data_sharing": "4. 我們可能與誰共享您的資料",
+                "data_sharing_desc": "您的資料可能會與以下各方共享：",
+                "share_1": "用於欺詐檢測和控制目的的第三方。",
+                "share_2": "其他 AntPlay N.V., Curaçao 集團公司。",
+                "share_3": "雲服務提供商和數據中心。",
+                "share_4": "支付服務和銀行。",
+                "share_5": "我們將採取所有合理措施確保您的個人資料得到安全處理並符合適用法律。",
+                "data_retention": "5. 資料保留期",
+                "data_retention_desc": "為了遵守我們的法律、財務和監管義務，我們會將您的信息保留這些義務要求的最短期限。",
+                "retention_1": "保留期將遵循庫拉索的相關規定（至少10年）。",
+                "retention_2": "如果您要求刪除您的資料，且該請求符合我們的刪除標準，您的個人資料將被匿名化。",
+                "retention_3": "如果沒有賬戶活動，且我們已將您的資料保留法律和法規要求的最短期限，您的賬戶將被關閉並進行假名化處理。",
+                "your_rights": "6. 您的權利",
+                "rights_desc": "在特定限制下，您對您的信息擁有以下權利：",
+                "right_1": "訪問權：您有權要求訪問您的個人資料和補充信息。",
+                "right_2": "更正權：您有權要求更正或完成任何不準確或不完整的個人資料。",
+                "right_3": "刪除權：當我們不再有令人信服的理由繼續處理您的個人資料時，您有權要求刪除。",
+                "right_4": "數據可攜權：您有權要求您提供給我們的個人資料。",
+                "cookie_policy": "7. Cookie政策",
+                "cookie_desc": "AntPlay N.V., Curaçao 網站使用 Cookie 和類似技術來管理登錄會話、提供個性化網頁，並根據您的特定需求和興趣定制內容。",
+                "cookie_types": "我們使用的 Cookie 類型：",
+                "cookie_1": "必要 Cookie：對網站基本功能至關重要。",
+                "cookie_2": "性能 Cookie：幫助我們改進網站性能。",
+                "cookie_3": "功能 Cookie：記住您的偏好和選擇。",
+                "cookie_4": "定向 Cookie：用於提供相關內容和廣告。"
+            },
+            "ja": {
+                "home": "ホーム",
+                "introduce": "紹介",
+                "connect": "お問い合わせ",
+                "game_title": "ゲームタイトル",
+                "golden_god": "財神",
+                "game_type": "ゲームタイプ",
+                "slot_machine": "スロットマシン",
+                "game_mechanics": "ゲームメカニクス",
+                "game_mechanics_desc_3": "243ウェイの勝利メカニズム、連続すれば勝利。勝利するたびに連続爆発をトリガーできます。賞金は止まらず、報酬が次々と！フリーゲームに入ると、連続爆発はボーナスをもたらすだけでなく、5回以上の連続爆発で高倍率シンボルがアップグレード。回転の瞬間は驚きと爆発力に満ちています！連続爆発とアップグレードが一度に実現、勝利の爽快感を体験しましょう！",
+                "supported_systems": "対応システム",
+                "android": "アンドロイド",
+                "html5": "HTML5",
+                "macos": "Mac OS",
+                "ios": "iOS",
+                "windows": "Windows",
+                "supported_languages": "対応言語",
+                "english": "英語",
+                "simplified_chinese": "簡体字中国語",
+                "japanese": "日本語",
+                "portuguese": "ポルトガル語",
+                "play_now": "今すぐプレイ",
+                "privacy": "プライバシー",
+                "privacy_desc": "ユーザーデータの保護、プライバシーの閲覧",
+                "contact": "お問い合わせ",
+                "registration": "登録番号：160629 (0)",
+                "address": "住所：Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "著作権 © 2020-2025 Antplay® All Rights Reserved",
+                "ragnarok": "ラグナロク",
+                "game_mechanics_desc_18": "連続消去の狂気が到来！ゲームには連続消去メカニズムが搭載されており、接続後も消去を続けることができます。フリーゲームに入ると、消去するたびに乗数が重ねられ、全盤面WILDデザインにより勝利ポイントのチャンスが大幅に向上！一度のスピンで高額賞金の組み合わせが揃う可能性も！",
+                "privacy_policy": "プライバシーポリシー",
+                "last_updated": "最終更新：2025年1月1日（バージョン3）",
+                "registration_number": "登録番号：160629 (0)",
+                "company_profile": "会社概要",
+                "antplay_nv": "AntPlay N.V., Curaçao",
+                "company_profile_desc": "（以下「当社」という）は",
+                "curacao_act": "キュラソー個人データ保護法（2013年）に準拠しています。",
+                "privacy_policy_desc": "このプライバシーポリシーは",
+                "group_companies": "企業グループを代表して発行され、ウェブサイト",
+                "website_url": "https://antplay.com/を含みます。",
+                "data_controller": "のデータ管理者は",
+                "is": "です",
+                "contact_inquiries": "お問い合わせは当社までご連絡ください。",
+                "changes_privacy": "このプライバシー声明の変更",
+                "latest_update": "このバージョンの最新更新日は",
+                "update_date": "2025年1月1日です。",
+                "previous_versions": "以前のバージョンを入手したい場合は、",
+                "data_accuracy": "当社が保有するお客様の個人データが正確かつ最新であることが重要です。当社との関係中に個人データが変更された場合は、お知らせください。",
+                "use_personal_data": "1. 個人データの使用方法",
+                "use_data_desc": "当社はデータを合法的な目的でのみ使用します。最も一般的には、以下の状況で個人データを使用します：",
+                "use_data_1": "当社がお客様と締結しようとしている、またはすでに締結している契約の履行に必要な場合。",
+                "use_data_2": "当社（または第三者）の正当な利益に必要で、お客様の利益と基本的権利がそれらの利益を上回らない場合。",
+                "use_data_3": "法的または規制上の義務を遵守するために必要な場合。",
+                "data_collect": "2. 収集するデータ",
+                "data_collect_desc": "個人データ（または個人情報）とは、個人を識別できる情報を意味します。当社は、お客様に関する以下のような異なる種類の個人データを収集、使用、保存、転送する場合があります：",
+                "identity_data": "身元データ：名、旧姓、姓、ユーザー名または類似の識別子、生年月日、性別を含む。",
+                "contact_data": "連絡先データ：請求先住所、配送先住所、電子メールアドレス、電話番号を含む。",
+                "financial_data": "財務データ：銀行口座詳細、支払いカード情報、信用格付けを含む。",
+                "technical_data": "技術データ：インターネットプロトコル（IP）アドレス、ログインデータ、ブラウザの種類とバージョンなどを含む。",
+                "data_purposes": "3. 個人データを収集する目的",
+                "data_purposes_desc": "当社は、以下の目的を含む様々な目的で個人データを収集および処理します：",
+                "purpose_1": "新規顧客として登録し、ギャンブルサービスを提供するため。",
+                "purpose_2": "取引の処理と監視のため。",
+                "purpose_3": "お客様との関係を管理するため。",
+                "purpose_4": "プロモーションやコンテストへの参加を可能にするため。",
+                "purpose_5": "事業とウェブサイトの管理と保護のため。",
+                "data_sharing": "4. データの共有先",
+                "data_sharing_desc": "お客様のデータは以下の者と共有される場合があります：",
+                "share_1": "不正検出と制御の目的のための第三者。",
+                "share_2": "他の AntPlay N.V., Curaçao グループ企業。",
+                "share_3": "クラウドサービスプロバイダーとデータセンター。",
+                "share_4": "支払いサービスと銀行。",
+                "share_5": "当社は、お客様の個人データが安全に処理され、適用される法律に従って取り扱われるよう、すべての合理的な措置を講じます。",
+                "data_retention": "5. データ保持期間",
+                "data_retention_desc": "法的、財務的、規制上の義務を遵守するため、当社はそのような義務で要求される最小期間、お客様の情報を保持します。",
+                "retention_1": "保持期間はキュラソーの関連規制に従います（最低10年）。",
+                "retention_2": "データの削除を要求し、その要求が当社の削除基準を満たす場合、お客様の個人データは匿名化されます。",
+                "retention_3": "アカウント活動がなく、当社が法律と規制で要求される最小期間データを保持した場合、アカウントは閉鎖され、仮名化されます。",
+                "your_rights": "6. お客様の権利",
+                "rights_desc": "特定の制限の下で、お客様は情報に関して以下の権利を持っています：",
+                "right_1": "アクセス権：個人データと補足情報へのアクセスを要求する権利。",
+                "right_2": "訂正権：不正確または不完全な個人データの訂正または完成を要求する権利。",
+                "right_3": "削除権：当社が処理を継続する説得力のある理由がなくなった場合、個人データの削除を要求する権利。",
+                "right_4": "データポータビリティ権：当社に提供した個人データを要求する権利。",
+                "cookie_policy": "7. Cookieポリシー",
+                "cookie_desc": "AntPlay N.V., Curaçao ウェブサイトは、ログインセッションの管理、パーソナライズされたウェブページの提供、お客様の特定のニーズと興味に合わせたコンテンツの提供に Cookie と類似技術を使用しています。",
+                "cookie_types": "使用する Cookie の種類：",
+                "cookie_1": "必要 Cookie：ウェブサイトの基本機能に不可欠。",
+                "cookie_2": "パフォーマンス Cookie：ウェブサイトのパフォーマンス向上に役立つ。",
+                "cookie_3": "機能 Cookie：お客様の設定と選択を記憶する。",
+                "cookie_4": "ターゲティング Cookie：関連コンテンツと広告の配信に使用。"
+            },
+            "pt": {
+                "home": "Início",
+                "introduce": "Introdução",
+                "connect": "Contato",
+                "game_title": "Título do Jogo",
+                "golden_god": "Deus Dourado da Riqueza",
+                "game_type": "Tipo de Jogo",
+                "slot_machine": "Caça-Níquel",
+                "game_mechanics": "Mecânicas do Jogo",
+                "game_mechanics_desc_3": "Mecanismo de vitória 243WAYS, conecte e ganhe. Cada vitória pode desencadear uma explosão contínua. Os ganhos não param, e as recompensas vêm uma após a outra! Após entrar no jogo gratuito, explosões contínuas não só trazem bônus, mas também atualizam símbolos de alta multiplicação após mais de cinco explosões consecutivas. Cada momento da rotação está cheio de surpresas e poder explosivo! Explosões contínuas e atualizações estão prontas, venha experimentar o prazer refrescante de ganhar pontos!",
+                "supported_systems": "Sistemas Suportados",
+                "android": "Android",
+                "html5": "HTML5",
+                "macos": "Mac OS",
+                "ios": "iOS",
+                "windows": "Windows",
+                "supported_languages": "Idiomas Suportados",
+                "english": "Inglês",
+                "simplified_chinese": "Chinês Simplificado",
+                "japanese": "Japonês",
+                "portuguese": "Português",
+                "play_now": "Jogar Agora",
+                "privacy": "Privacidade",
+                "privacy_desc": "Proteja dados do usuário, navegue com privacidade",
+                "contact": "Contato",
+                "registration": "Número de registro: 160629 (0)",
+                "address": "Endereço: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "DIREITOS AUTORAIS © 2020-2025 Antplay® TODOS OS DIREITOS RESERVADOS",
+                "ragnarok": "Ragnarök",
+                "game_mechanics_desc_18": "A loucura da eliminação contínua está chegando! O jogo está equipado com um mecanismo de eliminação contínua, que permite continuar eliminando após a conexão. Ao entrar no jogo gratuito, o multiplicador pode ser acumulado a cada eliminação. Há também um design WILD de rodada completa que aumenta muito a chance de ganhar pontos. É possível girar uma linha inteira de combinações de alto prêmio em uma única rodada!",
+                "privacy_policy": "POLÍTICA DE PRIVACIDADE",
+                "last_updated": "Última atualização: 1 de janeiro de 2025 (VERSÃO 3)",
+                "registration_number": "Número de registro: 160629 (0)",
+                "company_profile": "Perfil da Empresa",
+                "antplay_nv": "AntPlay N.V., Curaçao",
+                "company_profile_desc": "(doravante referida como \"nós\", \"nos\" ou \"nossa\") cumpre com a",
+                "curacao_act": "Lei de Proteção de Dados Pessoais de Curaçao (2013).",
+                "privacy_policy_desc": "Esta Política de Privacidade é emitida em nome do",
+                "group_companies": "grupo de empresas, que inclui o site",
+                "website_url": "https://antplay.com/.",
+                "data_controller": "O controlador de dados para",
+                "is": "é",
+                "contact_inquiries": "Você pode nos contatar com qualquer consulta.",
+                "changes_privacy": "Alterações nesta Declaração de Privacidade",
+                "latest_update": "A última atualização desta versão é datada de",
+                "update_date": "1 de janeiro de 2025.",
+                "previous_versions": "Se você deseja obter versões anteriores, entre em contato com",
+                "data_accuracy": "É importante que os dados pessoais que mantemos sobre você sejam precisos e atualizados. Se seus dados pessoais mudarem a qualquer momento durante seu relacionamento conosco, por favor, nos informe.",
+                "use_personal_data": "1. Como Usamos Seus Dados Pessoais",
+                "use_data_desc": "Usaremos seus dados apenas para fins legais. Mais comumente, usaremos seus dados pessoais nas seguintes circunstâncias:",
+                "use_data_1": "Quando for necessário para a execução de um contrato que estamos prestes a celebrar ou já celebramos com você.",
+                "use_data_2": "Quando for necessário para nossos interesses legítimos (ou de terceiros), e seus interesses e direitos fundamentais não se sobrepõem a esses interesses.",
+                "use_data_3": "Quando for necessário para cumprir obrigações legais ou regulamentares.",
+                "data_collect": "2. Dados que Coletamos Sobre Você",
+                "data_collect_desc": "Dados pessoais (ou informações pessoais) significam qualquer informação sobre um indivíduo a partir da qual essa pessoa pode ser identificada. Podemos coletar, usar, armazenar e transferir diferentes tipos de dados pessoais sobre você, que agrupamos da seguinte forma:",
+                "identity_data": "Dados de Identidade: Inclui nome, nome de solteira, sobrenome, nome de usuário ou identificador similar, data de nascimento e gênero.",
+                "contact_data": "Dados de Contato: Inclui endereço de cobrança, endereço de entrega, endereço de e-mail e números de telefone.",
+                "financial_data": "Dados Financeiros: Inclui detalhes da conta bancária, informações do cartão de pagamento e classificações de crédito.",
+                "technical_data": "Dados Técnicos: Inclui endereço de protocolo de internet (IP), dados de login, tipo e versão do navegador, etc.",
+                "data_purposes": "3. Finalidades para as Quais Coletamos Seus Dados Pessoais",
+                "data_purposes_desc": "Coletamos e processamos seus dados pessoais para várias finalidades, incluindo:",
+                "purpose_1": "Para registrá-lo como um novo cliente e fornecer nossos serviços de jogos de azar.",
+                "purpose_2": "Para processar e monitorar suas transações.",
+                "purpose_3": "Para gerenciar nosso relacionamento com você.",
+                "purpose_4": "Para permitir que você participe de promoções e competições.",
+                "purpose_5": "Para administrar e proteger nosso negócio e site.",
+                "data_sharing": "4. Com Quem Podemos Compartilhar Seus Dados",
+                "data_sharing_desc": "Seus dados podem ser compartilhados com:",
+                "share_1": "Terceiros para fins de detecção e controle de fraudes.",
+                "share_2": "Outras empresas do grupo AntPlay N.V., Curaçao.",
+                "share_3": "Provedores de serviços em nuvem e centros de dados.",
+                "share_4": "Serviços de pagamento e bancos.",
+                "share_5": "Tomaremos todas as medidas razoáveis para garantir que seus dados pessoais sejam tratados com segurança e de acordo com as leis aplicáveis.",
+                "data_retention": "5. Período de Retenção de Dados",
+                "data_retention_desc": "Para cumprir nossas obrigações legais, financeiras e regulamentares, mantemos suas informações pelo período mínimo exigido por tais obrigações.",
+                "retention_1": "O período de retenção seguirá as regulamentações relevantes em Curaçao (pelo menos 10 anos).",
+                "retention_2": "Se você solicitar a exclusão de seus dados e essa solicitação atender aos nossos critérios de exclusão, seus dados pessoais serão anonimizados.",
+                "retention_3": "Se não houver atividade na conta, e mantivermos seus dados pelo período mínimo exigido por lei e regulamentação, sua conta será fechada e pseudonimizada.",
+                "your_rights": "6. Seus Direitos",
+                "rights_desc": "Sujeito a certas limitações, você tem os seguintes direitos relacionados às suas informações:",
+                "right_1": "Direito de Acesso: Você tem o direito de solicitar acesso aos seus dados pessoais e informações complementares.",
+                "right_2": "Direito de Retificação: Você tem o direito de solicitar a correção ou conclusão de quaisquer dados pessoais imprecisos ou incompletos.",
+                "right_3": "Direito de Exclusão: Você tem o direito de solicitar a exclusão de seus dados pessoais quando não houver mais um motivo convincente para continuarmos processando-os.",
+                "right_4": "Direito à Portabilidade dos Dados: Você tem o direito de solicitar os dados pessoais que forneceu a nós.",
+                "cookie_policy": "7. Política de Cookies",
+                "cookie_desc": "O site da AntPlay N.V., Curaçao usa Cookies e tecnologias similares para gerenciar sessões de login, fornecer páginas web personalizadas e adaptar o conteúdo às suas necessidades e interesses específicos.",
+                "cookie_types": "Tipos de Cookies que usamos:",
+                "cookie_1": "Cookies Necessários: Essenciais para as funções básicas do site.",
+                "cookie_2": "Cookies de Desempenho: Ajudam a melhorar o desempenho do site.",
+                "cookie_3": "Cookies Funcionais: Lembram suas preferências e escolhas.",
+                "cookie_4": "Cookies de Segmentação: Usados para entregar conteúdo e anúncios relevantes."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show');
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll("[data-i18n]");
+            elements.forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang] && translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.value = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            const languageIcon = document.getElementById('languageIcon');
+            languageIcon.src = `./images/icon_${lang === 'en' ? '1' : lang === 'zh-CN' ? '2' : lang === 'ja' ? '3' : '4'}.svg`;
+
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.remove('show');
+
+            document.documentElement.lang = lang;
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const defaultLang = browserLang.startsWith('zh') ? 'zh-CN' :
+                browserLang.startsWith('ja') ? 'ja' :
+                    browserLang.startsWith('pt') ? 'pt' : 'en';
+
+            changeLanguage(defaultLang);
+        });
+    </script>
 
 </body>
 

@@ -8,155 +8,9 @@
     <title>Alien Abduction</title>
     <link rel="stylesheet" href="./css/game_details_style.css">
 
-    <!-- Google 翻譯功能 -->
-    <script type="text/javascript">
-        var googTrans = null;
-
-        function googleTranslateElementInit() {
-            googTrans = new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'zh-CN,ja,pt',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-
-            // 檢查並應用已保存的語言設置
-            const cookies = document.cookie.split(';');
-            let currentLang = 'en';
-
-            for (let cookie of cookies) {
-                if (cookie.includes('googtrans')) {
-                    currentLang = cookie.split('/')[2];
-                    break;
-                }
-            }
-
-            // 如果當前語言不是英文，則應用翻譯
-            if (currentLang !== 'en') {
-                setTimeout(function () {
-                    var select = document.querySelector('.goog-te-combo');
-                    if (select) {
-                        select.value = currentLang;
-                        select.dispatchEvent(new Event('change'));
-                    }
-                }, 1000);
-            }
-        }
-
-        function changeLanguage(langCode) {
-            // 關閉下拉選單
-            document.getElementById('dropdownMenu').classList.remove('show');
-
-            // 設置 cookie，添加過期時間和安全性設置
-            const expiryDate = new Date();
-            expiryDate.setFullYear(expiryDate.getFullYear() + 1);
-            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
-            document.cookie = `googtrans=/en/${langCode}; path=/; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
-
-            // 更新語言圖標
-            const languageIcon = document.getElementById('languageIcon');
-            if (languageIcon) {
-                switch (langCode) {
-                    case 'en':
-                        languageIcon.src = './images/icon_1.svg';
-                        languageIcon.alt = 'English';
-                        break;
-                    case 'zh-CN':
-                        languageIcon.src = './images/icon_2.svg';
-                        languageIcon.alt = '简体中文';
-                        break;
-                    case 'ja':
-                        languageIcon.src = './images/icon_3.svg';
-                        languageIcon.alt = '日本語';
-                        break;
-                    case 'pt':
-                        languageIcon.src = './images/icon_4.svg';
-                        languageIcon.alt = 'Português';
-                        break;
-                }
-            }
-
-            // 重新加載翻譯
-            location.reload();
-        }
-
-        // 在頁面加載時檢查並應用已保存的語言設置
-        window.addEventListener('load', function () {
-            // 檢查 URL 參數
-            const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang');
-            if (lang) {
-                changeLanguage(lang);
-            }
-        });
-    </script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <style>
-        /* 隱藏 Google Translate 元素 */
-        .goog-te-banner-frame,
-        .goog-te-gadget-simple,
-        .goog-te-menu-frame,
-        .goog-te-menu-value,
-        .goog-te-gadget span,
-        .goog-te-balloon-frame,
-        .goog-tooltip,
-        .goog-tooltip:hover,
-        .goog-text-highlight,
-        .VIpgJd-ZVi9od-ORHb,
-        .VIpgJd-ZVi9od-ORHb-OEVmcd,
-        .VIpgJd-ZVi9od-SmfZ-OEVmcd,
-        .VIpgJd-ZVi9od-vH1Gmf,
-        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
-            display: none !important;
-        }
-
-        body {
-            top: 0 !important;
-            position: static !important;
-        }
-
-        .translated-ltr {
-            margin-top: 0 !important;
-        }
-
-        #google_translate_element {
-            position: absolute !important;
-            top: -1000px !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            width: 0 !important;
-            height: 0 !important;
-        }
-
-        .VIpgJd-ZVi9od-ORHb {
-            background: transparent !important;
-            box-shadow: none !important;
-            position: absolute !important;
-            top: -9999px !important;
-            overflow: hidden !important;
-            opacity: 0 !important;
-        }
-
-        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
-            display: none !important;
-        }
-
-        .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
-            display: none !important;
-        }
-
-        .goog-te-gadget {
-            height: 0 !important;
-            overflow: hidden !important;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="google_translate_element"></div>
-
     <div class="spacer" id="spacer"></div>
     <div class="header" id="header">
         <div class="header_content">
@@ -172,35 +26,35 @@
                     <div class="hamburger" id="hamburger">☰</div>
                     <div class="menu nav-menu" id="nav-menu">
                         <div class="menu_content">
-                            <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a class="scroll-link" href="#introduce">Introduce</a></li>
-                                <li><a class="scroll-link" href="#connect">Connect</a></li>
+                           <ul>
+                                <li><a href="./index.html" data-i18n="home">Home</a></li>
+                                <li><a class="scroll-link" href="#introduce" data-i18n="introduce">Introduce</a></li>
+                                <li><a class="scroll-link" href="#connect" data-i18n="connect">Connect</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="language">
                         <div class="language_content">
                             <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-                                <img src="./images/icon_1.svg" alt="icon_1">
+                                <img id="languageIcon" src="./images/icon_1.svg" alt="English">
                             </a>
-                          <div id="dropdownMenu" class="dropdown-content">
-                                <a href="#" onclick="changeLanguage('en'); return false;"><img src="./images/icon_1.svg"
-                                        alt="icon_1">
+                            <div id="dropdownMenu" class="dropdown-content">
+                                <span onclick="changeLanguage('en')">
+                                    <img src="./images/icon_1.svg" alt="English">
                                     <p>English</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('zh-CN'); return false;"><img
-                                        src="./images/icon_2.svg" alt="icon_2">
+                                </span>
+                                <span onclick="changeLanguage('zh-CN')">
+                                    <img src="./images/icon_2.svg" alt="简体中文">
                                     <p>简体中文</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('ja'); return false;"><img src="./images/icon_3.svg"
-                                        alt="icon_3">
-                                    <p>日本</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('pt'); return false;"><img src="./images/icon_4.svg"
-                                        alt="icon_4">
+                                </span>
+                                <span onclick="changeLanguage('ja')">
+                                    <img src="./images/icon_3.svg" alt="日本語">
+                                    <p>日本語</p>
+                                </span>
+                                <span onclick="changeLanguage('pt')">
+                                    <img src="./images/icon_4.svg" alt="Português">
                                     <p>Português</p>
-                                </a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -231,38 +85,38 @@
                     </div>
                     <div class="game_details_text">
                         <div class="game_details_text_content">
-                            <span>Game Title</span>
-                            <p>Alien Abduction Case</p>
+                            <span data-i18n="game_title">Game Title</span>
+                            <p data-i18n="game_details_2">Alien Abduction Case</p>
                             <b></b>
-                            <span>Game Type</span>
-                            <p>Slot Machine</p>
+                            <span data-i18n="game_type">Game Type</span>
+                            <p data-i18n="slot_machine">Slot Machine</p>
                             <b></b>
-                            <span>Game Mechanics</span>
-                            <p>
+                            <span data-i18n="game_mechanics">Game Mechanics</span>
+                            <p data-i18n="game_mechanics_desc_2">
                                 Free games surprise rewards are all in one place! The more WILDS you collect in free
                                 games, the more free spins you can trigger, and they can also be upgraded to multiplier
-                                WILDs to win more bonuses! There is no limit to your luck! Challenge it now!
+                                WILDS to win more bonuses! There is no limit to your luck! Challenge it now!
                             </p>
                             <b></b>
-                            <span>Supported Systems</span>
+                            <span data-i18n="supported_systems">Supported Systems</span>
                             <ul>
-                                <li><img src="./images/android.svg" alt="android">Android</li>
-                                <li><img src="./images/html5.svg" alt="html5">HTML5</li>
-                                <li><img src="./images/macos.svg" alt="macos">Mac OS</li>
-                                <li><img src="./images/ios.svg" alt="ios">iOS</li>
-                                <li><img src="./images/windows.svg" alt="windows">Windows</li>
+                                <li><img src="./images/android.svg" alt="android"><span data-i18n="android">Android</span></li>
+                                <li><img src="./images/html5.svg" alt="html5"><span data-i18n="html5">HTML5</span></li>
+                                <li><img src="./images/macos.svg" alt="macos"><span data-i18n="macos">Mac OS</span></li>
+                                <li><img src="./images/ios.svg" alt="ios"><span data-i18n="ios">iOS</span></li>
+                                <li><img src="./images/windows.svg" alt="windows"><span data-i18n="windows">Windows</span></li>
                             </ul>
                             <b></b>
-                            <span>Supported Languages</span>
+                            <span data-i18n="supported_languages">Supported Languages</span>
                               <ul>
-                                <li><img src="./images/icon_1.svg" alt=""><p>English</p></li>
-                                <li><img src="./images/icon_2.svg" alt=""><p>Simplified Chinese</p></li>
-                                <li><img src="./images/icon_3.svg" alt=""><p>Japan</p></li>
-                                <li><img src="./images/icon_4.svg" alt=""><p>Portuguese</p></li>
+                                <li><img src="./images/icon_1.svg" alt=""><p data-i18n="english">English</p></li>
+                                <li><img src="./images/icon_2.svg" alt=""><p data-i18n="simplified_chinese">Simplified Chinese</p></li>
+                                <li><img src="./images/icon_3.svg" alt=""><p data-i18n="japanese">Japan</p></li>
+                                <li><img src="./images/icon_4.svg" alt=""><p data-i18n="portuguese">Portuguese</p></li>
                             </ul>
                             <div class="try_it">
                                 <div class="try_it_content">
-                                    <a href="https://antplay.com/web/#/game-play">Play Now</a>
+                                    <a href="game-launcher.html?game=saa&lang=en" data-i18n="play_now">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -290,8 +144,8 @@
                                         </div>
                                         <div class="contact_details_text">
                                             <div class="contact_details_text_content">
-                                                <span>Privacy</span>
-                                                <p>Protect user data, browse privacy</p>
+                                                <span data-i18n="privacy">Privacy</span>
+                                                <p data-i18n="privacy_desc">Protect user data, browse privacy</p>
                                             </div>
                                         </div>
                                     </div>
@@ -309,9 +163,9 @@
                                         </div>
                                         <div class="contact_details_text">
                                             <div class="contact_details_text_content">
-                                                <span>Contact Us</span>
-                                                <p>Registration number: 160629 (0)</p>
-                                                <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                                                <span data-i18n="contact">Contact Us</span>
+                                                <p data-i18n="registration">Registration number: 160629 (0)</p>
+                                                <p data-i18n="address">Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -323,7 +177,7 @@
             </div>
             <div class="copyright">
                 <div class="copyright_content">
-                    <p>COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
+                    <p data-i18n="copyright">COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
                 </div>
             </div>
         </div>
@@ -365,7 +219,344 @@
 
 
 
-    <script src="./js/game_details_style.js"></script>
+  <script src="./js/game_details_style.js"></script>
+  <script>
+    // 翻譯
+    const translations = {
+        "en": {
+            "home": "Home",
+            "introduce": "Introduce",
+            "feature": "Feature",
+            "games": "Games",
+            "connect": "Connect",
+            "feature_title": "Feature",
+            "languages": "LANGUAGES",
+            "games_count": "GAMES",
+            "currency_supported": "CURRENCY",
+            "technical_support": "TECHNICAL",
+            "systems_supported": "SYSTEMS",
+            "welcome_text": "Plug, Play, and Profit – Seamless Slot Integration. Scalable Slot Solutions for Serious Operators.",
+            "games_title": "GAMES",
+            "game_details_1": "Respin Feista",
+            "game_details_2": "Alien Abduction",
+            "game_details_3": "God of Fortune",
+            "game_details_4": "ZEUS KING OF OLYMPUS",
+            "game_details_5": "DISCO WILD",
+            "game_details_6": "Candy Fairy",
+            "game_details_7": "Hero Adventure",
+            "game_details_8": "Chameleon Frenzy",
+            "game_details_9": "Forest Turesure",
+            "game_details_10": "Magical Beanstalk",
+            "game_details_11": "Castle of wicked cat",
+            "game_details_12": "Crazy Lab",
+            "game_details_13": "CLAW FORCE",
+            "game_details_14": "Mystery Museum Horror Night",
+            "game_details_15": "Pirate Gold",
+            "game_details_16": "The Cat House",
+            "game_details_17": "Ocean Enigma",
+            "game_details_18": "RAGNAROK THOR'S LAST STAND",
+            "game_details_19": "Extinction Dinosaurs",
+            "game_details_20": "BOOK OF HERACLESB",
+            "game_details_21": "STREET BEAVER",
+            "game_details_22": "BOOK OF EGYPT CLEOPATRA",
+            "game_details_23": "Super Burger",
+            "game_details_24": "HAPPY FARM",
+            "game_details_25": "BUFFALO FRENZY",
+            "game_details_26": "Genie Lamp",
+            "game_details_27": "Sherlock of Baker Stree",
+            "game_details_28": "JOKER FRENZY",
+            "game_details_29": "SHARP SHOOTER",
+            "game_details_30": "NINJA Double up",
+            "game_details_31": "YUMMY YUMMY SUSHI KITTY",
+            "more": "More",
+            "privacy": "Privacy",
+            "privacy_desc": "Protect user data, browse privacy",
+            "contact": "Contact Us",
+            "registration": "Registration number: 160629 (0)",
+            "address": "Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+            "copyright": "COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED",
+            "game_title": "Game Title",
+            "game_type": "Game Type",
+            "slot_machine": "Slot Machine",
+            "game_mechanics": "Game Mechanics",
+            "game_mechanics_desc_1": "Collect SCATTER and playful peppers in the game to get free games and bonus games. Entering the bonus game can also get multiple respin opportunities, allowing you to win more big prizes!!",
+            "game_mechanics_desc_2": "Free games surprise rewards are all in one place! The more WILDS you collect in free games, the more free spins you can trigger, and they can also be upgraded to multiplier WILDS to win more bonuses! There is no limit to your luck! Challenge it now!",
+            "supported_systems": "Supported Systems",
+            "supported_languages": "Supported Languages",
+            "english": "English",
+            "simplified_chinese": "Simplified Chinese",
+            "japanese": "Japan",
+            "portuguese": "Portuguese",
+            "play_now": "Play Now",
+            "android": "Android",
+            "html5": "HTML5",
+            "macos": "Mac OS",
+            "ios": "iOS",
+            "windows": "Windows"
+        },
+        "zh-CN": {
+            "home": "首页",
+            "introduce": "介绍",
+            "feature": "特色",
+            "games": "游戏",
+            "connect": "联系我们",
+            "feature_title": "特色",
+            "languages": "语言",
+            "games_count": "游戏",
+            "currency_supported": "货币",
+            "technical_support": "技术支持",
+            "systems_supported": "系统",
+            "welcome_text": "即插即用，轻松盈利 – 无缝老虎机集成。为专业运营商提供可扩展的老虎机解决方案。",
+            "games_title": "游戏",
+            "game_details_1": "旋转嘉年华",
+            "game_details_2": "外星人绑架",
+            "game_details_3": "财神",
+            "game_details_4": "宙斯：奥林匹斯之王",
+            "game_details_5": "迪斯科狂野",
+            "game_details_6": "糖果仙子",
+            "game_details_7": "英雄冒险",
+            "game_details_8": "变色龙狂热",
+            "game_details_9": "森林宝藏",
+            "game_details_10": "魔法豆茎",
+            "game_details_11": "邪恶猫城堡",
+            "game_details_12": "疯狂实验室",
+            "game_details_13": "抓力部队",
+            "game_details_14": "神秘博物馆恐怖之夜",
+            "game_details_15": "海盗黄金",
+            "game_details_16": "猫咪之家",
+            "game_details_17": "海洋之谜",
+            "game_details_18": "诸神黄昏：索尔的最后一战",
+            "game_details_19": "恐龙灭绝",
+            "game_details_20": "赫拉克勒斯之书",
+            "game_details_21": "街头海狸",
+            "game_details_22": "埃及艳后之书",
+            "game_details_23": "超级汉堡",
+            "game_details_24": "开心农场",
+            "game_details_25": "水牛狂热",
+            "game_details_26": "神灯",
+            "game_details_27": "贝克街的福尔摩斯",
+            "game_details_28": "小丑狂热",
+            "game_details_29": "神枪手",
+            "game_details_30": "忍者加倍",
+            "game_details_31": "美味寿司猫咪",
+            "more": "更多",
+            "privacy": "隐私",
+            "privacy_desc": "保护用户数据，浏览隐私",
+            "contact": "联系我们",
+            "registration": "注册号：160629 (0)",
+            "address": "地址：Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+            "copyright": "版权所有 © 2020-2025 Antplay® 保留所有权利",
+            "game_title": "游戏标题",
+            "game_type": "游戏类型",
+            "slot_machine": "老虎机",
+            "game_mechanics": "游戏机制",
+            "game_mechanics_desc_1": "在游戏中收集SCATTER和有趣的辣椒以获得免费游戏和奖励游戏。进入奖励游戏还可以获得多次重转机会，让您赢得更多大奖！！",
+            "game_mechanics_desc_2": "免費遊戲驚喜獎勵盡在其中！在免費遊戲中收集的WILDS越多，觸發的免費旋轉就越多，還可以升級為倍數WILDS贏取更多獎金！運氣無極限！現在就來挑戰吧！",
+            "supported_systems": "支持系统",
+            "supported_languages": "支持语言",
+            "english": "英语",
+            "simplified_chinese": "简体中文",
+            "japanese": "日语",
+            "portuguese": "葡萄牙语",
+            "play_now": "立即游戏",
+            "android": "安卓",
+            "html5": "HTML5",
+            "macos": "Mac OS",
+            "ios": "iOS",
+            "windows": "Windows"
+        },
+        "ja": {
+            "home": "ホーム",
+            "introduce": "紹介",
+            "feature": "特徴",
+            "games": "ゲーム",
+            "connect": "お問い合わせ",
+            "feature_title": "特徴",
+            "languages": "言語",
+            "games_count": "ゲーム",
+            "currency_supported": "通貨",
+            "technical_support": "技術サポート",
+            "systems_supported": "システム",
+            "welcome_text": "プラグ＆プレイ、シームレスなスロット統合。本格的なオペレーター向けのスケーラブルなスロットソリューション。",
+            "games_title": "ゲーム",
+            "game_details_1": "リスピンフェスタ",
+            "game_details_2": "エイリアン誘拐",
+            "game_details_3": "幸運の神",
+            "game_details_4": "ゼウス：オリンポスの王",
+            "game_details_5": "ディスコワイルド",
+            "game_details_6": "キャンディーフェアリー",
+            "game_details_7": "ヒーローアドベンチャー",
+            "game_details_8": "カメレオンフレンジー",
+            "game_details_9": "森の宝",
+            "game_details_10": "魔法の豆の木",
+            "game_details_11": "邪悪な猫の城",
+            "game_details_12": "クレイジーラボ",
+            "game_details_13": "クローフォース",
+            "game_details_14": "ミステリーミュージアム恐怖の夜",
+            "game_details_15": "海賊の黄金",
+            "game_details_16": "猫の家",
+            "game_details_17": "海の謎",
+            "game_details_18": "ラグナロク：トールの最後の戦い",
+            "game_details_19": "恐竜の絶滅",
+            "game_details_20": "ヘラクレスの書",
+            "game_details_21": "ストリートビーバー",
+            "game_details_22": "エジプトクレオパトラの書",
+            "game_details_23": "スーパーバーガー",
+            "game_details_24": "ハッピーファーム",
+            "game_details_25": "バッファローフレンジー",
+            "game_details_26": "魔法のランプ",
+            "game_details_27": "ベイカー街のシャーロック",
+            "game_details_28": "ジョーカーフレンジー",
+            "game_details_29": "シャープシューター",
+            "game_details_30": "忍者ダブルアップ",
+            "game_details_31": "おいしいおいしい寿司キティ",
+            "more": "詳細",
+            "privacy": "プライバシー",
+            "privacy_desc": "ユーザーデータの保護、プライバシーの閲覧",
+            "contact": "お問い合わせ",
+            "registration": "登録番号：160629 (0)",
+            "address": "住所：Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+            "copyright": "著作権 © 2020-2025 Antplay® All Rights Reserved",
+            "game_title": "ゲームタイトル",
+            "game_type": "ゲームタイプ",
+            "slot_machine": "スロットマシン",
+            "game_mechanics": "ゲームメカニクス",
+            "game_mechanics_desc_1": "ゲーム内でSCATTERと楽しいピーマンを集めて、フリーゲームとボーナスゲームを獲得。ボーナスゲームに入ると、複数のリスピン機会も得られ、より多くの大賞を獲得できます！！",
+            "game_mechanics_desc_2": "フリーゲームのサプライズ報酬がすべて揃っています！フリーゲームで集めたWILDSが多ければ多いほど、より多くのフリースピンを獲得でき、さらにマルチプライヤーWILDSにアップグレードしてより多くのボーナスを獲得できます！運の限界はありません！今すぐチャレンジしましょう！",
+            "supported_systems": "対応システム",
+            "supported_languages": "対応言語",
+            "english": "英語",
+            "simplified_chinese": "簡体字中国語",
+            "japanese": "日本語",
+            "portuguese": "ポルトガル語",
+            "play_now": "今すぐプレイ",
+            "android": "アンドロイド",
+            "html5": "HTML5",
+            "macos": "Mac OS",
+            "ios": "iOS",
+            "windows": "Windows"
+        },
+        "pt": {
+            "home": "Início",
+            "introduce": "Introdução",
+            "feature": "Recursos",
+            "games": "Jogos",
+            "connect": "Contato",
+            "feature_title": "Recursos",
+            "languages": "IDIOMAS",
+            "games_count": "JOGOS",
+            "currency_supported": "MOEDA",
+            "technical_support": "SUPORTE",
+            "systems_supported": "SISTEMAS",
+            "welcome_text": "Conecte, Jogue e Lucre – Integração Perfeita de Slots. Soluções Escaláveis de Slots para Operadores Sérios.",
+            "games_title": "JOGOS",
+            "game_details_1": "Respin Festa",
+            "game_details_2": "Abdução Alienígena",
+            "game_details_3": "Deus da Fortuna",
+            "game_details_4": "ZEUS REI DO OLIMPO",
+            "game_details_5": "DISCO SELVAGEM",
+            "game_details_6": "Fada de Doces",
+            "game_details_7": "Aventura do Herói",
+            "game_details_8": "Frenesi do Camaleão",
+            "game_details_9": "Tesouro da Floresta",
+            "game_details_10": "Pé de Feijão Mágico",
+            "game_details_11": "Castelo do Gato Malvado",
+            "game_details_12": "Laboratório Maluco",
+            "game_details_13": "FORÇA DA GARRA",
+            "game_details_14": "Museu do Mistério Noite de Horror",
+            "game_details_15": "Ouro Pirata",
+            "game_details_16": "A Casa do Gato",
+            "game_details_17": "Enigma do Oceano",
+            "game_details_18": "RAGNAROK ÚLTIMA RESISTÊNCIA DE THOR",
+            "game_details_19": "Extinção dos Dinossauros",
+            "game_details_20": "LIVRO DE HÉRCULES",
+            "game_details_21": "CASTOR DA RUA",
+            "game_details_22": "LIVRO DO EGITO CLEÓPATRA",
+            "game_details_23": "Super Hambúrguer",
+            "game_details_24": "FAZENDA FELIZ",
+            "game_details_25": "FRENESI DO BÚFALO",
+            "game_details_26": "Lâmpada do Gênio",
+            "game_details_27": "Sherlock da Rua Baker",
+            "game_details_28": "FRENESI DO CORINGA",
+            "game_details_29": "ATIRADOR PRECISO",
+            "game_details_30": "NINJA DOBRAR",
+            "game_details_31": "SUSHI GATINHO DELICIOSO",
+            "more": "Mais",
+            "privacy": "Privacidade",
+            "privacy_desc": "Proteja dados do usuário, navegue com privacidade",
+            "contact": "Contato",
+            "registration": "Número de registro: 160629 (0)",
+            "address": "Endereço: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+            "copyright": "DIREITOS AUTORAIS © 2020-2025 Antplay® TODOS OS DIREITOS RESERVADOS",
+            "game_title": "Título do Jogo",
+            "game_type": "Tipo de Jogo",
+            "slot_machine": "Caça-níquel",
+            "game_mechanics": "Mecânicas do Jogo",
+            "game_mechanics_desc_1": "Colete SCATTER e pimentas divertidas no jogo para obter jogos gratuitos e jogos bônus. Entrar no jogo bônus também pode dar múltiplas oportunidades de respin, permitindo que você ganhe mais prêmios grandes!!",
+            "game_mechanics_desc_2": "Jogos gratuitos e recompensas surpresa estão todos em um só lugar! Quanto mais WILDS você coletar nos jogos gratuitos, mais rodadas grátis você pode ativar, e eles também podem ser atualizados para WILDS multiplicadores para ganhar mais bônus! Não há limite para sua sorte! Desafie agora!",
+            "supported_systems": "Sistemas Suportados",
+            "supported_languages": "Idiomas Suportados",
+            "english": "Inglês",
+            "simplified_chinese": "Chinês Simplificado",
+            "japanese": "Japonês",
+            "portuguese": "Português",
+            "play_now": "Jogar Agora",
+            "android": "Android",
+            "html5": "HTML5",
+            "macos": "Mac OS",
+            "ios": "iOS",
+            "windows": "Windows"
+        }
+    };
+
+    let currentLang = 'en';
+
+    function toggleDropdown(event) {
+        event.preventDefault();
+        const dropdown = document.getElementById('dropdownMenu');
+        dropdown.classList.toggle('show');
+    }
+
+    function changeLanguage(lang) {
+        currentLang = lang;
+        const elements = document.querySelectorAll("[data-i18n]");
+        elements.forEach(el => {
+            const key = el.getAttribute("data-i18n");
+            if (translations[lang] && translations[lang][key]) {
+                // 检查元素是否是输入框
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.value = translations[lang][key];
+                } else {
+                    el.textContent = translations[lang][key];
+                }
+            }
+        });
+
+        // 更新语言图标
+        const languageIcon = document.getElementById('languageIcon');
+        languageIcon.src = `./images/icon_${lang === 'en' ? '1' : lang === 'zh-CN' ? '2' : lang === 'ja' ? '3' : '4'}.svg`;
+
+        // 关闭下拉菜单
+        const dropdown = document.getElementById('dropdownMenu');
+        dropdown.classList.remove('show');
+
+        // 更新 HTML lang 属性
+        document.documentElement.lang = lang;
+    }
+
+    // 页面加载完成后初始化翻译
+    document.addEventListener('DOMContentLoaded', function () {
+        // 获取浏览器语言或默认使用英语
+        const browserLang = navigator.language || navigator.userLanguage;
+        const defaultLang = browserLang.startsWith('zh') ? 'zh-CN' :
+            browserLang.startsWith('ja') ? 'ja' :
+                browserLang.startsWith('pt') ? 'pt' : 'en';
+
+        // 应用翻译
+        changeLanguage(defaultLang);
+    });
+</script>
+
 
 </body>
 

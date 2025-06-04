@@ -9,157 +9,9 @@
     <link rel="icon" href="./images/favicon.png" />
     <title>Antplay</title>
     <link rel="stylesheet" href="./css/style.css">
-
-    <!-- Google 翻譯功能 -->
-    <script type="text/javascript">
-        var googTrans = null;
-
-        function googleTranslateElementInit() {
-            googTrans = new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                includedLanguages: 'zh-CN,ja,pt',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false,
-                multilanguagePage: true
-            }, 'google_translate_element');
-
-            // 檢查並應用已保存的語言設置
-            const cookies = document.cookie.split(';');
-            let currentLang = 'en';
-
-            for (let cookie of cookies) {
-                if (cookie.includes('googtrans')) {
-                    currentLang = cookie.split('/')[2];
-                    break;
-                }
-            }
-
-            // 如果當前語言不是英文，則應用翻譯
-            if (currentLang !== 'en') {
-                setTimeout(function () {
-                    var select = document.querySelector('.goog-te-combo');
-                    if (select) {
-                        select.value = currentLang;
-                        select.dispatchEvent(new Event('change'));
-                    }
-                }, 1000);
-            }
-        }
-
-        function changeLanguage(langCode) {
-            // 關閉下拉選單
-            document.getElementById('dropdownMenu').classList.remove('show');
-
-            // 設置 cookie，添加過期時間和安全性設置
-            const expiryDate = new Date();
-            expiryDate.setFullYear(expiryDate.getFullYear() + 1);
-            document.cookie = `googtrans=/en/${langCode}; path=/; domain=.${window.location.host}; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
-            document.cookie = `googtrans=/en/${langCode}; path=/; expires=${expiryDate.toUTCString()}; SameSite=Strict`;
-
-            // 更新語言圖標
-            const languageIcon = document.getElementById('languageIcon');
-            if (languageIcon) {
-                switch (langCode) {
-                    case 'en':
-                        languageIcon.src = './images/icon_1.svg';
-                        languageIcon.alt = 'English';
-                        break;
-                    case 'zh-CN':
-                        languageIcon.src = './images/icon_2.svg';
-                        languageIcon.alt = '简体中文';
-                        break;
-                    case 'ja':
-                        languageIcon.src = './images/icon_3.svg';
-                        languageIcon.alt = '日本語';
-                        break;
-                    case 'pt':
-                        languageIcon.src = './images/icon_4.svg';
-                        languageIcon.alt = 'Português';
-                        break;
-                }
-            }
-
-            // 重新加載翻譯
-            location.reload();
-        }
-
-        // 在頁面加載時檢查並應用已保存的語言設置
-        window.addEventListener('load', function () {
-            // 檢查 URL 參數
-            const urlParams = new URLSearchParams(window.location.search);
-            const lang = urlParams.get('lang');
-            if (lang) {
-                changeLanguage(lang);
-            }
-        });
-    </script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <style>
-        /* 隱藏 Google Translate 元素 */
-        .goog-te-banner-frame,
-        .goog-te-gadget-simple,
-        .goog-te-menu-frame,
-        .goog-te-menu-value,
-        .goog-te-gadget span,
-        .goog-te-balloon-frame,
-        .goog-tooltip,
-        .goog-tooltip:hover,
-        .goog-text-highlight,
-        .VIpgJd-ZVi9od-ORHb,
-        .VIpgJd-ZVi9od-ORHb-OEVmcd,
-        .VIpgJd-ZVi9od-SmfZ-OEVmcd,
-        .VIpgJd-ZVi9od-vH1Gmf,
-        .VIpgJd-ZVi9od-l4eHX-hSRGPd {
-            display: none !important;
-        }
-
-        body {
-            top: 0 !important;
-            position: static !important;
-        }
-
-        .translated-ltr {
-            margin-top: 0 !important;
-        }
-
-        #google_translate_element {
-            position: absolute !important;
-            top: -1000px !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            width: 0 !important;
-            height: 0 !important;
-        }
-
-        .VIpgJd-ZVi9od-ORHb {
-            background: transparent !important;
-            box-shadow: none !important;
-            position: absolute !important;
-            top: -9999px !important;
-            overflow: hidden !important;
-            opacity: 0 !important;
-        }
-
-        .VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
-            display: none !important;
-        }
-
-        .VIpgJd-ZVi9od-aZ2wEe-OiiCO {
-            display: none !important;
-        }
-
-        .goog-te-gadget {
-            height: 0 !important;
-            overflow: hidden !important;
-        }
-    </style>
 </head>
 
 <body>
-    <div id="google_translate_element"></div>
-
     <div class="spacer" id="spacer"></div>
     <div class="header" id="header">
         <div class="header_content">
@@ -176,35 +28,35 @@
                     <div class="menu nav-menu" id="nav-menu">
                         <div class="menu_content">
                             <ul>
-                                <li><a href="./index.html">Home</a></li>
-                                <li><a class="scroll-link" href="#data">Data</a></li>
-                                <li><a class="scroll-link" href="#games">Games</a></li>
-                                <li><a class="scroll-link" href="#connect">Connect</a></li>
+                                <li><a href="./index.html" data-i18n="home">Home</a></li>
+                                <li><a class="scroll-link" href="#feature" data-i18n="feature">Feature</a></li>
+                                <li><a class="scroll-link" href="#games" data-i18n="games">Games</a></li>
+                                <li><a class="scroll-link" href="#connect" data-i18n="connect">Connect</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="language">
                         <div class="language_content">
                             <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-                                <img src="./images/icon_1.svg" alt="icon_1">
+                                <img id="languageIcon" src="./images/icon_1.svg" alt="English">
                             </a>
                             <div id="dropdownMenu" class="dropdown-content">
-                                <a href="#" onclick="changeLanguage('en'); return false;"><img src="./images/icon_1.svg"
-                                        alt="icon_1">
+                                <span onclick="changeLanguage('en')">
+                                    <img src="./images/icon_1.svg" alt="English">
                                     <p>English</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('zh-CN'); return false;"><img
-                                        src="./images/icon_2.svg" alt="icon_2">
+                                </span>
+                                <span onclick="changeLanguage('zh-CN')">
+                                    <img src="./images/icon_2.svg" alt="简体中文">
                                     <p>简体中文</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('ja'); return false;"><img src="./images/icon_3.svg"
-                                        alt="icon_3">
-                                    <p>日本</p>
-                                </a>
-                                <a href="#" onclick="changeLanguage('pt'); return false;"><img src="./images/icon_4.svg"
-                                        alt="icon_4">
+                                </span>
+                                <span onclick="changeLanguage('ja')">
+                                    <img src="./images/icon_3.svg" alt="日本語">
+                                    <p>日本語</p>
+                                </span>
+                                <span onclick="changeLanguage('pt')">
+                                    <img src="./images/icon_4.svg" alt="Português">
                                     <p>Português</p>
-                                </a>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -224,10 +76,10 @@
     <!-- ---------------------------------------------------------------------------------------------- -->
 
     <div class="management" id="imageRow">
-        <div class="management_content" id="data">
+        <div class="management_content" id="feature">
             <div class="management_title">
                 <div class="management_title_content">
-                    <h1>DATA</h1>
+                    <h1 data-i18n="feature_title">Feature</h1>
                 </div>
             </div>
             <div class="container">
@@ -303,7 +155,7 @@
                                                     <div class="data_equipment_text">
                                                         <div class="data_equipment_text_content eciprocal">
                                                             <h1 data-target="4" class="notranslate">0</h1>
-                                                            <span>LANGUAGES </span>
+                                                            <span data-i18n="languages">LANGUAGES</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -379,7 +231,7 @@
                                                     <div class="data_equipment_text">
                                                         <div class="data_equipment_text_content eciprocal">
                                                             <h1 data-target="32" class="notranslate">0</h1>
-                                                            <span>GAMES</span>
+                                                            <span data-i18n="games_count">GAMES</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -418,7 +270,7 @@
                                                     <div class="data_equipment_text">
                                                         <div class="data_equipment_text_content">
                                                             <h1 class="notranslate">10</h1>
-                                                            <span>CURRENCY SUPPORTED</span>
+                                                            <span data-i18n="currency_supported">CURRENCY</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -492,8 +344,8 @@
                                                     </div>
                                                     <div class="data_equipment_text">
                                                         <div class="data_equipment_text_content">
-                                                            <h1 class="notranslate">7X24</h1>
-                                                            <span>HRS TECHNICAL SUPPORT</span>
+                                                            <h1 class="notranslate">7x24</h1>
+                                                            <span data-i18n="technical_support">TECHNICAL</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -536,7 +388,7 @@
                                                     <div class="data_equipment_text">
                                                         <div class="data_equipment_text_content">
                                                             <h1 class="notranslate">5</h1>
-                                                            <span>SYSTEMS SUPPORTED</span>
+                                                            <span data-i18n="systems_supported">SYSTEMS</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -560,8 +412,8 @@
         <div class="welcome_to_antplay_content">
             <div class="customer_service_text_and_pictures">
                 <div class="customer_service_text_and_pictures_content">
-                    <p>Plug, Play, and Profit – Seamless Slot Integration. Scalable Slot Solutions for Serious
-                        Operators.</p>
+                    <p data-i18n="welcome_text">Plug, Play, and Profit – Seamless Slot Integration. Scalable Slot
+                        Solutions for Serious Operators.</p>
                 </div>
             </div>
             <div class="welcome_to_antplay_img">
@@ -577,7 +429,7 @@
             <div class="games_content">
                 <div class="games_title">
                     <div class="games_title_content">
-                        <h1>GAMES</h1>
+                        <h1 data-i18n="games_title">GAMES</h1>
                     </div>
                 </div>
                 <div class="games_box">
@@ -585,13 +437,13 @@
 
                         <a href="./game_details_game_1.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_1.png" alt="">
+                                <img src="./images/games_icon/games_icon_1.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Respin Feista</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_1">Respin Feista</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -600,13 +452,13 @@
 
                         <a href="./game_details_game_2.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_2.png" alt="">
+                                <img src="./images/games_icon/games_icon_2.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Alien Abduction</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_2">Alien Abduction</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -615,13 +467,13 @@
 
                         <a href="./game_details_game_3.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_3.png" alt="">
+                                <img src="./images/games_icon/games_icon_3.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>God of Fortune</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_3">God of Fortune</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -630,13 +482,13 @@
 
                         <a href="./game_details_game_4.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_4.png" alt="">
+                                <img src="./images/games_icon/games_icon_4.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>ZEUS KING OF OLYMPUS</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_4">ZEUS KING OF OLYMPUS</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -645,13 +497,13 @@
 
                         <a href="./game_details_game_5.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_5.png" alt="">
+                                <img src="./images/games_icon/games_icon_5.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>DISCO WILD</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_5">DISCO WILD</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -660,13 +512,13 @@
 
                         <a href="./game_details_game_6.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_6.png" alt="">
+                                <img src="./images/games_icon/games_icon_6.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Candy Fairy</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_6">Candy Fairy</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -675,13 +527,13 @@
 
                         <a href="./game_details_game_7.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_7.png" alt="">
+                                <img src="./images/games_icon/games_icon_7.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Hero Adventure</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_7">Hero Adventure</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -690,13 +542,13 @@
 
                         <a href="./game_details_game_8.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_8.png" alt="">
+                                <img src="./images/games_icon/games_icon_8.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Chameleon Frenzy</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_8">Chameleon Frenzy</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -705,13 +557,13 @@
 
                         <a href="./game_details_game_9.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_9.png" alt="">
+                                <img src="./images/games_icon/games_icon_9.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Forest Turesure</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_9">Forest Turesure</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -720,13 +572,13 @@
 
                         <a href="./game_details_game_10.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_10.png" alt="">
+                                <img src="./images/games_icon/games_icon_10.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Magical Beanstalk</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_10">Magical Beanstalk</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -735,13 +587,13 @@
 
                         <a href="./game_details_game_11.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_11.png" alt="">
+                                <img src="./images/games_icon/games_icon_11.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Castle of wicked cat</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_11">Castle of wicked cat</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -750,13 +602,13 @@
 
                         <a href="./game_details_game_12.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_12.png" alt="">
+                                <img src="./images/games_icon/games_icon_12.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Crazy Lab</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_12">Crazy Lab</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -765,13 +617,13 @@
 
                         <a href="./game_details_game_13.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_13.png" alt="">
+                                <img src="./images/games_icon/games_icon_13.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>CLAW FORCE</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_13">CLAW FORCE</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -780,13 +632,13 @@
 
                         <a href="./game_details_game_14.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_14.png" alt="">
+                                <img src="./images/games_icon/games_icon_14.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Mystery Museum Horror Night</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_14">Mystery Museum Horror Night</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -795,13 +647,13 @@
 
                         <a href="./game_details_game_15.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_15.png" alt="">
+                                <img src="./images/games_icon/games_icon_15.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Pirate Gold</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_15">Pirate Gold</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -810,13 +662,13 @@
 
                         <a href="./game_details_game_16.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_16.png" alt="">
+                                <img src="./images/games_icon/games_icon_16.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>The Cat House</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_16">The Cat House</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -825,13 +677,13 @@
 
                         <a href="./game_details_game_17.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_17.png" alt="">
+                                <img src="./images/games_icon/games_icon_17.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Ocean Enigma</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_17">Ocean Enigma</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -840,13 +692,13 @@
 
                         <a href="./game_details_game_18.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_18.png" alt="">
+                                <img src="./images/games_icon/games_icon_18.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>RAGNAROK THOR'S LAST STAND</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_18">RAGNAROK THOR'S LAST STAND</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -855,13 +707,13 @@
 
                         <a href="./game_details_game_19.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_19.png" alt="">
+                                <img src="./images/games_icon/games_icon_19.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Extinction Dinosaurs</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_19">Extinction Dinosaurs</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -870,13 +722,13 @@
 
                         <a href="./game_details_game_20.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_20.png" alt="">
+                                <img src="./images/games_icon/games_icon_20.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>BOOK OF HERACLESB</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_20">BOOK OF HERACLESB</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -885,13 +737,13 @@
 
                         <a href="./game_details_game_21.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_21.png" alt="">
+                                <img src="./images/games_icon/games_icon_21.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>STREET BEAVER</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_21">STREET BEAVER</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -900,13 +752,13 @@
 
                         <a href="./game_details_game_22.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_22.png" alt="">
+                                <img src="./images/games_icon/games_icon_22.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>BOOK OF EGYPT CLEOPATRA</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_22">BOOK OF EGYPT CLEOPATRA</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -915,13 +767,13 @@
 
                         <a href="./game_details_game_23.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_23.png" alt="">
+                                <img src="./images/games_icon/games_icon_23.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Super Burger</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_23">Super Burger</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -930,13 +782,13 @@
 
                         <a href="./game_details_game_24.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_24.png" alt="">
+                                <img src="./images/games_icon/games_icon_24.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>HAPPY FARM</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_24">HAPPY FARM</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -945,13 +797,13 @@
 
                         <a href="./game_details_game_25.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_25.png" alt="">
+                                <img src="./images/games_icon/games_icon_25.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>BUFFALO FRENZY</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_25">BUFFALO FRENZY</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -960,13 +812,13 @@
 
                         <a href="./game_details_game_26.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_26.png" alt="">
+                                <img src="./images/games_icon/games_icon_26.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Genie Lamp</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_26">Genie Lamp</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -975,13 +827,13 @@
 
                         <a href="./game_details_game_27.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_27.png" alt="">
+                                <img src="./images/games_icon/games_icon_27.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>Sherlock of Baker Stree</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_27">Sherlock of Baker Stree</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -990,13 +842,13 @@
 
                         <a href="./game_details_game_28.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_28.png" alt="">
+                                <img src="./images/games_icon/games_icon_28.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>JOKER FRENZY</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_28">JOKER FRENZY</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1005,13 +857,13 @@
 
                         <a href="./game_details_game_29.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_29.png" alt="">
+                                <img src="./images/games_icon/games_icon_29.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>SHARP SHOOTER</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_29">SHARP SHOOTER</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1020,13 +872,13 @@
 
                         <a href="./game_details_game_30.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_30.png" alt="">
+                                <img src="./images/games_icon/games_icon_30.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>NINJA Double up</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_30">NINJA Double up</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1035,13 +887,13 @@
 
                         <a href="./game_details_game_31.html">
                             <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_31.png" alt="">
+                                <img src="./images/games_icon/games_icon_31.jpg" alt="">
 
                                 <div class="games_box_area_content">
                                     <div class="games_box_area_text">
                                         <div class="games_box_area_text_content">
-                                            <p>YUMMY YUMMY SUSHI KITTY</p>
-                                            <p>More</p>
+                                            <p data-i18n="game_details_31">YUMMY YUMMY SUSHI KITTY</p>
+                                            <p data-i18n="more">More</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1073,8 +925,8 @@
                                         </div>
                                         <div class="contact_details_text">
                                             <div class="contact_details_text_content">
-                                                <span>Privacy</span>
-                                                <p>Protect user data, browse privacy</p>
+                                                <span data-i18n="privacy">Privacy</span>
+                                                <p data-i18n="privacy_desc">Protect user data, browse privacy</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1092,9 +944,10 @@
                                         </div>
                                         <div class="contact_details_text">
                                             <div class="contact_details_text_content">
-                                                <span>Contact Us</span>
-                                                <p>Registration number: 160629 (0)</p>
-                                                <p>Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.</p>
+                                                <span data-i18n="contact">Contact Us</span>
+                                                <p data-i18n="registration">Registration number: 160629 (0)</p>
+                                                <p data-i18n="address">Address: Zuikertuintjeweg Z/N (Zuikertuin
+                                                    Tower), Curaçao.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -1106,7 +959,7 @@
             </div>
             <div class="copyright">
                 <div class="copyright_content">
-                    <p>COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
+                    <p data-i18n="copyright">COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED</p>
                 </div>
             </div>
         </div>
@@ -1163,6 +1016,266 @@
 
 
     <script src="js/main.js"></script>
+    <script>
+        // 翻譯
+        const translations = {
+            "en": {
+                "home": "Home",
+                "feature": "Feature",
+                "games": "Games",
+                "connect": "Connect",
+                "feature_title": "Feature",
+                "languages": "LANGUAGES",
+                "games_count": "GAMES",
+                "currency_supported": "CURRENCY",
+                "technical_support": "TECHNICAL",
+                "systems_supported": "SYSTEMS",
+                "welcome_text": "Plug, Play, and Profit – Seamless Slot Integration. Scalable Slot Solutions for Serious Operators.",
+                "games_title": "GAMES",
+                "game_details_1": "Respin Feista",
+                "game_details_2": "Alien Abduction",
+                "game_details_3": "God of Fortune",
+                "game_details_4": "ZEUS KING OF OLYMPUS",
+                "game_details_5": "DISCO WILD",
+                "game_details_6": "Candy Fairy",
+                "game_details_7": "Hero Adventure",
+                "game_details_8": "Chameleon Frenzy",
+                "game_details_9": "Forest Turesure",
+                "game_details_10": "Magical Beanstalk",
+                "game_details_11": "Castle of wicked cat",
+                "game_details_12": "Crazy Lab",
+                "game_details_13": "CLAW FORCE",
+                "game_details_14": "Mystery Museum Horror Night",
+                "game_details_15": "Pirate Gold",
+                "game_details_16": "The Cat House",
+                "game_details_17": "Ocean Enigma",
+                "game_details_18": "RAGNAROK THOR'S LAST STAND",
+                "game_details_19": "Extinction Dinosaurs",
+                "game_details_20": "BOOK OF HERACLESB",
+                "game_details_21": "STREET BEAVER",
+                "game_details_22": "BOOK OF EGYPT CLEOPATRA",
+                "game_details_23": "Super Burger",
+                "game_details_24": "HAPPY FARM",
+                "game_details_25": "BUFFALO FRENZY",
+                "game_details_26": "Genie Lamp",
+                "game_details_27": "Sherlock of Baker Stree",
+                "game_details_28": "JOKER FRENZY",
+                "game_details_29": "SHARP SHOOTER",
+                "game_details_30": "NINJA Double up",
+                "game_details_31": "YUMMY YUMMY SUSHI KITTY",
+                "more": "More",
+                "privacy": "Privacy",
+                "privacy_desc": "Protect user data, browse privacy",
+                "contact": "Contact Us",
+                "registration": "Registration number: 160629 (0)",
+                "address": "Address: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "COPYRIGHT © 2020-2025 Antplay® ALL RIGHTS RESERVED"
+            },
+            "zh-CN": {
+                "home": "首页",
+                "feature": "特色",
+                "games": "游戏",
+                "connect": "联系我们",
+                "feature_title": "特色",
+                "languages": "语言",
+                "games_count": "游戏",
+                "currency_supported": "货币",
+                "technical_support": "技术支持",
+                "systems_supported": "系统",
+                "welcome_text": "即插即用，轻松盈利 – 无缝老虎机集成。为专业运营商提供可扩展的老虎机解决方案。",
+                "games_title": "游戏",
+                "game_details_1": "旋转嘉年华",
+                "game_details_2": "外星人绑架",
+                "game_details_3": "财神",
+                "game_details_4": "宙斯：奥林匹斯之王",
+                "game_details_5": "迪斯科狂野",
+                "game_details_6": "糖果仙子",
+                "game_details_7": "英雄冒险",
+                "game_details_8": "变色龙狂热",
+                "game_details_9": "森林宝藏",
+                "game_details_10": "魔法豆茎",
+                "game_details_11": "邪恶猫城堡",
+                "game_details_12": "疯狂实验室",
+                "game_details_13": "抓力部队",
+                "game_details_14": "神秘博物馆恐怖之夜",
+                "game_details_15": "海盗黄金",
+                "game_details_16": "猫咪之家",
+                "game_details_17": "海洋之谜",
+                "game_details_18": "诸神黄昏：索尔的最后一战",
+                "game_details_19": "恐龙灭绝",
+                "game_details_20": "赫拉克勒斯之书",
+                "game_details_21": "街头海狸",
+                "game_details_22": "埃及艳后之书",
+                "game_details_23": "超级汉堡",
+                "game_details_24": "开心农场",
+                "game_details_25": "水牛狂热",
+                "game_details_26": "神灯",
+                "game_details_27": "贝克街的福尔摩斯",
+                "game_details_28": "小丑狂热",
+                "game_details_29": "神枪手",
+                "game_details_30": "忍者加倍",
+                "game_details_31": "美味寿司猫咪",
+                "more": "更多",
+                "privacy": "隐私",
+                "privacy_desc": "保护用户数据，浏览隐私",
+                "contact": "联系我们",
+                "registration": "注册号：160629 (0)",
+                "address": "地址：Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "版权所有 © 2020-2025 Antplay® 保留所有权利"
+            },
+            "ja": {
+                "home": "ホーム",
+                "feature": "特徴",
+                "games": "ゲーム",
+                "connect": "お問い合わせ",
+                "feature_title": "特徴",
+                "languages": "言語",
+                "games_count": "ゲーム",
+                "currency_supported": "通貨",
+                "technical_support": "技術サポート",
+                "systems_supported": "システム",
+                "welcome_text": "プラグ＆プレイ、シームレスなスロット統合。本格的なオペレーター向けのスケーラブルなスロットソリューション。",
+                "games_title": "ゲーム",
+                "game_details_1": "リスピンフェスタ",
+                "game_details_2": "エイリアン誘拐",
+                "game_details_3": "幸運の神",
+                "game_details_4": "ゼウス：オリンポスの王",
+                "game_details_5": "ディスコワイルド",
+                "game_details_6": "キャンディーフェアリー",
+                "game_details_7": "ヒーローアドベンチャー",
+                "game_details_8": "カメレオンフレンジー",
+                "game_details_9": "森の宝",
+                "game_details_10": "魔法の豆の木",
+                "game_details_11": "邪悪な猫の城",
+                "game_details_12": "クレイジーラボ",
+                "game_details_13": "クローフォース",
+                "game_details_14": "ミステリーミュージアム恐怖の夜",
+                "game_details_15": "海賊の黄金",
+                "game_details_16": "猫の家",
+                "game_details_17": "海の謎",
+                "game_details_18": "ラグナロク：トールの最後の戦い",
+                "game_details_19": "恐竜の絶滅",
+                "game_details_20": "ヘラクレスの書",
+                "game_details_21": "ストリートビーバー",
+                "game_details_22": "エジプトクレオパトラの書",
+                "game_details_23": "スーパーバーガー",
+                "game_details_24": "ハッピーファーム",
+                "game_details_25": "バッファローフレンジー",
+                "game_details_26": "魔法のランプ",
+                "game_details_27": "ベイカー街のシャーロック",
+                "game_details_28": "ジョーカーフレンジー",
+                "game_details_29": "シャープシューター",
+                "game_details_30": "忍者ダブルアップ",
+                "game_details_31": "おいしいおいしい寿司キティ",
+                "more": "詳細",
+                "privacy": "プライバシー",
+                "privacy_desc": "ユーザーデータの保護、プライバシーの閲覧",
+                "contact": "お問い合わせ",
+                "registration": "登録番号：160629 (0)",
+                "address": "住所：Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "著作権 © 2020-2025 Antplay® All Rights Reserved"
+            },
+            "pt": {
+                "home": "Início",
+                "feature": "Recursos",
+                "games": "Jogos",
+                "connect": "Contato",
+                "feature_title": "Recursos",
+                "languages": "IDIOMAS",
+                "games_count": "JOGOS",
+                "currency_supported": "MOEDA",
+                "technical_support": "SUPORTE",
+                "systems_supported": "SISTEMAS",
+                "welcome_text": "Conecte, Jogue e Lucre – Integração Perfeita de Slots. Soluções Escaláveis de Slots para Operadores Sérios.",
+                "games_title": "JOGOS",
+                "game_details_1": "Respin Festa",
+                "game_details_2": "Abdução Alienígena",
+                "game_details_3": "Deus da Fortuna",
+                "game_details_4": "ZEUS REI DO OLIMPO",
+                "game_details_5": "DISCO SELVAGEM",
+                "game_details_6": "Fada de Doces",
+                "game_details_7": "Aventura do Herói",
+                "game_details_8": "Frenesi do Camaleão",
+                "game_details_9": "Tesouro da Floresta",
+                "game_details_10": "Pé de Feijão Mágico",
+                "game_details_11": "Castelo do Gato Malvado",
+                "game_details_12": "Laboratório Maluco",
+                "game_details_13": "FORÇA DA GARRA",
+                "game_details_14": "Museu do Mistério Noite de Horror",
+                "game_details_15": "Ouro Pirata",
+                "game_details_16": "A Casa do Gato",
+                "game_details_17": "Enigma do Oceano",
+                "game_details_18": "RAGNAROK ÚLTIMA RESISTÊNCIA DE THOR",
+                "game_details_19": "Extinção dos Dinossauros",
+                "game_details_20": "LIVRO DE HÉRCULES",
+                "game_details_21": "CASTOR DA RUA",
+                "game_details_22": "LIVRO DO EGITO CLEÓPATRA",
+                "game_details_23": "Super Hambúrguer",
+                "game_details_24": "FAZENDA FELIZ",
+                "game_details_25": "FRENESI DO BÚFALO",
+                "game_details_26": "Lâmpada do Gênio",
+                "game_details_27": "Sherlock da Rua Baker",
+                "game_details_28": "FRENESI DO CORINGA",
+                "game_details_29": "ATIRADOR PRECISO",
+                "game_details_30": "NINJA DOBRAR",
+                "game_details_31": "SUSHI GATINHO DELICIOSO",
+                "more": "Mais",
+                "privacy": "Privacidade",
+                "privacy_desc": "Proteja dados do usuário, navegue com privacidade",
+                "contact": "Contato",
+                "registration": "Número de registro: 160629 (0)",
+                "address": "Endereço: Zuikertuintjeweg Z/N (Zuikertuin Tower), Curaçao.",
+                "copyright": "DIREITOS AUTORAIS © 2020-2025 Antplay® TODOS OS DIREITOS RESERVADOS"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.toggle('show');
+        }
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            const elements = document.querySelectorAll("[data-i18n]");
+            elements.forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang] && translations[lang][key]) {
+                    // 检查元素是否是输入框
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.value = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // 更新语言图标
+            const languageIcon = document.getElementById('languageIcon');
+            languageIcon.src = `./images/icon_${lang === 'en' ? '1' : lang === 'zh-CN' ? '2' : lang === 'ja' ? '3' : '4'}.svg`;
+            
+            // 关闭下拉菜单
+            const dropdown = document.getElementById('dropdownMenu');
+            dropdown.classList.remove('show');
+
+            // 更新 HTML lang 属性
+            document.documentElement.lang = lang;
+        }
+
+        // 页面加载完成后初始化翻译
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取浏览器语言或默认使用英语
+            const browserLang = navigator.language || navigator.userLanguage;
+            const defaultLang = browserLang.startsWith('zh') ? 'zh-CN' : 
+                              browserLang.startsWith('ja') ? 'ja' : 
+                              browserLang.startsWith('pt') ? 'pt' : 'en';
+            
+            // 应用翻译
+            changeLanguage(defaultLang);
+        });
+    </script>
 </body>
 
 </html>
