@@ -171,7 +171,7 @@ html {
   z-index: 3;
 }
 
-.header .header_content .menu_language .menu_language_content .language .dropdown-content a {
+.header .header_content .menu_language .menu_language_content .language .dropdown-content span {
   color: black;
   padding: 21px 16px;
   text-decoration: none;
@@ -180,19 +180,20 @@ html {
   border-bottom: 2px solid #fff;
 }
 
-.header .header_content .menu_language .menu_language_content .language .dropdown-content a:nth-child(4) {
+.header .header_content .menu_language .menu_language_content .language .dropdown-content span:nth-child(4) {
   border-bottom: none;
 }
 
-.header .header_content .menu_language .menu_language_content .language .dropdown-content a:hover p {
+.header .header_content .menu_language .menu_language_content .language .dropdown-content span:hover p {
   transform: scale(1.5);
 }
 
-.header .header_content .menu_language .menu_language_content .language .dropdown-content a p {
+.header .header_content .menu_language .menu_language_content .language .dropdown-content span p {
   color: #fff;
   margin-left: 22px;
   font-size: 12px;
   transition: font-size 4s ease-in-out;
+  transition: all 0.4s ease-out;
 }
 
 .header .header_content .menu_language .menu_language_content .language .show {
@@ -276,7 +277,6 @@ html {
 
 .teaching {
   position: relative;
-  background: url("../images/full_background.svg") no-repeat center;
   background-size: cover;
 }
 

@@ -171,7 +171,7 @@ html {
   z-index: 3;
 }
 
-.header .header_content .menu_language .menu_language_content .language .dropdown-content a {
+.header .header_content .menu_language .menu_language_content .language .dropdown-content span {
   color: black;
   padding: 21px 16px;
   text-decoration: none;
@@ -180,19 +180,20 @@ html {
   border-bottom: 2px solid #fff;
 }
 
-.header .header_content .menu_language .menu_language_content .language .dropdown-content a:nth-child(4) {
+.header .header_content .menu_language .menu_language_content .language .dropdown-content span:nth-child(4) {
   border-bottom: none;
 }
 
-.header .header_content .menu_language .menu_language_content .language .dropdown-content a:hover p {
+.header .header_content .menu_language .menu_language_content .language .dropdown-content span:hover p {
   transform: scale(1.5);
 }
 
-.header .header_content .menu_language .menu_language_content .language .dropdown-content a p {
+.header .header_content .menu_language .menu_language_content .language .dropdown-content span p {
   color: #fff;
   margin-left: 22px;
   font-size: 12px;
   transition: font-size 4s ease-in-out;
+  transition: all 0.4s ease-out;
 }
 
 .header .header_content .menu_language .menu_language_content .language .show {
@@ -264,7 +265,7 @@ html {
   bottom: 0px;
   width: 100%;
   height: 100%;
-  background: url("../images/Banner_4.png") no-repeat;
+  background: url("../images/Banner_4.jpg") no-repeat;
   background-position: center;
   z-index: 2;
   animation: bounce 5s infinite;
@@ -304,19 +305,17 @@ html {
 
 .management {
   position: relative;
-  background: url("../images/full_background.svg") no-repeat center;
   background-size: cover;
 }
 
 .management .management_content {
   margin: 0 auto;
-  padding: 30px 0 70px 0;
-  width: 1200px;
+  width: 100%;
 }
 
 .management .management_content .management_title {
   position: relative;
-  padding: 70px 0;
+  padding: 40px 0;
 }
 
 .management .management_content .management_title .management_title_content {
@@ -362,7 +361,7 @@ html {
 
 .management .management_content .container .container_content {
   margin: 0 auto;
-  max-width: 1200px;
+  width: 100%;
 }
 
 .management .management_content .container .container_content .data_report {
@@ -377,7 +376,7 @@ html {
   position: relative;
   width: 100%;
   height: 400px;
-  padding: 50px 0;
+  padding: 20px 0;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .data_carousel .data_carousel_content {
@@ -422,7 +421,7 @@ html {
 
 .management .management_content .container .container_content .data_report .data_report_content .data_advantage {
   position: relative;
-  padding: 100px 0;
+  padding: 100px 0 40px 0;
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .data_advantage .data_advantage_content {
@@ -438,8 +437,8 @@ html {
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .data_advantage .data_advantage_content ul li {
-  width: 40%;
-  height: 200px;
+  width: 19%;
+  height: 130px;
   background-color: #fff;
   border: 1px solid #dddddd;
   border-radius: 16px;
@@ -485,7 +484,7 @@ html {
 }
 
 .management .management_content .container .container_content .data_report .data_report_content .data_advantage .data_advantage_content ul li .data_equipment .data_equipment_content .data_equipment_text .data_equipment_text_content h1 {
-  font-size: 40px;
+  font-size: 80px;
   font-weight: 900;
 }
 
@@ -708,7 +707,6 @@ html {
 
 .games {
   position: relative;
-  background: url("../images/full_background.svg") no-repeat center;
   background-size: cover;
 }
 
