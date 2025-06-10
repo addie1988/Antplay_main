@@ -435,6 +435,21 @@
                 <div class="games_box">
                     <div class="games_box_content">
 
+                        <a href="./game_details_game_32.html">
+                            <div class="games_box_area">
+                                <img src="./images/games_icon/games_icon_32.jpg" alt="">
+
+                                <div class="games_box_area_content">
+                                    <div class="games_box_area_text">
+                                        <div class="games_box_area_text_content">
+                                            <p data-i18n="game_details_32">Endless Tiger Luck</p>
+                                            <p data-i18n="more">More</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
                         <a href="./game_details_game_1.html">
                             <div class="games_box_area">
                                 <img src="./images/games_icon/games_icon_1.jpg" alt="">
@@ -885,6 +900,8 @@
                             </div>
                         </a>
 
+                        <a href="#"></a>
+
                         <a href="./game_details_game_31.html">
                             <div class="games_box_area">
                                 <img src="./images/games_icon/games_icon_31.jpg" alt="">
@@ -900,22 +917,7 @@
                             </div>
                         </a>
 
-                        <a href="#"></a>
-
-                        <a href="./game_details_game_32.html">
-                            <div class="games_box_area">
-                                <img src="./images/games_icon/games_icon_32.jpg" alt="">
-
-                                <div class="games_box_area_content">
-                                    <div class="games_box_area_text">
-                                        <div class="games_box_area_text_content">
-                                            <p data-i18n="game_details_32">Endless Tiger Luck</p>
-                                            <p data-i18n="more">More</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
+            
 
                     </div>
 
@@ -1032,7 +1034,7 @@
     </div>
 
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=1"></script>
     <script>
         // 翻譯文本
         const translations = {
@@ -1250,56 +1252,10 @@
             }
         };
 
-        let currentLang = 'en'; // ✅ 預設語言為英文
-
-        function toggleDropdown(event) {
-            event.preventDefault();
-            const dropdown = document.getElementById('dropdownMenu');
-            dropdown.classList.toggle('show');
-        }
-
-        function changeLanguage(lang) {
-            currentLang = lang;
-
-            // ✅ 檢查 translations 是否存在
-            if (typeof translations === 'undefined') {
-                console.error("Translations object is not defined.");
-                return;
-            }
-
-            // ✅ 更新所有具有 data-i18n 的元素
-            const elements = document.querySelectorAll("[data-i18n]");
-            elements.forEach(el => {
-                const key = el.getAttribute("data-i18n");
-                if (translations[lang]?.[key]) {
-                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-                        el.value = translations[lang][key];
-                    } else {
-                        el.textContent = translations[lang][key];
-                    }
-                }
-            });
-
-            // ✅ 更新語言圖示
-            const languageIcon = document.getElementById('languageIcon');
-            const langIconMap = {
-                'en': '1',
-                'zh-CN': '2',
-                'ja': '3',
-                'pt': '4'
-            };
-            languageIcon.src = `./images/icon_${langIconMap[lang] || '1'}.svg`;
-
-            // ✅ 關閉語言選單
-            document.getElementById('dropdownMenu').classList.remove('show');
-
-            // ✅ 設定 <html lang="">
-            document.documentElement.lang = lang;
-        }
-
+     
         // ✅ 頁面載入後初始化為英文
         document.addEventListener('DOMContentLoaded', function () {
-            changeLanguage(currentLang); // 預設語言與圖示設定
+            changeLanguage(""); // 預設語言與圖示設定
         });
     </script>
 </body>
